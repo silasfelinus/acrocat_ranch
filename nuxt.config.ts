@@ -5,7 +5,8 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', '@nuxt/content'],
   content: {
     api: {
-      baseURL: '/api/_my_content'
+      baseURL: '/api/_my_content',
+      documentDriven: true
     }
   }
 })

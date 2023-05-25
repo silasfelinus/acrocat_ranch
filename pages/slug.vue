@@ -1,6 +1,6 @@
 <template>
   <article>
-    <nuxt-content :document="ArticleLayout" />
+    <nuxt-content :document="ContentLayout" />
   </article>
 </template>
 
