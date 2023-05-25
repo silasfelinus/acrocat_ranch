@@ -1,47 +1,47 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia'
 
 interface DisplaySettingsState {
-  background: string;
-  screenfx: string;
-  activeNav: string;
-  selectedNavItem: string | null;
-  isNavOpen: boolean;
-  isRightOpen: boolean;
-  isLeftOpen: boolean;
+  background: string
+  screenfx: string
+  activeNav: string
+  selectedNavItem: string | null
+  isNavOpen: boolean
+  isRightOpen: boolean
+  isLeftOpen: boolean
 }
 
-export const useDisplaySettingsStore = defineStore("displaySettings", {
+export const useDisplaySettingsStore = defineStore('displaySettings', {
   state: (): DisplaySettingsState => ({
-    background: "backtree.webp",
-    screenfx: "LavaLamp",
-    activeNav: "amiNav",
+    background: 'backtree.webp',
+    screenfx: 'LavaLamp',
+    activeNav: 'amiNav',
     selectedNavItem: null,
     isNavOpen: true,
     isRightOpen: true,
-    isLeftOpen: true,
+    isLeftOpen: true
   }),
   actions: {
     setBackground(bg: string) {
-      if (typeof bg === "string" && bg.length > 0) {
-        this.background = bg;
+      if (typeof bg === 'string' && bg.length > 0) {
+        this.background = bg
       } else {
-        throw new Error("Invalid background");
+        throw new Error('Invalid background')
       }
     },
     setScreenFX(fx: string) {
-      this.screenfx = fx;
+      this.screenfx = fx
     },
     selectNavItem(item: string) {
-      this.selectedNavItem = item;
+      this.selectedNavItem = item
     },
     toggleNavOpen() {
-      this.isNavOpen = !this.isNavOpen;
+      this.isNavOpen = !this.isNavOpen
     },
     toggleRightOpen() {
-      this.isRightOpen = !this.isRightOpen;
+      this.isRightOpen = !this.isRightOpen
     },
     toggleLeftOpen() {
-      this.isLeftOpen = !this.isLeftOpen;
-    },
-  },
-});
+      this.isLeftOpen = !this.isLeftOpen
+    }
+  }
+})

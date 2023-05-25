@@ -4,7 +4,7 @@
       <nav>
         <ul>
           <li v-for="navItem in nav" :key="navItem.name">
-            <nuxt-link :to="navItem.path">{{ navItem.name }}</nuxt-link>
+            <nuxt-link :to="navItem.path">{{ navItem.name }} </nuxt-link>
           </li>
         </ul>
       </nav>
@@ -22,7 +22,6 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useContent } from '@nuxt/content'
 
 const { fetch: fetchContent } = useContent()
 
@@ -45,7 +44,8 @@ nav li {
   margin: 0 1em;
 }
 
-header, footer {
+header,
+footer {
   background-color: #f8f9fa;
   padding: 1em 0;
   text-align: center;

@@ -21,16 +21,16 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useContent } from "@nuxt/content";
+import { ref } from 'vue'
+import { useContent } from '@nuxt/content'
 
-const { fetch: fetchContent } = useContent();
+const { fetch: fetchContent } = useContent()
 
-const nav = ref([]);
+const nav = ref([])
 
-fetchContent("amiNav").then((data) => {
-  nav.value = data;
-});
+fetchContent('amiNav').then((data) => {
+  nav.value = data
+})
 </script>
 
 <style scoped>

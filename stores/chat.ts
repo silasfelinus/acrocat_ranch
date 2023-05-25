@@ -1,16 +1,16 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia'
 
 interface ChatSettingsState {
-  messages: string[];
+  messages: string[]
 }
 
-export const useChatSettingsStore = defineStore("chatSettings", {
+export const useChatSettingsStore = defineStore('chatSettings', {
   state: (): ChatSettingsState => ({
-    messages: [],
+    messages: []
   }),
   actions: {
     addMessage(message: string) {
-      this.messages.push(message);
-    },
-  },
-});
+      this.messages.push(message)
+    }
+  }
+})

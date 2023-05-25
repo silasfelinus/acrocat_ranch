@@ -1,6 +1,7 @@
 <template>
   <div>
-    <AmiPage></AmiPage>
+    <AmiPage />
+    <ContentDoc />
     <ButterflySwarm />
   </div>
 </template>

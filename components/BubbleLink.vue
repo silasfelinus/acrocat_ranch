@@ -2,8 +2,8 @@
   <div
     class="bubble-container flex flex-col items-center justify-center relative overflow-visible shadow-lg transition-transform duration-500 ease-in-out"
     @mouseover="
-      hover(index);
-      generateRandomColor();
+      hover(index)
+      generateRandomColor()
     "
     @mouseout="unhover"
   >
@@ -15,41 +15,39 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { useRandomColor } from "../composables/useRandomColor";
+import { ref, onMounted } from 'vue'
+import { useRandomColor } from '../composables/useRandomColor'
 
-const { generateRandomColor } = useRandomColor();
+const { generateRandomColor } = useRandomColor()
 
 const props = defineProps({
   index: Number,
-  gallery: Object,
-});
+  gallery: Object
+})
 
-const imageUrl = ref(null);
+const imageUrl = ref(null)
 
 onMounted(async () => {
   if (props.gallery.folderName) {
     try {
-      const response = await fetch(
-        `/images/${props.gallery.folderName}/random`
-      );
-      const imageData = await response.json();
-      imageUrl.value = imageData.image;
+      const response = await fetch(`/images/${props.gallery.folderName}/random`)
+      const imageData = await response.json()
+      imageUrl.value = imageData.image
     } catch (error) {
-      console.error("Error fetching image:", error);
+      console.error('Error fetching image:', error)
     }
   }
-});
+})
 
 const hover = (index) => {
-  emit("hover", index);
-};
+  emit('hover', index)
+}
 
 const unhover = () => {
-  emit("unhover");
-};
+  emit('unhover')
+}
 
-const emit = defineEmits(["hover", "unhover"]);
+const emit = defineEmits(['hover', 'unhover'])
 </script>
 <style scoped>
 .bubble-container {

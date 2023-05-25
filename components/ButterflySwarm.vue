@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import ButterflySingle from "./AmiButterfly.vue";
+import { ref } from 'vue'
+import ButterflySingle from './AmiButterfly.vue'
 
 const butterflies = ref([
   { x: 100, y: 100 },
@@ -29,7 +29,7 @@ const butterflies = ref([
   { x: 500, y: 300 },
   { x: 600, y: 400 },
   { x: 650, y: 90 },
-  { x: 900, y: 100 },
+  { x: 900, y: 100 }
   // Add more initial butterflies here if desired
-]);
+])
 </script>

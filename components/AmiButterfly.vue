@@ -4,8 +4,7 @@
     :style="{
       left: x + 'px',
       top: y + 'px',
-      transform:
-        'rotate3d(1, 0.5, 0, ' + rotation + 'deg) scale(' + scale + ')',
+      transform: 'rotate3d(1, 0.5, 0, ' + rotation + 'deg) scale(' + scale + ')'
     }"
     @click="handleClick"
   >
@@ -21,95 +20,95 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, onUnmounted } from "vue";
-import { useRandomColor } from "../composables/useRandomColor";
-import { makeNoise2D } from "open-simplex-noise";
+import { onMounted, ref, onUnmounted } from 'vue'
+import { makeNoise2D } from 'open-simplex-noise'
+import { useRandomColor } from '../composables/useRandomColor'
 
-const noise2D = makeNoise2D(Date.now());
-let t = 0;
+const noise2D = makeNoise2D(Date.now())
+let t = 0
 
 const props = defineProps<{
-  wingColor?: string;
-  x?: number;
-  y?: number;
-}>();
+  wingColor?: string
+  x?: number
+  y?: number
+}>()
 
-const wingColor = props.wingColor || useRandomColor().randomColor.value;
-const x = ref(props.x || Math.random() * window.innerWidth);
-const y = ref(props.y || Math.random() * window.innerHeight);
-const scale = ref(1);
-const rotation = ref(110);
+const wingColor = props.wingColor || useRandomColor().randomColor.value
+const x = ref(props.x || Math.random() * window.innerWidth)
+const y = ref(props.y || Math.random() * window.innerHeight)
+const scale = ref(1)
+const rotation = ref(110)
 
-const speed = ref(2);
-const dx = ref(0);
-const dy = ref(0);
+const speed = ref(2)
+const dx = ref(0)
+const dy = ref(0)
 
 function handleClick() {
-  speed.value *= -1;
+  speed.value *= -1
 }
 
 function updatePosition() {
-  t += 0.01;
-  const angle = noise2D(x.value * 0.01, y.value * 0.01 + t) * Math.PI * 2;
-  dx.value = Math.cos(angle) * speed.value;
-  dy.value = Math.sin(angle) * speed.value;
+  t += 0.01
+  const angle = noise2D(x.value * 0.01, y.value * 0.01 + t) * Math.PI * 2
+  dx.value = Math.cos(angle) * speed.value
+  dy.value = Math.sin(angle) * speed.value
 
-  x.value += dx.value;
-  y.value += dy.value;
+  x.value += dx.value
+  y.value += dy.value
 
   if (x.value < 0 || x.value > window.innerWidth - 100) {
-    x.value = Math.max(Math.min(x.value, window.innerWidth - 100), 0);
+    x.value = Math.max(Math.min(x.value, window.innerWidth - 100), 0)
   }
 
   if (y.value < 0 || y.value > window.innerHeight - 100) {
-    y.value = Math.max(Math.min(y.value, window.innerHeight - 100), 0);
+    y.value = Math.max(Math.min(y.value, window.innerHeight - 100), 0)
   }
 
   // Change scale based on screen position
   scale.value =
     0.33 +
     ((2 - (x.value / window.innerWidth + y.value / window.innerHeight)) / 2) *
-      0.67;
+      0.67
 
   // Update the rotation based on the direction
-  rotation.value = dx.value >= 0 ? 120 : 30;
+  rotation.value = dx.value >= 0 ? 120 : 30
 }
 
 function animate() {
-  updatePosition();
-  requestAnimationFrame(animate);
+  updatePosition()
+  requestAnimationFrame(animate)
 }
 
 const handleMouseMove = (e: MouseEvent) => {
-  const dxMouse = e.clientX - x.value;
-  const dyMouse = e.clientY - y.value;
-  const distance = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+  const dxMouse = e.clientX - x.value
+  const dyMouse = e.clientY - y.value
+  const distance = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse)
 
   if (distance < 150) {
-    const directionX = dxMouse / distance;
-    const directionY = dyMouse / distance;
-    dx.value -= directionX * 2;
-    dy.value -= directionY * 2;
+    const directionX = dxMouse / distance
+    const directionY = dyMouse / distance
+    dx.value -= directionX * 2
+    dy.value -= directionY * 2
 
     // Limit speed
-    const speed = Math.sqrt(dx.value * dx.value + dy.value * dy.value);
+    const speed = Math.sqrt(dx.value * dx.value + dy.value * dy.value)
     if (speed > 5) {
-      dx.value = (dx.value / speed) * 5;
-      dy.value = (dy.value / speed) * 5;
+      dx.value = (dx.value / speed) * 5
+      dy.value = (dy.value / speed) * 5
     }
 
-    rotation.value = dx.value >= 0 ? 120 : 30;
+    rotation.value = dx.value >= 0 ? 120 : 30
   }
-};
+}
 
 onMounted(() => {
-  document.addEventListener("mousemove", handleMouseMove);
-  animate();
-});
+  document.addEventListener('mousemove', handleMouseMove)
+  animate()
+})
 
 onUnmounted(() => {
-  document.removeEventListener("mousemove", handleMouseMove);
-});
+  document.removeEventListener('mousemove', handleMouseMove)
+})
 </script>
 
 <style scoped>

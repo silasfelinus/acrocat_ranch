@@ -62,23 +62,23 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue'
 
-const webpage = ref({});
-const amiGames = ref({});
-const todos = ref({});
-const loading = ref(true);
-const error = ref(null);
+const webpage = ref({})
+const amiGames = ref({})
+const todos = ref({})
+const loading = ref(true)
+const error = ref(null)
 
-fetch("/content/amibot/ami.json")
+fetch('/content/amibot/ami.json')
   .then((response) => {
-    webpage.value = response.data.webpage;
-    amiGames.value = response.data.amiGames;
-    todos.value = response.data.todos;
-    loading.value = false;
+    webpage.value = response.data.webpage
+    amiGames.value = response.data.amiGames
+    todos.value = response.data.todos
+    loading.value = false
   })
   .catch((e) => {
-    error.value = "Failed to fetch data";
-    loading.value = false;
-  });
+    error.value = 'Failed to fetch data'
+    loading.value = false
+  })
 </script>
