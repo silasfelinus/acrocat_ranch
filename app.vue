@@ -1,5 +1,6 @@
 <template>
   <div>
-    <NuxtWelcome />
+    <AmiPage></AmiPage>
+    <ButterflySwarm />
   </div>
 </template>
