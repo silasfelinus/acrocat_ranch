@@ -21,8 +21,14 @@ import { useRandomColor } from '../composables/useRandomColor'
 const { generateRandomColor } = useRandomColor()
 
 const props = defineProps({
-  index: Number,
-  gallery: Object
+  index: {
+    type: Number,
+    default: 0
+  },
+  gallery: {
+    type: Object,
+    default: () => ({})
+  }
 })
 
 const imageUrl = ref(null)

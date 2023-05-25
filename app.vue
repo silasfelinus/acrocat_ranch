@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <AmiPage />
-    <ContentDoc />
-    <ButterflySwarm />
-  </div>
+  <NuxtExampleLayout example="document-driven" repo="nuxt/content">
+    <NuxtPage class="prose text-left" />
+  </NuxtExampleLayout>
 </template>
