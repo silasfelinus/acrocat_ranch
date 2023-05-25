@@ -2,8 +2,10 @@
   <div
     class="bubble-container flex flex-col items-center justify-center relative overflow-visible shadow-lg transition-transform duration-500 ease-in-out"
     @mouseover="
-      hover(index)
-      generateRandomColor()
+      () => {
+        hover(index)
+        generateRandomColor()
+      }
     "
     @mouseout="unhover"
   >
@@ -16,7 +18,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRandomColor } from '../composables/useRandomColor'
+import { useRandomColor } from '../../composables/useRandomColor'
 
 const { generateRandomColor } = useRandomColor()
 

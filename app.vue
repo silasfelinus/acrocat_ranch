@@ -1,7 +1,3 @@
 <template>
-  <div>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
+  <div>Acrocat Ranch</div>
 </template>

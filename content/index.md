@@ -1,3 +1,7 @@
-## THis is an index!
+---
+layout: ContentLayout
+---
+
+## This is an index!
 
 Hi
