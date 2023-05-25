@@ -57,7 +57,7 @@ const todos = ref({});
 const loading = ref(true);
 const error = ref(null);
 
-fetch('/content/ami.json')
+fetch('/content/amibot/ami.json')
   .then(response => {
       webpage.value = response.data.webpage;
       amiGames.value = response.data.amiGames;

@@ -2,7 +2,7 @@
   [
     { "name": "Home", "path": "/amibot", "folderName": "amibot" },
     { "name": "AmiGames", "path": "/games", "folderName": "wondercat" },
-    { "name": "Bot Cafe", "path": "/botcafe", "folderName": "wonderbot" },
+    { "name": "Bot Cafe", "path": "/botcafe", "folderName": "seuss" },
     { "name": "About", "path": "/about", "folderName": "acrocats" },
     { "name": "Legal", "path": "/legal", "folderName": "background" },
     { "name": "One of Us!", "path": "/social", "folderName": "wonderbot" },
