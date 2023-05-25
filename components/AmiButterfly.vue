@@ -1,25 +1,24 @@
 <template>
-    <div
-      class="butterfly"
-      :style="{
-        left: x + 'px',
-        top: y + 'px',
-        transform:
-          'rotate3d(1, 0.5, 0, ' + rotation + 'deg) scale(' + scale + ')',
-      }"
-      @click="handleClick"
-    >
-      <div class="left-wing">
-        <div class="top" :style="{ background: wingColor }"></div>
-        <div class="bottom" :style="{ background: wingColor }"></div>
-      </div>
-      <div class="right-wing">
-        <div class="top" :style="{ background: wingColor }"></div>
-        <div class="bottom" :style="{ background: wingColor }"></div>
-      </div>
+  <div
+    class="butterfly"
+    :style="{
+      left: x + 'px',
+      top: y + 'px',
+      transform:
+        'rotate3d(1, 0.5, 0, ' + rotation + 'deg) scale(' + scale + ')',
+    }"
+    @click="handleClick"
+  >
+    <div class="left-wing">
+      <div class="top" :style="{ background: wingColor }"></div>
+      <div class="bottom" :style="{ background: wingColor }"></div>
     </div>
-  </template>
-
+    <div class="right-wing">
+      <div class="top" :style="{ background: wingColor }"></div>
+      <div class="bottom" :style="{ background: wingColor }"></div>
+    </div>
+  </div>
+</template>
 
 <script setup lang="ts">
 import { onMounted, ref, onUnmounted } from "vue";
@@ -46,60 +45,62 @@ const dx = ref(0);
 const dy = ref(0);
 
 function handleClick() {
-    speed.value *= -1;
+  speed.value *= -1;
+}
+
+function updatePosition() {
+  t += 0.01;
+  const angle = noise2D(x.value * 0.01, y.value * 0.01 + t) * Math.PI * 2;
+  dx.value = Math.cos(angle) * speed.value;
+  dy.value = Math.sin(angle) * speed.value;
+
+  x.value += dx.value;
+  y.value += dy.value;
+
+  if (x.value < 0 || x.value > window.innerWidth - 100) {
+    x.value = Math.max(Math.min(x.value, window.innerWidth - 100), 0);
   }
 
-  function updatePosition() {
-    t += 0.01;
-    const angle = noise2D(x.value * 0.01, y.value * 0.01 + t) * Math.PI * 2;
-    dx.value = Math.cos(angle) * speed.value;
-    dy.value = Math.sin(angle) * speed.value;
+  if (y.value < 0 || y.value > window.innerHeight - 100) {
+    y.value = Math.max(Math.min(y.value, window.innerHeight - 100), 0);
+  }
 
-    x.value += dx.value;
-    y.value += dy.value;
+  // Change scale based on screen position
+  scale.value =
+    0.33 +
+    ((2 - (x.value / window.innerWidth + y.value / window.innerHeight)) / 2) *
+      0.67;
 
-    if (x.value < 0 || x.value > window.innerWidth - 100) {
-      x.value = Math.max(Math.min(x.value, window.innerWidth - 100), 0);
+  // Update the rotation based on the direction
+  rotation.value = dx.value >= 0 ? 120 : 30;
+}
+
+function animate() {
+  updatePosition();
+  requestAnimationFrame(animate);
+}
+
+const handleMouseMove = (e: MouseEvent) => {
+  const dxMouse = e.clientX - x.value;
+  const dyMouse = e.clientY - y.value;
+  const distance = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+
+  if (distance < 150) {
+    const directionX = dxMouse / distance;
+    const directionY = dyMouse / distance;
+    dx.value -= directionX * 2;
+    dy.value -= directionY * 2;
+
+    // Limit speed
+    const speed = Math.sqrt(dx.value * dx.value + dy.value * dy.value);
+    if (speed > 5) {
+      dx.value = (dx.value / speed) * 5;
+      dy.value = (dy.value / speed) * 5;
     }
 
-    if (y.value < 0 || y.value > window.innerHeight - 100) {
-      y.value = Math.max(Math.min(y.value, window.innerHeight - 100), 0);
-    }
-
-    // Change scale based on screen position
-    scale.value = 0.33 + (2 - (x.value / window.innerWidth + y.value / window.innerHeight)) / 2 * 0.67;
-
-    // Update the rotation based on the direction
     rotation.value = dx.value >= 0 ? 120 : 30;
   }
-
-  function animate() {
-    updatePosition();
-    requestAnimationFrame(animate);
-  }
-
-  const handleMouseMove = (e: MouseEvent) => {
-    const dxMouse = e.clientX - x.value;
-    const dyMouse = e.clientY - y.value;
-    const distance = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
-
-    if (distance < 150) {
-      const directionX = dxMouse / distance;
-      const directionY = dyMouse / distance;
-      dx.value -= directionX * 2;
-      dy.value -= directionY * 2;
-
-      // Limit speed
-      const speed = Math.sqrt(dx.value * dx.value + dy.value * dy.value);
-      if (speed > 5) {
-        dx.value = dx.value / speed * 5;
-        dy.value = dy.value / speed * 5;
-      }
-
-      rotation.value = dx.value >= 0 ? 120 : 30;
-    }
-  };
-
+};
 
 onMounted(() => {
   document.addEventListener("mousemove", handleMouseMove);
@@ -107,7 +108,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  document.removeEventListener('mousemove', handleMouseMove);
+  document.removeEventListener("mousemove", handleMouseMove);
 });
 </script>
 

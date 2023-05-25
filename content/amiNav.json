@@ -1,5 +1,5 @@
-{ "nav":
-  [
+{
+  "nav": [
     { "name": "Home", "path": "/amibot", "folderName": "amibot" },
     { "name": "AmiGames", "path": "/games", "folderName": "wondercat" },
     { "name": "Bot Cafe", "path": "/botcafe", "folderName": "seuss" },
@@ -12,4 +12,5 @@
     { "name": "Gallery", "path": "/gallery", "folderName": "splash" },
     { "name": "Giftshop", "path": "/giftshop", "folderName": "redbubble" },
     { "name": "Members", "path": "/members", "folderName": "floof" }
-  ]}
+  ]
+}
