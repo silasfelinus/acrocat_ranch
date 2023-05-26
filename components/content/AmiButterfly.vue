@@ -9,12 +9,12 @@ const randomColor = (): string =>
 // Complementary color generator
 const complementaryColor = (color: string): string => {
   let hex = color.replace('#', '')
-  let rgb = parseInt(hex, 16) // convert rrggbb to decimal
-  let r = (rgb >> 16) & 0xff // extract red
-  let g = (rgb >> 8) & 0xff // extract green
-  let b = (rgb >> 0) & 0xff // extract blue
-  let comp = ((0xff - r) << 16) | ((0xff - g) << 8) | (0xff - b) // calculate complement
-  return '#' + comp.toString(16) // convert to hex and prepend #
+  let rgb = parseInt(hex, 16)
+  let r = (rgb >> 16) & 0xff
+  let g = (rgb >> 8) & 0xff
+  let b = (rgb >> 0) & 0xff
+  let comp = ((0xff - r) << 16) | ((0xff - g) << 8) | (0xff - b)
+  return '#' + comp.toString(16)
 }
 
 interface Butterfly {
@@ -30,6 +30,16 @@ interface Butterfly {
   dy: number
 }
 
+interface WindowSize {
+  width: number
+  height: number
+}
+
+const windowSize = reactive<WindowSize>({
+  width: 0,
+  height: 0
+})
+
 let wingTopColor = randomColor()
 let wingBottomColor = complementaryColor(wingTopColor)
 
@@ -37,8 +47,8 @@ const butterfly = reactive<Butterfly>({
   wingTopColor,
   wingBottomColor,
   pattern: 'two-color',
-  x: Math.random() * window.innerWidth,
-  y: Math.random() * window.innerHeight,
+  x: Math.random() * windowSize.width,
+  y: Math.random() * windowSize.height,
   scale: 1,
   rotation: 110,
   speed: 2,
@@ -62,19 +72,18 @@ function updatePosition() {
   butterfly.x += butterfly.dx
   butterfly.y += butterfly.dy
 
-  if (butterfly.x < 0 || butterfly.x > window.innerWidth - 100) {
-    butterfly.x = Math.max(Math.min(butterfly.x, window.innerWidth - 100), 0)
+  if (butterfly.x < 0 || butterfly.x > windowSize.width - 100) {
+    butterfly.x = Math.max(Math.min(butterfly.x, windowSize.width - 100), 0)
   }
 
-  if (butterfly.y < 0 || butterfly.y > window.innerHeight - 100) {
-    butterfly.y = Math.max(Math.min(butterfly.y, window.innerHeight - 100), 0)
+  if (butterfly.y < 0 || butterfly.y > windowSize.height - 100) {
+    butterfly.y = Math.max(Math.min(butterfly.y, windowSize.height - 100), 0)
   }
 
   // Change scale based on screen position
   butterfly.scale =
     0.33 +
-    ((2 -
-      (butterfly.x / window.innerWidth + butterfly.y / window.innerHeight)) /
+    ((2 - (butterfly.x / windowSize.width + butterfly.y / windowSize.height)) /
       2) *
       0.67
 
@@ -119,9 +128,18 @@ const handleMouseUp = () => {
 }
 
 onMounted(() => {
+  windowSize.width = window.innerWidth
+  windowSize.height = window.innerHeight
+
   document.addEventListener('mousemove', handleMouseMove)
   document.addEventListener('mousedown', handleMouseDown)
   document.addEventListener('mouseup', handleMouseUp)
+
+  window.addEventListener('resize', () => {
+    windowSize.width = window.innerWidth
+    windowSize.height = window.innerHeight
+  })
+
   animate()
 })
 
@@ -129,8 +147,14 @@ onUnmounted(() => {
   document.removeEventListener('mousemove', handleMouseMove)
   document.removeEventListener('mousedown', handleMouseDown)
   document.removeEventListener('mouseup', handleMouseUp)
+
+  window.removeEventListener('resize', () => {
+    windowSize.width = window.innerWidth
+    windowSize.height = window.innerHeight
+  })
 })
 </script>
+
 <template>
   <div
     class="butterfly"
