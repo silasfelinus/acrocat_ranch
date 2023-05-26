@@ -1,3 +1,9 @@
 <template>
-  <div class="#app">Acrocat Ranch<slot></slot></div>
+  <div class="#app">
+    <NuxtErrorBoundary>
+      <ButterflySwarm />
+      Acrocat Ranch
+      <slot></slot>
+    </NuxtErrorBoundary>
+  </div>
 </template>

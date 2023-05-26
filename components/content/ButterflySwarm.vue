@@ -8,28 +8,23 @@
     />
   </div>
 </template>
-
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import ButterflySingle from './AmiButterfly.vue'
 
-const butterflies = ref([
-  { x: 100, y: 100 },
-  { x: 200, y: 700 },
-  { x: 400, y: 200 },
-  { x: 800, y: 500 },
-  { x: 500, y: 300 },
-  { x: 600, y: 400 },
-  { x: 650, y: 90 },
-  { x: 900, y: 100 },
-  { x: 100, y: 100 },
-  { x: 200, y: 700 },
-  { x: 400, y: 200 },
-  { x: 800, y: 500 },
-  { x: 500, y: 300 },
-  { x: 600, y: 400 },
-  { x: 650, y: 90 },
-  { x: 900, y: 100 }
-  // Add more initial butterflies here if desired
-])
+interface ButterflyPosition {
+  x: number
+  y: number
+}
+
+const butterflies = ref<Array<ButterflyPosition>>([])
+
+onMounted(() => {
+  for (let i = 0; i < 100; i++) {
+    butterflies.value.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight
+    })
+  }
+})
 </script>
