@@ -20,7 +20,7 @@ interface ButterflyPosition {
 const butterflies = ref<Array<ButterflyPosition>>([])
 
 onMounted(() => {
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 50; i++) {
     butterflies.value.push({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight
