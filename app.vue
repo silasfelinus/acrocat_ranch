@@ -2,8 +2,7 @@
   <div class="#app">
     <NuxtErrorBoundary>
       <ButterflySwarm />
-      Acrocat Ranch
-      <slot></slot>
+      <ThemeChange />
     </NuxtErrorBoundary>
   </div>
 </template>
