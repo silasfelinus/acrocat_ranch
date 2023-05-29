@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
-    "@storyblok/nuxt": "^5.4.7",
     "daisyui": "^2.51.6",
     "open-simplex-noise": "^2.5.0",
     "pinia": "^2.1.3"

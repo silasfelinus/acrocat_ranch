@@ -4,5 +4,10 @@ module.exports = {
   theme: {
     extend: {}
   },
-  plugins: ['daisyui']
+  plugins: ['daisyui'],
+  daisyui: {
+    styled: true,
+    themes: true,
+    rtl: false,
+  },
 }
