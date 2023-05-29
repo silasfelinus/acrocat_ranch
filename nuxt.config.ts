@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     [
       '@storyblok/nuxt',
-      { accessToken: 'N3DZLOHMxaCqWifnsVQvHgtt-199354-jNL5Lt4q3JvssstLJ35s' }
+      { accessToken: 'IFLFAM5t2gkCcNj7rk2dkgtt-199354-mPFPqu-hnok1FRxXbsEr' }
     ]
   ],
   content: {
