@@ -1,3 +1,3 @@
 ```md
-Is this a :ami-butterfly butterfly?
+Is this a :butterfly-swarm butterfly swarm?
 ```

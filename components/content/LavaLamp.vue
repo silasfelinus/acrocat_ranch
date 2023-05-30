@@ -10,10 +10,13 @@
         />
       </g>
       <g class="lava-bubbles">
-        <lava-bubble
+        <circle
           v-for="(bubble, index) in bubbles"
           :key="index"
-          :bubble="bubble"
+          :cx="bubble.x"
+          :cy="bubble.y"
+          :r="bubble.size"
+          :fill="`hsla(${bubble.hue}, 100%, 50%, 0.8)`"
         />
       </g>
     </svg>
@@ -21,33 +24,32 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import LavaBubble from "./LavaBubble.vue";
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-const bubbles = ref([]);
-let bubbleCreationInterval = null;
+const bubbles = ref([])
+let bubbleCreationInterval = null
 
 const createBubble = () => {
-  const size = Math.random() * 15 + 5;
-  const x = Math.random() * (160 - size) + 20;
-  const y = Math.random() * 340;
-  const hue = Math.floor(Math.random() * 360);
+  const size = Math.random() * 15 + 5
+  const x = Math.random() * (160 - size) + 20
+  const y = Math.random() * 340
+  const hue = Math.floor(Math.random() * 360)
 
-  bubbles.value.push({ x, y, size, hue });
-};
+  bubbles.value.push({ x, y, size, hue })
+}
 
 onMounted(() => {
-  bubbleCreationInterval = setInterval(createBubble, 1000);
-});
+  bubbleCreationInterval = setInterval(createBubble, 1000)
+})
 
 onBeforeUnmount(() => {
   if (bubbleCreationInterval) {
-    clearInterval(bubbleCreationInterval);
+    clearInterval(bubbleCreationInterval)
   }
-});
+})
 </script>
 
-<style lang="scss">
+<style scoped>
 .lava-bubbles {
   animation: moveBubbles 10s linear infinite;
 }
