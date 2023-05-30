@@ -8,10 +8,10 @@
     </select>
   </div>
 </template>
+
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { useFetch } from '@nuxtjs/composition-api'
 
 const router = useRouter()
 const links = ref([])
@@ -29,7 +29,9 @@ const { execute, data } = useFetch(async () => {
   }
 })
 
-execute()
+onMounted(() => {
+  execute()
+})
 
 const navigateToLink = () => {
   if (selectedLink.value) {
