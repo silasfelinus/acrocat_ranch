@@ -8,6 +8,6 @@ module.exports = {
   daisyui: {
     styled: true,
     themes: true,
-    rtl: false,
-  },
+    rtl: false
+  }
 }

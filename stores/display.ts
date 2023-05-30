@@ -8,6 +8,8 @@ interface DisplaySettingsState {
   isNavOpen: boolean
   isRightOpen: boolean
   isLeftOpen: boolean
+  isChatWindowOpen: boolean
+  isSplashScreenOpen: boolean
 }
 
 export const useDisplaySettingsStore = defineStore('displaySettings', {
@@ -18,7 +20,9 @@ export const useDisplaySettingsStore = defineStore('displaySettings', {
     selectedNavItem: null,
     isNavOpen: true,
     isRightOpen: true,
-    isLeftOpen: true
+    isLeftOpen: true,
+    isChatWindowOpen: false,
+    isSplashScreenOpen: false
   }),
   actions: {
     setBackground(bg: string) {
@@ -42,6 +46,12 @@ export const useDisplaySettingsStore = defineStore('displaySettings', {
     },
     toggleLeftOpen() {
       this.isLeftOpen = !this.isLeftOpen
+    },
+    toggleChatWindowOpen() {
+      this.isChatWindowOpen = !this.isChatWindowOpen
+    },
+    toggleSplashScreenOpen() {
+      this.isSplashScreenOpen = !this.isSplashScreenOpen
     }
   }
 })

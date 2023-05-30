@@ -1,6 +1,5 @@
 <template>
   <div>
-    <ComingSoon />
     <ButterflySingle
       v-for="(butterfly, index) in butterflies"
       :key="index"
