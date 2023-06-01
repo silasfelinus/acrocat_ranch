@@ -1,0 +1,205 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//The ur-system for organization. Everything has optional tags
+model Tag {
+  id             Int           @id @default(autoincrement())
+  name           String
+  Profile        Profile?      @relation(fields: [profileId], references: [id])
+  profileId      Int?
+  User           User?         @relation(fields: [userId], references: [id])
+  userId         Int?
+  Gallery        Gallery?      @relation(fields: [galleryId], references: [id])
+  galleryId      Int?
+  Concept        Concept?      @relation(fields: [conceptId], references: [id])
+  conceptId      Int?
+  localContent   localContent? @relation(fields: [localContentId], references: [id])
+  localContentId Int?
+  webContent     webContent?   @relation(fields: [webContentId], references: [id])
+  webContentId   Int?
+  Wildcard       Wildcard?     @relation(fields: [wildcardId], references: [id])
+  wildcardId     Int?
+  Prompt         Prompt?       @relation(fields: [promptId], references: [id])
+  promptId       Int?
+  Image          Image?        @relation(fields: [imageId], references: [id])
+  imageId        Int?
+  Chatbot        Chatbot?      @relation(fields: [chatbotId], references: [id])
+  chatbotId      Int?
+  Chatroom       Chatroom?     @relation(fields: [chatroomId], references: [id])
+  chatroomId     Int?
+  CodeSegment    CodeSegment?  @relation(fields: [codeSegmentId], references: [id])
+  codeSegmentId  Int?
+  Project        Project?      @relation(fields: [projectId], references: [id])
+  projectId      Int?
+  Message        Message?      @relation(fields: [messageId], references: [id])
+  messageId      Int?
+  Codecard       Codecard?     @relation(fields: [codecardId], references: [id])
+  codecardId     Int?
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String   @db.VarChar(255)
+  content   String?
+  published Boolean  @default(false)
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+}
+
+//same on profile, I will be expanding this, it seems completely workable. I'm not sure if User and Profile need Tags, but I'm keeping both for now.
+model Profile {
+  id     Int     @id @default(autoincrement())
+  bio    String?
+  user   User    @relation(fields: [userId], references: [id])
+  userId Int     @unique
+  tags   Tag[]
+}
+
+//It's a user. If we can securely validate on our own, we are golden.
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String?
+  posts   Post[]
+  profile Profile?
+  tags    Tag[]
+  Concept Concept?
+  Project Project?
+}
+
+//This starts as a wildcard gallery, I look forward to expanding it.
+model Gallery {
+  id          Int    @id @default(autoincrement())
+  path        String
+  description String
+  tags        Tag[]
+}
+
+//I keep changing this concept. Pitch, brand. Idea. It's the first stage to generating a work, art, execution....
+model Concept {
+  id     Int    @id @default(autoincrement())
+  user   User   @relation(fields: [userId], references: [id])
+  userId Int    @unique
+  name   String
+  tags   Tag[]
+}
+
+//Not sure if there is a value to differentiating this from webContent, I'm adding these quickly and don't no how Prisma merges
+model localContent {
+  id          Int    @id @default(autoincrement())
+  path        String
+  name        String
+  description String
+  tags        Tag[]
+}
+
+//I like the idea of easily pulling the webcontent out for links and navigation. The separation makes sense looking at it here. I domn't want those local links mucking up my data, not unless we work in tags
+model webContent {
+  id          Int    @id @default(autoincrement())
+  path        String
+  name        String
+  description String
+  tags        Tag[]
+}
+
+//Not sure how to arrange this for maximum effect. I want a well-functioning online wildcard database, it may be the first value we present to the world with our api
+model Wildcard {
+  id   Int    @id @default(autoincrement())
+  name String
+  data String
+  tags Tag[]
+}
+
+//the basic building block of a stable-diffusion webui call.
+// add in the NSFW tag and we have a simple filtering system.
+model Prompt {
+  id   Int    @id @default(autoincrement())
+  name String
+  tags Tag[]
+}
+
+//I'm unsure where this stops and Art begins, other than as a Tag
+model Image {
+  id       Int        @id @default(autoincrement())
+  name     String
+  path     String
+  tags     Tag[]
+  Codecard Codecard[]
+}
+
+//bots are the website chatbot personalities
+model Chatbot {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  training    String
+  tags        Tag[]
+}
+
+//A chatroom is just a glorified message history, c'est non?
+model Chatroom {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  tags        Tag[]
+  Message     Message[]
+}
+
+//This is for future plans with codeforge and to test code manipulation
+model CodeSegment {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  location    String
+  tags        Tag[]
+}
+
+//Projects are concepts turned into action
+model Project {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  url         String
+  user        User   @relation(fields: [userId], references: [id])
+  userId      Int    @unique
+  tags        Tag[]
+}
+
+//message is my attempt to rebuild post with my own focus
+model Message {
+  id          Int      @id @default(autoincrement())
+  content     String
+  dateCreated String
+  chatRoom    Chatroom @relation(fields: [roomId], references: [id])
+  roomId      Int
+  tags        Tag[]
+}
+
+//Figuring out how to optimize my website generation
+model Webpage {
+  id          Int    @id @default(autoincrement())
+  title       String
+  dateCreated String
+  location    String
+}
+
+//Codecard is an abstracted api call for chaining nlp calls
+model Codecard {
+  id       Int    @id @default(autoincrement())
+  title    String
+  tags     Tag[]
+  image    Image  @relation(fields: [imageId], references: [id])
+  imageId  Int
+  location String
+}

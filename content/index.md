@@ -6,4 +6,8 @@ layout: PageLayout
 
 ## Welcome
 
-<h1>Welcome! I want to see this message but it doesn't show up</h1>
+Welcome! I want to see this message but it doesn't show up
+
+\[/what\](/what).
+
+[Kind Robots](/kindrobots)

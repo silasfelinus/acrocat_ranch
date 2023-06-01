@@ -13,6 +13,6 @@ useHead({
 <template>
   <div>
     <SiteHeader />
-    <ContentDoc path="/" class="prose text-left" />
+    <NuxtPage />
   </div>
 </template>

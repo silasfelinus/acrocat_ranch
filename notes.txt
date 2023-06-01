@@ -40,10 +40,10 @@ nuxt 3, setup script. typescript is inferred. auto-imports. Use error checking w
 [Progress]
 added tailwind, honeyui, and theme-change
 removed pinia as it's no longer necessary thanks to useState
+added pages/[...slug].vue for catch-all content navigation
 
 [Notes]
-We have nav.json and simpleNav.json, with lists of id, title, and links. We need a drop-down that will read from the file(s), and update state when selected.
-We need tp create a navDropdown, NavGallery, SplashNav, and AccordionNav that uses the data.
+We have simpleNav.json, with lists of id, title, and links. We need a drop-down that will read from the file(s), and update state when selected.
 I'm trying to avoid a pages/ directory but I might need it. My hope was that nuxt/content would replace it, after wise use of my components/content and layouts directory. content lets us auto-route to each markdown file in content. The goal is an SEO powerhouse that loads lightning fast, and dynamically loads content based on markdown files that I can modify rapidly and easily.
 
 
@@ -55,7 +55,7 @@ The assets/ directory contains by convention every asset that you want the build
 The public/ directory content is served at the server root as-is.
 
 [app.vue]
-Nuxt will treat this file as the entrypoint and render its content for every route of the application.
+launches SiteHeader and NuxtPage
 
 [layout/]
 https://nuxt.com/docs/guide/directory-structure/layouts
@@ -66,7 +66,7 @@ ContentLayout, PageLayout, PromptLayout, ArtLayout, SplashLayout
 components in the content subdirectory are accessible by content
 
 [imports]
-nuxt auto-imports. All imports must be handled at the module level and nuxt.config. *DO NOT IMPORT AFTER SCIPT SETUP*
+nuxt auto-imports. All imports must be handled at the module level and nuxt.config. *DO NOT IMPORT local modules AFTER SCRIPT SETUP*
 
 [nuxt.config.ts]
 imports: content, tailwind
@@ -82,5 +82,11 @@ It also offers page, navigation, surround and globals variables.
 simple, elegant, clean, friendly
 
 
+[REQUEST]
+Help me fix the content routing, and understand what my capabiilties are.
+I am using Nuxt, so we have no main.ts. 
+App.vue launches header and nuxtpage.
+Nuxtpage should show / directory, which should be mapped to /content/index.md
+Index.md is linked to /layout/PageLayout and /pages/[...slug].vue
 
 

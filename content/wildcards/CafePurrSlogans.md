@@ -1,4 +1,5 @@
 ---
+
 "Cafe Purr: Where art meets heart."
 "Experience the digital renaissance at Cafe Purr."
 "Cafe Purr: Crafting pixels with passion."

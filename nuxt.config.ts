@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   content: {
     documentDriven: true
   },
+
   devtools: {
     enabled: true
   }
