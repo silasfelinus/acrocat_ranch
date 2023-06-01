@@ -4,9 +4,7 @@
     <SiteTitle />
     <SubTitle />
     <WildcardStatus />
-    <NavigationBar />
     <AmiButterfly />
-    <ThemeBar />
-    <UserBar />
+    <ThemeChange />
   </header>
 </template>

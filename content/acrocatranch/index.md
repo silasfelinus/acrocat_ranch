@@ -1,7 +1,8 @@
 ---
+title: 'Acrocat Ranch'
 layout: PageLayout
 ---
 
-## This is an index!
+## Welcome
 
 Welcome to the Acrocat Ranch

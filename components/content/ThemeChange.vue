@@ -48,8 +48,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-
 const open = ref(false)
 
 const themes = [
