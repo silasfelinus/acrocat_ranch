@@ -1,6 +1,9 @@
 ---
 title: 'Kind Robots'
 subtitle: 'Tech built to help on-ramp humanity'
+layout: default
+image: backtree.webp
+gallery: wonderbot
 ---
 
 ## Welcome

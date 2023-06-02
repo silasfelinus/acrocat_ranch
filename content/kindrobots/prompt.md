@@ -1,4 +1,3 @@
-
 ## Kind Robots
 
 Hello, ChatGPT. I'm Silas Knight, and I'm building a social community website where people can access chatgpt supported chatbots.

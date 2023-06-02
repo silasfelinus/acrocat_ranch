@@ -1,7 +1,9 @@
 ---
 title: 'AMIbot - The Anti-Malaria Intelligence'
-subtitle: 'Created to fight the over-sized impact of malaria, one mosquito net at a time.'
+description: 'Created to fight the over-sized impact of malaria, one mosquito net at a time.'
 layout: default
+image: backtree.webp
+gallery: wonderchest
 ---
 
 ## Welcome
@@ -18,4 +20,4 @@ high energy, frenetic
 https://againstmalaria.com/amibot
 
 This should be fancy:
-::AmyLink
+:ami-link

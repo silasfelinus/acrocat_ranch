@@ -43,9 +43,12 @@ const contentPage = useState('contentPage', () => '/kindrobots')
 
 Nuxt auto-imports. All imports must be handled at the module level and `nuxt.config`. Do not import local modules after the script setup.
 
-## Configuration
+## Modules
+'@nuxtjs/tailwindcss', '@nuxt/content', 'nuxt-icon''@nuxtjs/tailwindcss'
 
-`nuxt.config.ts` imports `content` and `tailwind`.
+## Icons
+https://icones.js.org/
+<Icon name="uil:github" />
 
 ## Document Driven Development
 
