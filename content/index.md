@@ -1,7 +1,7 @@
 ---
 title: 'Welcome Portal'
 subtitle: 'Welcome to our site. Please choose your portal of destiny.'
-layout: PageLayout
+layout: default
 ---
 
 ## Welcome

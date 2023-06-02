@@ -27,14 +27,7 @@
           <ThemeChange />
         </div>
       </div>
-      <!-- Wildcard Status -->
-      <div class="text-center mt-2">
-        <div class="wildcard-status text-gray-800">
-          <WildcardStatus />
-        </div>
-      </div>
     </div>
-
     <!-- Butterfly Swarm -->
     <ButterflySwarm />
   </header>

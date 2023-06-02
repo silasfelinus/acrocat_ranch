@@ -1,17 +1,17 @@
-<!-- ./app.vue -->
 <script setup>
-useHead({
-  title: 'Kind Robots',
-  meta: [
-    {
-      name: 'description',
-      content: 'Coding a better world'
-    }
-  ]
+const { data: navigation } = await useAsyncData('navigation', () => {
+  return fetchContentNavigation()
 })
 </script>
+
 <template>
-  <main>
+  <div>
     <SiteHeader />
-  </main>
+    <main class="text-left">
+      <nav>
+        <AppNavigation :navigation-tree="navigation" />
+      </nav>
+      <NuxtPage class="prose text-left" />
+    </main>
+  </div>
 </template>

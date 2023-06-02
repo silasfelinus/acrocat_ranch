@@ -1,5 +1,0 @@
----
-Mountains
-Rivers
-Forests
-Deserts

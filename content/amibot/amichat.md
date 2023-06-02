@@ -1,5 +1,5 @@
 ---
-layout: HomeLayout
+layout: default
 ---
 
 ## This is an index!

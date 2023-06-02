@@ -1,5 +1,5 @@
 ---
-layout: ContentLayout
+layout: default
 title: About Page
 description: This is our about page
 ---

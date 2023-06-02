@@ -208,6 +208,7 @@ body {
   height: 100px;
   position: absolute;
   transform-style: preserve-3d;
+  z-index: -100;
   transform: rotate3d(1, 0.5, 0, 110deg);
 }
 

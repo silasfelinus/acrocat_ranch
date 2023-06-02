@@ -1,6 +1,0 @@
----
-
-Unicorn
-Dragon
-Phoenix
-Centaur

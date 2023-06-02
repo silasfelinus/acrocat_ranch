@@ -1,7 +1,6 @@
 ---
 title: 'Kind Robots'
 subtitle: 'Tech built to help on-ramp humanity'
-layout: PageLayout
 ---
 
 ## Welcome

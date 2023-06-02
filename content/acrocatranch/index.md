@@ -1,8 +1,8 @@
 ---
 title: 'Acrocat Ranch'
-layout: PageLayout
+layout: default
 ---
 
-## Welcome
+## Acrocat Ranch
 
 Welcome to the Acrocat Ranch

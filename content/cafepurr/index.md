@@ -1,7 +1,7 @@
 ---
 title: 'Cafe Purr'
 tagline: 'The Non-Evil Art Museum'
-layout: PageLayout
+layout: default
 ---
 
 ## Welcome

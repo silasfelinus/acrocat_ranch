@@ -1,7 +1,7 @@
 ---
 title: 'AMIbot - The Anti-Malaria Intelligence'
 subtitle: 'Created to fight the over-sized impact of malaria, one mosquito net at a time.'
-layout: PageLayout
+layout: default
 ---
 
 ## Welcome
