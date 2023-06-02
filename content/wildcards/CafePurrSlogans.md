@@ -1,5 +1,4 @@
 ---
-
 "Cafe Purr: Where art meets heart."
 "Experience the digital renaissance at Cafe Purr."
 "Cafe Purr: Crafting pixels with passion."
@@ -40,3 +39,4 @@
 "Cafe Purr: The art studio that's as limitless as your imagination."
 "Cafe Purr: The digital art studio that's making the world a more beautiful place."
 "Cafe Purr: The art studio that's turning dreams into digital reality."
+---

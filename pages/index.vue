@@ -8,7 +8,7 @@
       >
         <div class="rounded-b-full aspect-[10/11] relative overflow-hidden">
           <div class="w-4/5 ml-[11%]">
-            <nuxt-picture
+            <image
               sizes="sm:300px md:50vw lg:400px"
               preload
               src="IMG-20220515-WA0004-removebg-preview.png"

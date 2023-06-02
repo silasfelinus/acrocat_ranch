@@ -18,6 +18,7 @@ Our flagship project is AMI 2.0 (Anti-Malaria Intelligence), our AI chatbot repr
 ### Back-End:
 
 - Authelia
+- Prisma
 - MariaDB
 - ESLint
 - Prettier

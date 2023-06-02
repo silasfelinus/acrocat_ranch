@@ -1,5 +1,4 @@
 ---
-
 Joy
 Sadness
 Anger

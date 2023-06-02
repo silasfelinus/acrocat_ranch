@@ -76,8 +76,8 @@ model User {
   posts   Post[]
   profile Profile?
   tags    Tag[]
-  Concept Concept?
-  Project Project?
+  concepts Concept[]
+  projects Project[]
 }
 
 //This starts as a wildcard gallery, I look forward to expanding it.

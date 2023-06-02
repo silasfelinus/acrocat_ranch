@@ -11,8 +11,7 @@ useHead({
 })
 </script>
 <template>
-  <div>
+  <main>
     <SiteHeader />
-    <NuxtPage />
-  </div>
+  </main>
 </template>

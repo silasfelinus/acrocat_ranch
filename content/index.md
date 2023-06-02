@@ -8,6 +8,4 @@ layout: PageLayout
 
 Welcome! I want to see this message but it doesn't show up
 
-\[/what\](/what).
-
 [Kind Robots](/kindrobots)

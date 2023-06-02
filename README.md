@@ -27,13 +27,14 @@ Our flagship project is AMI 2.0 (Anti-Malaria Intelligence), our AI chatbot repr
 The project uses `useState` for state management. It's an SSR-friendly ref replacement whose value is preserved after server-side rendering and shared across all components using a unique key.
 
 Example usage:
+
 ```javascript
 const background = useState('backgroundImage', () => 'backtree.webp')
 const contentPage = useState('contentPage', () => '/kindrobots')
 ```
 
 Prisma
-const prisma = 
+const prisma =
 
 ## Progress
 
@@ -68,7 +69,7 @@ We're currently building our public portal. With a Prisma database in place and 
 3. Test CRUD on wildcard database.
 4. Create front-page navigation.
 5. Create a chatbot portal using GPT-3.
-5a. create project management page 
+   5a. create project management page
 6. Develop a live chat page.
 7. Rebuild AMI.
 8. Generate AMI art.
@@ -84,7 +85,6 @@ We're currently building our public portal. With a Prisma database in place and 
 18. Create a page for sorting art.
 19. Display local content pages.
 20. Implement user login, registration, and personal dashboard.
-
 
 Wildcard Randomizer: Start working on the development of a wildcard randomizer feature.
 
