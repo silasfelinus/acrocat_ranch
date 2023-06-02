@@ -1,92 +1,90 @@
----
-## CodeNotes
-[project]
-kindrobots.org
+# kindrobots.org
 
-[purpose]
-social network portal and gamified tech interface to onramp people to the modern world.
-encourage fundraising and donations to our fundraiser
-impress people with my slick vue.js nuxt skills and attract virtuous projects and grants to sustain our cause(s)
-sell print-on-demand swag in our giftshop
-monetize our various projects and portals while staying on the side of good.
+## Project Overview
 
-[front-end]
-nuxt 3, script setup, tailwind, nitro, nuxt-content
+kindrobots.org is a social movement to bridge the AI/Human divide and foster harmonious coexistence. We are ambassadors at the edge between humanity and AI, building technology to be good, to simplify tech for humans, and to create tech that enhances human life. Our primary focus is our fundraiser to buy mosquito nets for children in Africa through [Against Malaria](https://www.againstmalaria.com/amibot).
 
-[backend]
-authelia, mariadb, eslint, prettier
+Our flagship project is AMI 2.0 (Anti-Malaria Intelligence), our AI chatbot represented by a swarm of rainbow butterflies. AMI gamifies the generation of slogans and sharing them on social media to promote our fundraiser. We hope to turn small actions like chatting and sharing on social media into a significant positive impact on the world.
 
-[scope]
-We are building the front-page navigation, and establishing a framework for the rest of the project as we work with images, state, users, galleries, clickables, and chat.
+## Core Technologies
 
+### Front-End:
 
-[useState]
-useState is an SSR-friendly ref replacement. Its value will be preserved after server-side rendering (during client-side hydration) and shared across all components using a unique key.
-Any other component that uses useState('{state}') shares the same reactive state. Help me build my useState directory.
-const background = useState('backgroundImage', () => 'backtree.webp'}
-const contentPage = useState('contentPage', () => '/kindrobots'}
+- Nuxt 3 Script setup
+- Tailwind
+- Nitro
+- Nuxt-Content
 
-[states]
-backgroundImage
-userName
-screenfxComponent
-statusText
-activePage
-activeTheme
+### Back-End:
 
-[structure]
-nuxt 3, setup script. typescript is inferred. auto-imports. Use error checking when relevant. useState for anything to be passed between components. This is meant to be a content-based project, but we need components for the razzle-dazzle, to simplify and develop navigation, and to handle state.
+- Authelia
+- MariaDB
+- ESLint
+- Prettier
 
-[Progress]
-added tailwind, honeyui, and theme-change
-removed pinia as it's no longer necessary thanks to useState
-added pages/[...slug].vue for catch-all content navigation
+## State Management
 
-[Notes]
-We have simpleNav.json, with lists of id, title, and links. We need a drop-down that will read from the file(s), and update state when selected.
-I'm trying to avoid a pages/ directory but I might need it. My hope was that nuxt/content would replace it, after wise use of my components/content and layouts directory. content lets us auto-route to each markdown file in content. The goal is an SEO powerhouse that loads lightning fast, and dynamically loads content based on markdown files that I can modify rapidly and easily.
+The project uses `useState` for state management. It's an SSR-friendly ref replacement whose value is preserved after server-side rendering and shared across all components using a unique key.
 
+Example usage:
+```javascript
+const background = useState('backgroundImage', () => 'backtree.webp')
+const contentPage = useState('contentPage', () => '/kindrobots')
+```
 
+## Progress
 
-[assets/]
-The assets/ directory contains by convention every asset that you want the build tool (Vite or webpack) to process.
+- Added Tailwind, HoneyUI, and theme-change.
+- Added pages/[...slug].vue for catch-all content navigation (work in progress).
+- Set up a Prisma database and migrated all models successfully.
 
-[public/]
-The public/ directory content is served at the server root as-is.
+## Import Guidelines
 
-[app.vue]
-launches SiteHeader and NuxtPage
+Nuxt auto-imports. All imports must be handled at the module level and `nuxt.config`. Do not import local modules after the script setup.
 
-[layout/]
-https://nuxt.com/docs/guide/directory-structure/layouts
-ContentLayout, PageLayout, PromptLayout, ArtLayout, SplashLayout
+## Configuration
 
+`nuxt.config.ts` imports `content` and `tailwind`.
 
-[content/components]
-components in the content subdirectory are accessible by content
+## Document Driven Development
 
-[imports]
-nuxt auto-imports. All imports must be handled at the module level and nuxt.config. *DO NOT IMPORT local modules AFTER SCRIPT SETUP*
+The project adheres to a document-driven development approach, creating a direct binding between the content/ directory and pages. Learn more [here](https://content.nuxtjs.org/guide/writing/document-driven).
 
-[nuxt.config.ts]
-imports: content, tailwind
-documentdriven: true
+## Project Values
 
-[DocumentDriven]
-https://content.nuxtjs.org/guide/writing/document-driven
-This mode creates a direct binding between the content/ directory and pages.
-It also offers page, navigation, surround and globals variables.
+The core values of the project are simplicity, elegance, cleanliness, friendliness, and continuous improvement (kaizen).
 
+# Current Status
 
-[Values]
-simple, elegant, clean, friendly
+We're currently building our public portal. With a Prisma database in place and a solid understanding of Nuxt, Vue, and databases, we're setting the groundwork for the subsequent stages of development.
 
+# Next Steps
 
-[REQUEST]
-Help me fix the content routing, and understand what my capabiilties are.
-I am using Nuxt, so we have no main.ts. 
-App.vue launches header and nuxtpage.
-Nuxtpage should show / directory, which should be mapped to /content/index.md
-Index.md is linked to /layout/PageLayout and /pages/[...slug].vue
-
-
+1. Add Prisma CRUD.
+2. List all models for easy reference.
+3. Test CRUD on wildcard database.
+4. Create front-page navigation.
+5. Create a chatbot portal using GPT-3.
+6. Develop a live chat page.
+7. Rebuild AMI.
+8. Generate AMI art.
+9. Develop AMI choice boxes.
+10. Write an AMI story page.
+11. Develop an AMI task manager.
+12. Recreate BotCafe.
+13. Implement file upload functionality.
+14. Improve butterfly AI.
+15. Schedule API calls for automatic art creation.
+16. Connect to Prisma hosted galleries.
+17. Develop a gallery portal viewer.
+18. Create a page for sorting art.
+19. Display local content pages.
+20. Implement user login, registration, and personal dashboard.
+## Pages (this is a prospectus, we will need the portal pages to these services, as well as some components and routing calls)
+//Splash  //Our welcome nabigation. 
+//Amibot  //Home of AMIbot, the Anti-Malaria Intelligence. Our attempt to maximize good through effort, and a gesture of goodwill from tech to humanity.
+//BotCafe  //meet all of our robot friends. We like making robots,
+//Cafe Purr  //our non-evil digital art museum (utilizes Content for multimedia gallery content)
+//IsItArt  //help us learn if something is art or not
+//Giftshop //we're currently partnering with Redbubble for Cafe Purr webart, but eventually want to branch out to receive funds to make it easy to sustain this project. If you have an opportunity to celebrate the conventional social experience of gift exchange, please feel free to peruse our fine human/ai art collaborations on Redbubble. But if you have money to burn and want to support the intent of our project, please give to our fundraiser at https://www.againstmalaria.com/amibot. We do not receive any of that money so it stays in our awarness the most  efficient way to affect a notable change with a small act. Every $2 buys a mosquito net for a child in Africa.
+//Fundraiser Didf we tell you about our fundraiser at https://www.againstmalaria.com/amibot ? Think about what that can do to a single child's life to make a difference. Have you ever been in an area with mosquitos? How about potentially deadly ones, and you are expected to sustain your life in a world that can't afford to give you a net so you *might* have a single night of undisturbed sleep. Even a pseudo-intelligent butterfly hivemind can understand.

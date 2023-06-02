@@ -44,6 +44,8 @@ model Tag {
   messageId      Int?
   Codecard       Codecard?     @relation(fields: [codecardId], references: [id])
   codecardId     Int?
+  Conversation   Conversation? @relation(fields: [conversationId], references: [id])
+  conversationId Int?
 }
 
 model Post {
@@ -178,12 +180,14 @@ model Project {
 
 //message is my attempt to rebuild post with my own focus
 model Message {
-  id          Int      @id @default(autoincrement())
-  content     String
-  dateCreated String
-  chatRoom    Chatroom @relation(fields: [roomId], references: [id])
-  roomId      Int
-  tags        Tag[]
+  id             Int          @id @default(autoincrement())
+  content        String
+  dateCreated    String
+  chatRoom       Chatroom     @relation(fields: [roomId], references: [id])
+  roomId         Int
+  tags           Tag[]
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  conversationId Int
 }
 
 //Figuring out how to optimize my website generation
@@ -202,4 +206,11 @@ model Codecard {
   image    Image  @relation(fields: [imageId], references: [id])
   imageId  Int
   location String
+}
+
+//Conversation is my way of abstracting api chains between humans and api
+model Conversation {
+  id       Int       @id @default(autoincrement())
+  messages Message[]
+  tags     Tag[]
 }
