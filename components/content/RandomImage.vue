@@ -18,11 +18,13 @@ const props = defineProps({
 const imageUrl = ref('')
 
 onMounted(async () => {
-  const response = await fetch(`/images/${props.gallery}/images.json`)
+  const response = await fetch(
+    `https://kindrobots.org/images/${props.gallery}/images.json`
+  )
   const data = await response.json()
   const images = data.gallery.split(', ')
   const randomImage = images[Math.floor(Math.random() * images.length)]
-  imageUrl.value = `/images/${props.gallery}/${randomImage}`
+  imageUrl.value = `https://kindrobots.org/images/${props.gallery}/${randomImage}`
 })
 </script>
 

@@ -5,16 +5,13 @@
     <SiteHeader class="z-20" />
 
     <div class="flex-grow flex overflow-hidden z-20">
-      <aside
-        class="w-64 bg-gray-200 overflow-auto transition-all duration-300 ease-in-out"
-        :class="{ '-translate-x-full': !isSidebarOpen }"
-      >
+      <aside class="sidebar">
         <AppNavigation :navigation-tree="navigation" />
       </aside>
 
       <main class="flex-grow overflow-auto px-8 py-4">
         <RandomImage class="mb-4" />
-        <NuxtPage class="prose text-left" />
+        <NuxtPage class="prose text-left hero-layout" />
       </main>
     </div>
 
@@ -29,7 +26,7 @@
 </template>
 
 <script setup>
-const isSidebarOpen = ref(true)
+import { ref } from 'vue'
 
 const { data: navigation } = await useAsyncData('navigation', () => {
   return fetchContentNavigation()
@@ -37,10 +34,80 @@ const { data: navigation } = await useAsyncData('navigation', () => {
 </script>
 
 <style>
+/* General styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Layout styles */
+.sidebar {
+  width: 280px; /* Adjust the width as desired */
+  background-color: #f2f2f2;
+  overflow-y: auto;
+}
+
+main {
+  flex-grow: 1;
+  padding: 24px;
+}
+
+.prose {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Positioning styles */
+.h-screen {
+  height: 100vh;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.bottom-4 {
+  bottom: 4px;
+}
+
+.right-4 {
+  right: 4px;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
-  aside {
+  .sidebar {
     position: fixed;
-    z-index: 100;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-container {
+    margin-left: 0;
+  }
+
+  .fixed {
+    position: static;
+  }
+
+  .right-4 {
+    right: 4px;
   }
 }
 </style>

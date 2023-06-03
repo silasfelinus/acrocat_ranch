@@ -23,6 +23,15 @@ Our flagship project is AMI 2.0 (Anti-Malaria Intelligence), our AI chatbot repr
 - ESLint
 - Prettier
 
+[useFetch]
+useFetch is the most straightforward way to perform data fetching. It is a wrapper around the useAsyncData composable and $fetch utility.
+<script>
+const { data: count } = await useFetch('/api/count')
+</script>
+<template>
+  Page visits: {{ count }}
+</template>
+
 ## State Management
 
 The project uses `useState` for state management. It's an SSR-friendly ref replacement whose value is preserved after server-side rendering and shared across all components using a unique key.

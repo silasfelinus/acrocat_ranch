@@ -70,12 +70,12 @@ model Profile {
 
 //It's a user. If we can securely validate on our own, we are golden.
 model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
-  posts   Post[]
-  profile Profile?
-  tags    Tag[]
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  name     String?
+  posts    Post[]
+  profile  Profile?
+  tags     Tag[]
   concepts Concept[]
   projects Project[]
 }
@@ -135,7 +135,7 @@ model Prompt {
 model Image {
   id       Int        @id @default(autoincrement())
   name     String
-  path     String
+  gallery  String
   tags     Tag[]
   Codecard Codecard[]
 }

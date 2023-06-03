@@ -23,16 +23,19 @@
 
 <script setup>
 const bubbles = ref([])
+const MAX_BUBBLES = 50
 
 const createBubble = () => {
-  const size = Math.random() * 15 + 3
-  const x = Math.random() * (100 - size)
-  const y = 0
-  const speed = Math.random() * 6 + 4
-  const { randomColor } = useRandomColor()
-  const color = randomColor.value
+  if (bubbles.value.length < MAX_BUBBLES) {
+    const size = Math.random() * 15 + 3
+    const x = Math.random() * (100 - size)
+    const y = 0
+    const speed = Math.random() * 6 + 4
+    const { randomColor } = useRandomColor()
+    const color = randomColor.value
 
-  bubbles.value.push({ x, y, size, speed, color })
+    bubbles.value.push({ x, y, size, speed, color })
+  }
 }
 
 const popBubble = (index) => {
