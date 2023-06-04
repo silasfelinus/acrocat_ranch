@@ -32,15 +32,10 @@ const { data: count } = await useFetch('/api/count')
   Page visits: {{ count }}
 </template>
 
-## State Management
-
+[useState]]
 The project uses `useState` for state management. It's an SSR-friendly ref replacement whose value is preserved after server-side rendering and shared across all components using a unique key.
-
-Example usage:
-```javascript
 const background = useState('backgroundImage', () => 'backtree.webp')
 const contentPage = useState('contentPage', () => '/kindrobots')
-```
 
 ## Progress
 

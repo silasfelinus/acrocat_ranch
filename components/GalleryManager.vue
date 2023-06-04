@@ -14,8 +14,7 @@ const images = ref([])
 
 useFetch(async () => {
   try {
-    const res = await $fetch('/api/images')
-    const data = await res.json()
+    const data = await $fetch('/api/images')
     images.value = data
   } catch (err) {
     console.error(err)

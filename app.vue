@@ -26,7 +26,15 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+// Declare state variables
+const theme = useState('themePage', () => 'kindrobots')
+const gallery = useState('galleryFolder', () => 'backtree.webp')
+const background = useState('backgroundImage', () => 'backtree.webp')
+const screenFx = useState('screenfxComponent', () => 'SoapBubbles')
+const user = useState('username', () => 'acroguest')
+const bot = useState('personality', () => 'ami')
+const chatHistory = useState('messages', () => '')
+const chatroom = useState('chatroom', () => 'kindrobots')
 
 const { data: navigation } = await useAsyncData('navigation', () => {
   return fetchContentNavigation()
@@ -34,7 +42,6 @@ const { data: navigation } = await useAsyncData('navigation', () => {
 </script>
 
 <style>
-/* General styles */
 * {
   box-sizing: border-box;
 }
@@ -47,7 +54,7 @@ body {
 
 /* Layout styles */
 .sidebar {
-  width: 280px; /* Adjust the width as desired */
+  width: 400px; /* Adjust the width as desired */
   background-color: #f2f2f2;
   overflow-y: auto;
 }
