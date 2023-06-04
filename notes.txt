@@ -34,8 +34,20 @@ const { data: count } = await useFetch('/api/count')
 
 [useState]]
 The project uses `useState` for state management. It's an SSR-friendly ref replacement whose value is preserved after server-side rendering and shared across all components using a unique key.
+const theme = useState('themePage', () => 'kindrobots')
+const gallery = useState('galleryFolder', () => 'backtree.webp')
 const background = useState('backgroundImage', () => 'backtree.webp')
-const contentPage = useState('contentPage', () => '/kindrobots')
+const screenFx = useState('screenfxComponent', () => 'SoapBubbles')
+const user = useState('username', () => 'acroguest')
+const bot = useState('personality', () => 'ami')
+const chatHistory = useState('messages', () => 'HISTORY')
+const chatroom = useState('chatroom', () => 'kindrobots')
+
+[useAppConfig]
+export default defineAppConfig({
+  model: 'gpt-3.5-turbo',
+  completion: 'https://api.openai.com/v1/completions'
+})
 
 ## Progress
 

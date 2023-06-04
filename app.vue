@@ -4,13 +4,12 @@
 
     <SiteHeader class="z-20" />
 
-    <div class="flex-grow flex overflow-hidden z-20">
-      <aside class="sidebar">
-        <AppNavigation :navigation-tree="navigation" />
-      </aside>
+    <div class="flex-grow flex z-20">
+      <nav>
+        <NavigationWidget :navigation-tree="navigation" />
+      </nav>
 
       <main class="flex-grow overflow-auto px-8 py-4">
-        <RandomImage class="mb-4" />
         <NuxtPage class="prose text-left hero-layout" />
       </main>
     </div>
@@ -19,23 +18,11 @@
       <AmiLink />
     </div>
 
-    <div class="fixed bottom-4 right-4 z-20">
-      <ChatWindow />
-    </div>
+    <div class="fixed bottom-4 right-4 z-20"></div>
   </div>
 </template>
 
 <script setup>
-// Declare state variables
-const theme = useState('themePage', () => 'kindrobots')
-const gallery = useState('galleryFolder', () => 'backtree.webp')
-const background = useState('backgroundImage', () => 'backtree.webp')
-const screenFx = useState('screenfxComponent', () => 'SoapBubbles')
-const user = useState('username', () => 'acroguest')
-const bot = useState('personality', () => 'ami')
-const chatHistory = useState('messages', () => '')
-const chatroom = useState('chatroom', () => 'kindrobots')
-
 const { data: navigation } = await useAsyncData('navigation', () => {
   return fetchContentNavigation()
 })

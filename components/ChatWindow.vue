@@ -25,7 +25,6 @@
 </template>
 
 <script setup>
-import useAnswer
 const messages = ref([])
 const answer = ref(null)
 const question = ref('')
