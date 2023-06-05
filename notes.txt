@@ -49,6 +49,8 @@ export default defineAppConfig({
   completion: 'https://api.openai.com/v1/completions'
 })
 
+[useAppConfig]
+
 ## Progress
 
 - Added Tailwind, HoneyUI, and theme-change.

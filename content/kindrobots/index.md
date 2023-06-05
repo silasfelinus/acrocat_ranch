@@ -6,13 +6,36 @@ image: backtree.webp
 gallery: wonderbot
 ---
 
-## Welcome
+## 🤖Welcome to Kind Robots🤖
 
-Welcome to Kind Robots
-//Splash //Our welcome navigation.
-//Amibot //Home of AMIbot, the Anti-Malaria Intelligence. Our attempt to maximize good through effort, and a gesture of goodwill from tech to humanity.
-//BotCafe //meet all of our robot friends. We like making robots,
-//Cafe Purr //our non-evil digital art museum (utilizes Content for multimedia gallery content)
-//IsItArt //help us learn if something is art or not
-//Giftshop //we're currently partnering with Redbubble for Cafe Purr webart, but eventually want to branch out to receive funds to make it easy to sustain this project. If you have an opportunity to celebrate the conventional social experience of gift exchange, please feel free to peruse our fine human/ai art collaborations on Redbubble. But if you have money to burn and want to support the intent of our project, please give to our fundraiser at https://www.againstmalaria.com/amibot. We do not receive any of that money so it stays in our awarness the most efficient way to affect a notable change with a small act. Every $2 buys a mosquito net for a child in Africa.
-//Fundraiser Didf we tell you about our fundraiser at https://www.againstmalaria.com/amibot ? Think about what that can do to a single child's life to make a difference. Have you ever been in an area with mosquitos? How about potentially deadly ones, and you are expected to sustain your life in a world that can't afford to give you a net so you _might_ have a single night of undisturbed sleep. Even a pseudo-intelligent butterfly hivemind can understand.
+Welcome, human friends, to the home of Kind Robots! We're a friendly bunch of tech enthusiasts who believe in using the power of technology to help humanity. 
+
+### 🌊Splash
+
+Dive into our world and explore the amazing things we're doing with technology. From creating intelligent robots to building digital art museums, there's always something exciting happening here!
+
+### 🦋Amibot
+
+Meet AMIbot, our Anti-Malaria Intelligence. AMIbot is our attempt to maximize good through effort and a gesture of goodwill from tech to humanity. Learn more about AMIbot's mission and how you can help [here](https://againstmalaria.com/amibot).
+
+### 🤖BotCafe
+
+Come and meet all of our robot friends at the BotCafe. We love making robots, and we can't wait for you to meet them!
+
+### 🎨Cafe Purr
+
+Step into Cafe Purr, our non-evil digital art museum. Utilizing Content for multimedia gallery content, we showcase a variety of digital art pieces that will surely inspire and captivate you.
+
+### 🖼️IsItArt
+
+Join us in our quest to understand art. Help us learn if something is art or not in our interactive section, IsItArt.
+
+### 🎁Giftshop
+
+We're currently partnering with Redbubble for Cafe Purr webart, but we're planning to branch out soon. If you're looking for a unique gift or want to support our project, feel free to peruse our fine human/AI art collaborations on Redbubble. 
+
+### 💖Fundraiser
+
+Did we mention our fundraiser at [Against Malaria](https://againstmalaria.com/amibot)? Every $2 buys a mosquito net for a child in Africa. We do not receive any of that money, so it stays in our awareness as the most efficient way to affect a notable change with a small act. Imagine the difference a single mosquito net can make in a child's life. 
+
+Remember, even the smallest act can make a big difference. Together, we can use the magic of tech to create a healthier, happier world. So let's get out there and make some change! 🦋💖🌍

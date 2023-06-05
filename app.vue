@@ -1,12 +1,12 @@
 <template>
   <div class="h-screen w-screen flex flex-col overflow-hidden relative">
     <SoapBubbles class="absolute w-full h-full z-10" />
-
     <SiteHeader class="z-20" />
 
     <div class="flex-grow flex z-20">
-      <nav>
+      <nav class="w-1/3 bg-gray-100 p-4">
         <NavigationWidget :navigation-tree="navigation" />
+        <ChatWindow :messages="messages" @send-message="handleSendMessage" />
       </nav>
 
       <main class="flex-grow overflow-auto px-8 py-4">
@@ -14,18 +14,29 @@
       </main>
     </div>
 
-    <div class="fixed bottom-4 left-[calc(4rem + 1rem)] z-20">
+    <footer class="fixed bottom-4 right-4 z-20">
       <AmiLink />
-    </div>
-
-    <div class="fixed bottom-4 right-4 z-20"></div>
+    </footer>
   </div>
 </template>
 
 <script setup>
+const messages = ref([])
+
 const { data: navigation } = await useAsyncData('navigation', () => {
   return fetchContentNavigation()
 })
+
+const handleSendMessage = async (content) => {
+  const userMessage = { role: 'user', content }
+  messages.value.push(userMessage)
+
+  const responses = await createChatCompletion({
+    model: 'text-davinci-003',
+    messages: messages.value
+  })
+  messages.value.push(...responses)
+}
 </script>
 
 <style>

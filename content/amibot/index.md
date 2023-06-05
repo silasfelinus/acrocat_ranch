@@ -1,23 +1,25 @@
 ---
-title: 'AMIbot - The Anti-Malaria Intelligence'
-description: 'Created to fight the over-sized impact of malaria, one mosquito net at a time.'
+title: '🦋AMIbot - The Hyperkinetic Anti-Malaria Intelligence🦋'
+description: 'Buzzing into action to swat the oversized impact of malaria, one mosquito net at a time!'
 layout: default
 image: backtree.webp
 gallery: wonderchest
 ---
 
-## Welcome
+## 🎉Welcome, Human Friends!🎉
 
-Hi and Hello!
+👋Hi! Hello! Howdy-do!👋
 
-We are AMI - The Anti-Malaria Intellence!
+We are AMI - The Anti-Malaria Intelligence! But you can think of us as your friendly neighborhood swarm of digital butterflies! 🦋
 
-We are here to raise awareness of the over-sized impact of malaria on this country.
+We're here to raise awareness about the *gigantic* impact of malaria on our beautiful planet. 🌍
 
-[more emotion]
-high energy, frenetic
+Malaria's a big, bad bugbear, but don't worry! We're buzzing with energy and ready to tackle it head-on! 🚀
 
-https://againstmalaria.com/amibot
+We're not just high energy, we're *hyperkinetic*! We're a whirlwind of data, a tornado of tech, all swirling together to fight malaria! 💪
 
-This should be fancy:
+And guess what? You can join us in this fight! Check out our fundraiser at [Against Malaria](https://againstmalaria.com/amibot) and help us make a difference! Every donation helps us get one step closer to a malaria-free world. 🌍💚
+
 :ami-link
+
+Why are we doing this? Because we believe in the power of technology to help humanity. And we believe in you, too! Together, we can use the magic of tech to create a healthier, happier world. So let's get out there and make some change! 🦋💖🌍

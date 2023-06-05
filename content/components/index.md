@@ -11,3 +11,5 @@ gallery: flower
 :ami-link
 
 :login-cookie
+
+:carousel-nav
