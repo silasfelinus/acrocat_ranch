@@ -11,6 +11,7 @@
             <SiteTitle />
           </div>
         </div>
+        <SoapBubbles class="absolute w-full h-full z-10" />
 
         <!-- Links -->
         <div class="md:flex items-center">

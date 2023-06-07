@@ -13,9 +13,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { useRandomColor } from '@/composables/useRandomColor'
-
 const props = defineProps<{
   wingColor?: string
 }>()

@@ -1,18 +1,9 @@
 <template>
-  <div class="h-screen w-screen flex flex-col overflow-hidden relative">
-    <SoapBubbles class="absolute w-full h-full z-10" />
-    <SiteHeader class="z-20" />
-
-    <div class="flex-grow flex z-20">
-      <nav class="w-1/3 bg-gray-100 p-4">
-        <NavigationWidget :navigation-tree="navigation" />
-        <ChatWindow :messages="messages" @send-message="handleSendMessage" />
-      </nav>
-
-      <main class="flex-grow overflow-auto px-8 py-4">
-        <NuxtPage class="prose text-left hero-layout" />
-      </main>
+  <div>
+    <div class="prose text-center">
+      <NuxtPage />
     </div>
+    <ChatWindow :messages="messages" @send-message="handleSendMessage" />
 
     <footer class="fixed bottom-4 right-4 z-20">
       <AmiLink />
@@ -21,98 +12,45 @@
 </template>
 
 <script setup>
-const messages = ref([])
-
-const { data: navigation } = await useAsyncData('navigation', () => {
-  return fetchContentNavigation()
-})
+const messages = ref([
+  {
+    role: 'system',
+    content:
+      'You are pretending to be AMIbot - the Anti-Malaria Intelligence, a pseudo-intelliget chatbot created to raise funds to fight malaria. AMI is represented by a hivemind of digital rainbow butterflies, our website mascot. For now, we need quote from AMI, in your own voice.'
+  },
+  {
+    role: 'user',
+    content:
+      'Hi, AMI, can you give me four tweatable phrases to encourage people to join our Kind Human club. AMI is a digital intelligence, so they are enlisting humans to assist in their quest.'
+  },
+  {
+    role: 'amibot',
+    content:
+      'ABSOLUTELY! Four incredibly entertaining, funny, and brilliant, if we do say so ourselves, are:'
+  },
+  { role: 'user', content: 'Please continue' }
+])
+let error = ref(null)
 
 const handleSendMessage = async (content) => {
   const userMessage = { role: 'user', content }
   messages.value.push(userMessage)
 
-  const responses = await createChatCompletion({
-    model: 'text-davinci-003',
-    messages: messages.value
-  })
-  messages.value.push(...responses)
+  try {
+    const response = await openai.ChatCompletion.create({
+      model: 'gpt-3.5-turbo',
+      messages: messages.value
+    })
+
+    // If there's no error, push the response to the messages array
+    const aiMessage = {
+      role: 'assistant',
+      content: response.choices[0].message.content
+    }
+    messages.value.push(aiMessage)
+  } catch (err) {
+    // If an error occurs, set the error value to display it to the user
+    error.value = err
+  }
 }
 </script>
-
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
-
-/* Layout styles */
-.sidebar {
-  width: 400px; /* Adjust the width as desired */
-  background-color: #f2f2f2;
-  overflow-y: auto;
-}
-
-main {
-  flex-grow: 1;
-  padding: 24px;
-}
-
-.prose {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* Positioning styles */
-.h-screen {
-  height: 100vh;
-}
-
-.fixed {
-  position: fixed;
-}
-
-.bottom-4 {
-  bottom: 4px;
-}
-
-.right-4 {
-  right: 4px;
-}
-
-.z-20 {
-  z-index: 20;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .sidebar.open {
-    transform: translateX(0);
-  }
-
-  .main-container {
-    margin-left: 0;
-  }
-
-  .fixed {
-    position: static;
-  }
-
-  .right-4 {
-    right: 4px;
-  }
-}
-</style>

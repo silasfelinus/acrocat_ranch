@@ -1,7 +1,7 @@
 ---
 title: 'ChatGPT'
 description: 'Friendly digital assistant'
-layout: chat
+layout: default
 image: backtree.webp
 gallery: acrocats
 ---

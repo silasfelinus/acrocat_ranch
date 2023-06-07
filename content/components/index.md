@@ -13,3 +13,5 @@ gallery: flower
 :login-cookie
 
 :carousel-nav
+
+:art-asset

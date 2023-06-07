@@ -8,21 +8,28 @@ defineProps({
 </script>
 
 <template>
-  <ul class="navigation">
-    <li v-for="(item, index) in navigationTree" :key="index">
-      <NuxtLink :to="item._path">
+  <ul class="navigation space-y-4">
+    <li
+      v-for="(item, index) in navigationTree"
+      :key="index"
+      class="text-lg text-primary-500"
+    >
+      <NuxtLink
+        :to="item._path"
+        class="font-semibold hover:text-primary-700 transition-colors"
+      >
         {{ item.title }}
       </NuxtLink>
       <NavigationWidget
         v-if="item.children"
         :navigation-tree="item.children"
-        class="sub-navigation"
+        class="sub-navigation space-y-2 mt-2"
       />
     </li>
   </ul>
 </template>
 
-<style scoped>
+<style>
 .navigation li {
   list-style-type: '_ ';
 }

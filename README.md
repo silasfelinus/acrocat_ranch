@@ -89,3 +89,8 @@ We're currently building our public portal. With a Prisma database in place and 
 Wildcard Randomizer: Start working on the development of a wildcard randomizer feature.
 
 ## create chatgpt plugin so chatgpt can better assist with this development
+
+## Thanks
+
+https://codepen.io/chrisgannon/pen/RwemGjP
+for the silly "ai toggle"

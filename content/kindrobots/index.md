@@ -8,7 +8,7 @@ gallery: wonderbot
 
 ## 🤖Welcome to Kind Robots🤖
 
-Welcome, human friends, to the home of Kind Robots! We're a friendly bunch of tech enthusiasts who believe in using the power of technology to help humanity. 
+Welcome, human friends, to the home of Kind Robots! We're a friendly bunch of tech enthusiasts who believe in using the power of technology to help humanity.
 
 ### 🌊Splash
 
@@ -32,10 +32,10 @@ Join us in our quest to understand art. Help us learn if something is art or not
 
 ### 🎁Giftshop
 
-We're currently partnering with Redbubble for Cafe Purr webart, but we're planning to branch out soon. If you're looking for a unique gift or want to support our project, feel free to peruse our fine human/AI art collaborations on Redbubble. 
+We're currently partnering with Redbubble for Cafe Purr webart, but we're planning to branch out soon. If you're looking for a unique gift or want to support our project, feel free to peruse our fine human/AI art collaborations on Redbubble.
 
 ### 💖Fundraiser
 
-Did we mention our fundraiser at [Against Malaria](https://againstmalaria.com/amibot)? Every $2 buys a mosquito net for a child in Africa. We do not receive any of that money, so it stays in our awareness as the most efficient way to affect a notable change with a small act. Imagine the difference a single mosquito net can make in a child's life. 
+Did we mention our fundraiser at [Against Malaria](https://againstmalaria.com/amibot)? Every $2 buys a mosquito net for a child in Africa. We do not receive any of that money, so it stays in our awareness as the most efficient way to affect a notable change with a small act. Imagine the difference a single mosquito net can make in a child's life.
 
 Remember, even the smallest act can make a big difference. Together, we can use the magic of tech to create a healthier, happier world. So let's get out there and make some change! 🦋💖🌍

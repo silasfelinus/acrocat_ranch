@@ -1,16 +1,22 @@
 ---
-title: "Style Guide"
+title: 'Style Guide'
 layout: default
 ---
+
 # Welcome to the Kind Robots Style Guide! 🤖
 
 ## Headers
 
 # H1: The Biggest Bot on the Block!
+
 ## H2: Second in Command, but First in Fun!
+
 ### H3: Not too big, not too small, just right for a robot roll call!
+
 #### H4: The perfect size for a robot's surprise!
+
 ##### H5: Small but mighty, just like our nano-bots!
+
 ###### H6: The tiniest of titles, for the smallest of details!
 
 ## Paragraphs
@@ -47,20 +53,20 @@ Once upon a time, in a galaxy not so far away, there was a robot named Ami. Ami 
 
 ```javascript
 function doGood() {
-  console.log("Doing good is what we do best!");
+  console.log('Doing good is what we do best!')
 }
 ```
 
 ## Tables
 
-| Robot Name | Mission |
-| --- | --- |
-| Ami | Eradicating Malaria |
-| Bob | Building Better Bots |
+| Robot Name | Mission              |
+| ---------- | -------------------- |
+| Ami        | Eradicating Malaria  |
+| Bob        | Building Better Bots |
 
 ## Emphasis
 
-*This is a robot's way of whispering...*
+_This is a robot's way of whispering..._
 
 **And this is a robot's way of shouting!**
 
@@ -73,4 +79,7 @@ function doGood() {
 ---
 
 Remember, we're all in this together, one beep, one boop at a time!
+
+```
+
 ```

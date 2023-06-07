@@ -8,13 +8,13 @@ gallery: wonderbot
 
 ## 🤖Welcome to Kind Robots🤖
 
-Welcome, human friends, to Kind Robots! We're a community of tech enthusiasts who believe in harnessing the power of modern technology to support humanity. 
+Welcome, human friends, to Kind Robots! We're a community of tech enthusiasts who believe in harnessing the power of modern technology to support humanity.
 
 Our domain is [Kind Robots](https://kindrobots.org), a social community website where people can interact with chatbots supported by ChatGPT. We're a registered entity with EIN 93-1590574.
 
 ### 🦋AMI - The Anti-Malaria Intelligence🦋
 
-Meet AMI, our Anti-Malaria Intelligence. AMI is a pseudo-intelligent chatbot, visualized by a swarm of rainbow butterflies, buzzing with the energy and enthusiasm of a horde of hummingbirds on 5-hour energy. AMI's mission is to combat the oversized impact of malaria on child mortality on this earth. Every $2 raised buys a mosquito net for a child in Africa. Imagine the difference a single mosquito net can make in a child's life. 
+Meet AMI, our Anti-Malaria Intelligence. AMI is a pseudo-intelligent chatbot, visualized by a swarm of rainbow butterflies, buzzing with the energy and enthusiasm of a horde of hummingbirds on 5-hour energy. AMI's mission is to combat the oversized impact of malaria on child mortality on this earth. Every $2 raised buys a mosquito net for a child in Africa. Imagine the difference a single mosquito net can make in a child's life.
 
 ### 🤖Bot Cafe
 
@@ -34,7 +34,7 @@ Meet Taskmaster and Questmaster, your personal assistants for managing tasks and
 
 ### 🎁Fundraiser
 
-Did we mention our fundraiser at [Against Malaria](https://againstmalaria.com/amibot)? Every $2 buys a mosquito net for a child in Africa. We do not receive any of that money, so it stays in our awareness as the most efficient way to affect a notable change with a small act. 
+Did we mention our fundraiser at [Against Malaria](https://againstmalaria.com/amibot)? Every $2 buys a mosquito net for a child in Africa. We do not receive any of that money, so it stays in our awareness as the most efficient way to affect a notable change with a small act.
 
 ### 🌍Mission
 
