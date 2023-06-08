@@ -1,6 +1,6 @@
 ---
 title: 'Wildcard Directory'
-layout: default
+layout: wildcard
 ---
 
 ## DreamScenarios

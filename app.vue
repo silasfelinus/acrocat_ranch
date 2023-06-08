@@ -6,6 +6,7 @@
     <ChatWindow :messages="messages" @send-message="handleSendMessage" />
 
     <footer class="fixed bottom-4 right-4 z-20">
+      <RandomWildcard />
       <AmiLink />
     </footer>
   </div>

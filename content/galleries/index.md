@@ -1,6 +1,6 @@
 ---
 title: 'Cafe Purr Gallery'
-subtitle: "We want to make 'art'. Can you tell us if any of this is 'art'?"
+subtitle: 'We want to make art. Can you tell us if any of this is art?'
 layout: default
 image: backtree.webp
 gallery: splash

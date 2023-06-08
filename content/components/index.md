@@ -8,6 +8,10 @@ gallery: flower
 
 ## Component Directory
 
+:database-manager
+
+:art-manager
+
 :ami-link
 
 :login-cookie
