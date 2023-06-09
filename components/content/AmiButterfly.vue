@@ -1,19 +1,13 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, reactive } from 'vue'
+import { onMounted, onUnmounted, reactive, ref } from 'vue'
 import { makeNoise2D } from 'open-simplex-noise'
 
 // Random color generator in HSL format
 const randomColor = (): string => {
   const h = Math.floor(Math.random() * 360)
   const s = Math.floor(Math.random() * 100)
-  const l = Math.floor(Math.random() * 50) + 50 // lightness between 50 and 100
+  const l = Math.floor(Math.random() * 100)
   return `hsl(${h},${s}%,${l}%)`
-}
-
-// Saturated color generator
-const generateSaturatedColor = (): string => {
-  const h = Math.floor(Math.random() * 361)
-  return `hsl(${h},100%,50%)`
 }
 
 // Analogous color generator
@@ -46,7 +40,6 @@ interface Butterfly {
   wingSpeed: number
   scale: number
   countdown: number
-  animationDelay: string
 }
 
 interface WindowSize {
@@ -59,16 +52,13 @@ const windowSize = reactive<WindowSize>({
   height: 0
 })
 
-const wingColorType = Math.floor(Math.random() * 4) // 0:same, 1:complementary, 2:analogous, 3:saturated
-let primaryColor = randomColor()
+const wingColorType = Math.floor(Math.random() * 3) // 0:same, 1:complementary, 2:analogous
+const primaryColor = randomColor()
 let secondaryColor = primaryColor
 if (wingColorType === 1) {
   secondaryColor = complementaryColor(primaryColor)
 } else if (wingColorType === 2) {
   secondaryColor = analogousColor(primaryColor)
-} else if (wingColorType === 3) {
-  primaryColor = generateSaturatedColor()
-  secondaryColor = generateSaturatedColor()
 }
 
 const butterfly = reactive<Butterfly>({
@@ -83,10 +73,9 @@ const butterfly = reactive<Butterfly>({
   },
   hasReachedGoal: false,
   sway: false,
+  wingSpeed: Math.floor(Math.random() * 3), // random initial wing speed
   scale: Math.random() * 0.5 + 0.75, // random initial scale between 0.75 and 1.25
-  countdown: 0,
-  wingSpeed: Math.floor(Math.random() * 3) + 1, // random initial wing speed
-  animationDelay: (Math.random() * 1.0).toFixed(2) + 's' // delay in seconds
+  countdown: 0
 })
 
 const noise2D = makeNoise2D(Date.now())
@@ -153,12 +142,11 @@ onUnmounted(() => {
   })
 })
 </script>
+
 <template>
   <div
-    class="butterfly absolute transform-gpu"
+    class="butterfly"
     :style="{
-      '--wing-speed': butterfly.wingSpeed / 10 + 's',
-      '--animation-delay': butterfly.animationDelay,
       left: butterfly.goal.x + 'px',
       top: butterfly.goal.y + 'px',
       transform:
@@ -169,33 +157,17 @@ onUnmounted(() => {
         ')'
     }"
   >
-    <div
-      class="left-wing absolute top-2 left-2"
-      :style="{
-        /* dynamic styles */
-      }"
-    >
+    <div class="left-wing">
+      <div class="top" :style="{ background: butterfly.wingTopColor }"></div>
       <div
-        class="top absolute right-0"
-        :style="{ background: butterfly.wingTopColor }"
-      ></div>
-      <div
-        class="bottom absolute top-18"
+        class="bottom"
         :style="{ background: butterfly.wingBottomColor }"
       ></div>
     </div>
-    <div
-      class="right-wing absolute top-2 left-34"
-      :style="{
-        /* dynamic styles */
-      }"
-    >
+    <div class="right-wing">
+      <div class="top" :style="{ background: butterfly.wingTopColor }"></div>
       <div
-        class="top absolute"
-        :style="{ background: butterfly.wingTopColor }"
-      ></div>
-      <div
-        class="bottom absolute top-18"
+        class="bottom"
         :style="{ background: butterfly.wingBottomColor }"
       ></div>
     </div>
@@ -203,6 +175,10 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+body {
+  background: #111;
+}
+
 @keyframes flutter-left {
   0% {
     transform: rotate3d(0, 1, 0, 20deg);
@@ -228,35 +204,56 @@ onUnmounted(() => {
 }
 
 .butterfly {
-  width: 25rem;
-  height: 25rem;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  transform-style: preserve-3d;
   z-index: -100;
+  transform: rotate3d(1, 0.5, 0, 110deg);
+}
+
+.left-wing,
+.right-wing {
+  width: 24px;
+  height: 42px;
+  position: absolute;
+  top: 10px;
 }
 
 .left-wing {
-  width: 6rem;
-  height: 10.5rem;
-  transform-origin: 6rem 50%;
-  animation: flutter-left var(--wing-speed) infinite var(--animation-delay);
+  left: 10px;
+  top: 10px;
+  transform-origin: 24px 50%;
+  transform: rotate3d(0, 1, 0, 20deg);
+  animation: flutter-left 0.3s infinite;
 }
 
 .right-wing {
-  width: 6rem;
-  height: 10.5rem;
+  left: 34px;
+  transform: rotate3d(0, 1, 0, -20deg);
   transform-origin: 0px 50%;
-  animation: flutter-right var(--wing-speed) infinite var(--animation-delay);
+  animation: flutter-right 0.3s infinite;
 }
 
+.left-wing .top {
+  right: 0;
+}
+
+.top,
+.bottom {
+  opacity: 0.7;
+  position: absolute;
+}
 .top {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 2.5rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
 }
 
 .bottom {
-  top: 4.5rem;
-  width: 6rem;
-  height: 6rem;
-  border-radius: 3rem;
+  top: 18px;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
 }
 </style>

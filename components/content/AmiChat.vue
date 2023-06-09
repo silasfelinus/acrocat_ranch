@@ -89,7 +89,7 @@ let form = ref({
 let response = ref(null)
 
 const sendMessage = async () => {
-  const url = `${baseURL}/server/middleware/api.js`
+  const url = '/api/chat'
 
   try {
     const result = await fetch(url, {

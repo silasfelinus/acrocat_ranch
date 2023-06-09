@@ -1,12 +1,25 @@
-import { Configuration, OpenAIApi } from 'openai'
+// Importing the required OpenAI packages and the helper from Nuxt server
 
-export default defineEventHandler(async (event) => {
+// Defining a Nuxt server route
+module.exports = async function handler(req, res) {
+  if (req.method !== 'POST') {
+    // This handler only accepts POST requests, reject anything else
+    res.statusCode = 405
+    res.end('Method Not Allowed')
+    return
+  }
+
   try {
     // Unfolding the secrets within the event, like a digital origami!
-    const body = await readBody(event)
+    const body = await new Promise((resolve, reject) => {
+      let data = ''
+      req.on('data', (chunk) => (data += chunk))
+      req.on('end', () => resolve(JSON.parse(data)))
+      req.on('error', reject)
+    })
 
     // We're securing the key to the language AI kingdom!
-    const { OPENAI_API_KEY } = useRuntimeConfig()
+    const { OPENAI_API_KEY } = process.env
 
     // Credentials ready, we're like language wizards with the right spell to enter the OpenAI realm.
     const configuration = new Configuration({
@@ -38,14 +51,18 @@ export default defineEventHandler(async (event) => {
     })
 
     // Woohoo! Our digital butterflies just had a successful chat with an AI. How cool is that?
-    return data
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'application/json')
+    res.end(JSON.stringify(data))
   } catch (error) {
     console.error(
       'Oh no! It seems our butterflies hit a little turbulence: ',
       error
     )
 
-    // Since we're using Nuxt, we'll re-throw the error. NuxtErrorBoundary will come to our rescue!
-    throw error
+    // If we hit a snag, let's tell the client about it with a 500 status code and the error message
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/plain')
+    res.end(`Server error: ${error.message || error.toString()}`)
   }
-})
+}

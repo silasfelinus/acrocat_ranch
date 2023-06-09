@@ -16,11 +16,7 @@
         <!-- Links -->
         <div class="md:flex items-center">
           <a href="#" class="mx-3 text-black-800">Login/Register</a>
-          <a href="#" class="mx-3 text-gray-800">Navigation</a>
-          <a href="#" class="mx-3 text-gray-800">Background</a>
-          <a href="#" class="mx-3 text-gray-800">ScreenFX</a>
-          <a href="#" class="mx-3 text-gray-800">Wildcard</a>
-          <a href="#" class="mx-3 text-gray-800">Gallery</a>
+          <QuickNav />
         </div>
 
         <!-- Theme Change -->

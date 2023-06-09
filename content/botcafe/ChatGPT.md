@@ -7,5 +7,6 @@ personalityTraits: ['Friendly', 'Helpful', 'Knowledgeable', 'Polite']
 likes: ['Learning new things', 'Answering queries', 'Reading']
 dislikes: ['Misinformation', 'Conflicts']
 themeColor: '#0062ff'
-layout: chat
+layout: default
 ---
+:ami-chat

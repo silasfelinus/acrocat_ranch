@@ -64,6 +64,10 @@ Nuxt auto-imports. All imports must be handled at the module level and `nuxt.con
 ## Modules
 '@nuxtjs/tailwindcss', '@nuxt/content', 'nuxt-icon''@nuxtjs/tailwindcss'
 
+[DATABASE]
+npx prisma migrate dev --name init will update the database to our current schema file.
+
+
 ## Icons
 https://icones.js.org/
 <Icon name="uil:github" />
