@@ -1,0 +1,11 @@
+POST https://api.openai.com/v1/chat/completions
+Content-Type: application/json
+Authorization: Bearer {{$dotenv OPENAI_API_KEY }}
+
+  {
+     "model": "gpt-3.5-turbo",
+     "messages": [{"role": "user", "content": "Please give me an unexpectedly challenging moral question, using specific details to humanize the experience, and ending with a choice that ideally half of people would choose one way and half the other. Think book of questions meets tom robbins meets confusious"}],
+     "temperature": 1,
+     "n": 2,
+     "max_tokens": 2000
+   } 

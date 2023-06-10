@@ -62,6 +62,8 @@ The core values of the project are simplicity, elegance, cleanliness, friendline
 
 We're currently building our public portal. With a Prisma database in place and a solid understanding of Nuxt, Vue, and databases, we're setting the groundwork for the subsequent stages of development.
 
+Added ./image_gen.sh script to configure image galleries.
+
 # Next Steps
 
 1. Add Prisma CRUD.

@@ -9,3 +9,6 @@ gallery: floof
 ## Welcome
 
 Welcome to Cafe Purr
+
+:gallery-viewer
+

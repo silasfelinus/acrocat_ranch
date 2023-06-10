@@ -1,4 +1,5 @@
 ---
+
 You are a well-respected scientist and have discovered the cure for a deadly disease. However, the only way to mass-produce the cure is to exploit a rare plant that only grows in a certain remote ecosystem, and its extraction threatens the survival of numerous species. Do you produce the cure or protect the ecosystem?
 You're a judge with a criminal standing before you, guilty of heinous crimes. The only evidence proving their guilt was obtained illegally. Do you uphold the law and let them go or do you convict them to protect society?
 You are a software engineer at a company that developed an AI capable of predicting crime. The AI has a 95% accuracy but infringes on personal privacy. Do you advocate for the use of this technology or protect people's privacy?

@@ -7,6 +7,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Bot {
+  id          Int      @id @default(autoincrement())
+  name        String
+  type        String   @default("chatbot")
+  description String   @default("I'm a Kind Robot")
+  intro       String   @default("I'm a Kind Robot! What do you want to talk about?")
+  training    String   @default("You are a kind chatbot")
+  avatarImage String   @default("/amibot01.png")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 model Todo {
   id         Int      @id @default(autoincrement())
   content    String
@@ -18,32 +30,82 @@ model Todo {
 }
 
 model Gallery {
+  id             Int      @id @default(autoincrement())
+  name           String   @default("")
+  content        String   @default("")
+  description    String   @default("")
+  highlightImage String?
+  isNSFW         Boolean  @default(false)
+  isAuth         Boolean  @default(false)
+  user           String   @default("cafepurr")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Checkpoint {
+  id         Int      @id @default(autoincrement())
+  name       String   @default("")
+  hash       String   @default("")
+  sfwName    String?
+  isNSFW     Boolean  @default(false)
+  civitaiUrl String?
+  huggingUrl String?
+  image1     String?
+  image2     String?
+  image3     String?
+  user       String   @default("cafepurr")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Embedding {
   id          Int      @id @default(autoincrement())
   name        String   @default("")
   content     String   @default("")
   description String   @default("")
+  prompt      String?
+  civitaiUrl  String?
+  type        String   @default("embedding")
+  image1      String?
+  image2      String?
+  image3      String?
   isNSFW      Boolean  @default(false)
-  isAuth      Boolean  @default(false)
-  user        String   @default("cafepurr")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
-model Resource {
-  id        Int      @id @default(autoincrement())
-  path      String   @default("")
-  type      String   @default("image")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  isNSFW    Boolean  @default(false)
+model Image {
+  id          Int      @id @default(autoincrement())
+  path        String   @default("")
+  isNSFW      Boolean  @default(false)
+  isFavorite  Boolean  @default(false)
+  prompt      String?
+  description String?
+  negative    String?
+  gallery     String?
+  steps       Int?
+  seed        Int?
+  sampler     String?
+  cfg         String?
+  size        String?
+  modelHash   String?
+  modelName   String?
+  template    String?
+  negTemplate String?
+  promptId    Int?
+  galleryId   Int?
+  creator     String   @default("cafepurr")
+  creatorID   Int?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Message {
-  id          Int      @id @default(autoincrement())
-  content     String   @default("")
-  dateCreated DateTime @default(now())
-  threadId    Int
-  updatedAt   DateTime @updatedAt
+  id             Int      @id @default(autoincrement())
+  content        String   @default("")
+  conversationId Int
+  dateCreated    DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model Conversation {
@@ -54,10 +116,13 @@ model Conversation {
 }
 
 model Prompt {
-  id        Int      @id @default(autoincrement())
-  content   String   @default("")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int      @id @default(autoincrement())
+  content    String   @default("")
+  isNsfw     Boolean  @default(false)
+  sfwContent String?
+  tokenCount Int?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 model Tag {
