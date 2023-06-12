@@ -1,44 +1,101 @@
-<script setup>
-const galleries = ref([])
-const error = ref(null)
-const status = ref(null)
-
-onMounted(async () => {
-  try {
-    const response = await fetch('/api/galleries/')
-    if (!response.ok) {
-      status.value = response.status
-      throw new Error(`Error ${response.status}: ${response.statusText}`)
-    }
-    galleries.value = await response.json()
-  } catch (err) {
-    error.value = err.message
-  }
-})
-</script>
-
 <template>
-  <div class="flex flex-wrap justify-around">
-    <div
-      v-for="gallery in galleries"
-      :key="gallery.id"
-      class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4"
-    >
-      <div class="card bordered">
-        <figure>
-          <img :src="gallery.highlightImage" alt="" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">{{ gallery.name }}</h2>
-          <p>{{ gallery.description }}</p>
-          <div class="card-actions">
-            <button class="btn btn-primary">View Gallery</button>
-          </div>
+  <div>
+    <select v-model="selectedGallery" class="form-select">
+      <option v-for="gallery in galleries" :key="gallery" :value="gallery">
+        {{ gallery }}
+      </option>
+    </select>
+
+    <div class="row">
+      <div v-for="image in currentImages" :key="image" class="col-md-3">
+        <div class="card">
+          <img
+            :src="`${BASE_URL}/images/${selectedGallery}/${image}`"
+            class="card-img-top"
+            alt="Image description"
+          />
         </div>
       </div>
     </div>
-    <div v-if="error" class="w-full text-center text-red-500 mt-4">
-      Error: {{ error }} Status: {{ status }}
-    </div>
+
+    <nav>
+      <ul class="pagination justify-content-center">
+        <li
+          v-for="page in totalPages"
+          :key="page"
+          class="page-item"
+          :class="{ active: currentPage === page }"
+        >
+          <a class="page-link" @click="currentPage = page">{{ page }}</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
+
+<script setup>
+import { ref, watchEffect, computed } from 'vue'
+
+const galleries = [
+  'acrocats',
+  'amibot',
+  'avatars',
+  'background',
+  'botcafe',
+  'cafepurr',
+  'floof',
+  'gothcore',
+  'flower',
+  'fantasycore',
+  'ducky',
+  'redbubble',
+  'seuss',
+  'wonderbot',
+  'wondercat',
+  'wonderchest',
+  'wondershed'
+]
+const selectedGallery = ref(galleries[0])
+const galleryData = ref(null)
+const currentPage = ref(1)
+const imagesPerPage = ref(16)
+
+const BASE_URL = process.env.BASE_URL || 'http://localhost:3000'
+
+watchEffect(async () => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/images/${selectedGallery.value}/gallery.json`
+    )
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    const data = await response.json()
+    galleryData.value = {
+      ...data,
+      images: data.images.sort(() => Math.random() - 0.5) // Randomize images
+    }
+    currentPage.value = 1 // Reset to first page when gallery changes
+  } catch (e) {
+    console.error('Error fetching gallery data', e)
+  }
+})
+
+const totalPages = computed(() =>
+  Math.ceil(galleryData.value?.images.length / imagesPerPage.value)
+)
+
+const currentImages = computed(() => {
+  if (!galleryData.value) return []
+  const startIndex = (currentPage.value - 1) * imagesPerPage.value
+  const endIndex = startIndex + imagesPerPage.value
+  return galleryData.value.images.slice(startIndex, endIndex)
+})
+</script>
+
+<style scoped>
+.card-img-top {
+  width: 100%;
+  height: auto;
+}
+</style>

@@ -1,49 +1,39 @@
 <template>
-  <div class="p-4 flex gap-4 items-center justify-between">
-    <div class="flex gap-4 items-center">
-      <div>
-        <h1 class="text-4xl font-bold">Acrocat Ranch</h1>
-        <p class="text-base text-gray-600">
-          Home of AMI - The Anti-Malaria Intelligence
-        </p>
-      </div>
-    </div>
-    <div class="theme-selector">
-      <button
-        tabindex="0"
-        aria-haspopup="true"
-        aria-label="Change theme"
-        class="theme-btn bg-base-200 p-4 rounded-full focus:outline-none focus:ring focus:ring-primary shadow-md transform hover:scale-110 transition-all ease-in-out duration-200"
-        @click="toggleMenu"
-        @keydown.space.prevent="toggleMenu"
+  <div class="theme-selector">
+    <button
+      tabindex="0"
+      aria-haspopup="true"
+      aria-label="Change theme"
+      class="theme-btn bg-base-200 p-4 rounded-full focus:outline-none focus:ring focus:ring-primary shadow-md transform hover:scale-110 transition-all ease-in-out duration-200"
+      @click="toggleMenu"
+      @keydown.space.prevent="toggleMenu"
+    >
+      <span class="theme-icon w-6 h-6"></span>
+    </button>
+    <transition name="theme-menu-fade">
+      <div
+        v-show="open"
+        class="origin-top-right absolute right-0 mt-12 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50 transition-opacity duration-200"
       >
-        <span class="theme-icon w-6 h-6"></span>
-      </button>
-      <transition name="theme-menu-fade">
         <div
-          v-show="open"
-          class="origin-top-right absolute right-0 mt-12 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50 transition-opacity duration-200"
+          class="py-1 theme-list grid grid-cols-3 gap-2 p-2"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="options-menu"
         >
-          <div
-            class="py-1 theme-list grid grid-cols-3 gap-2 p-2"
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="options-menu"
+          <button
+            v-for="(theme, index) in themes"
+            :key="index"
+            class="theme-item block w-full text-center px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md"
+            role="menuitem"
+            tabindex="0"
+            @click="changeTheme(theme)"
           >
-            <button
-              v-for="(theme, index) in themes"
-              :key="index"
-              class="theme-item block w-full text-center px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md"
-              role="menuitem"
-              tabindex="0"
-              @click="changeTheme(theme)"
-            >
-              {{ theme }}
-            </button>
-          </div>
+            {{ theme }}
+          </button>
         </div>
-      </transition>
-    </div>
+      </div>
+    </transition>
   </div>
 </template>
 

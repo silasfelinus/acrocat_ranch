@@ -1,7 +1,14 @@
 <template>
-  <main
-    class="px-8 py-16 z-20 ml-4 rounded-lg shadow-lg bg-white p-6 flex-grow"
-  >
-    <slot />
-  </main>
+  <div class="h-screen flex flex-col">
+    <site-header />
+    <ButterflySwarm class="fixed z-50" />
+    <AmiSwarm class="fixed z-50" />
+    <div class="flex-grow flex flex-row pt-12">
+      <site-navigation />
+      <main>
+        <slot />
+        <screen-fx class="z-100" />
+      </main>
+    </div>
+  </div>
 </template>

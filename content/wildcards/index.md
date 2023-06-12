@@ -3,4 +3,4 @@ title: 'Wildcard Directory'
 layout: wildcard
 ---
 
-## DreamScenarios
+:wildcard-viewer

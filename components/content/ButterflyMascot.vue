@@ -60,6 +60,7 @@ onMounted(() => {
 <style scoped>
 body {
   background: #111;
+  pointer-events: none;
 }
 
 @keyframes flutter-left {
@@ -92,6 +93,7 @@ body {
   position: absolute;
   transform-style: preserve-3d;
   transform: rotate3d(1, 0.5, 0, 110deg);
+  pointer-events: none;
 }
 
 .left-wing,

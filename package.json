@@ -2,6 +2,7 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
+    "prisma": "npx prisma studio",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -29,6 +30,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@npmcli/fs": "^3.1.0",
     "@prisma/client": "^4.15.0",
     "daisyui": "^2.51.6",
     "got": "^13.0.0",

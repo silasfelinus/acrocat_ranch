@@ -1,5 +1,5 @@
 ---
-title: '🦋AMIbot - The Hyperkinetic Anti-Malaria Intelligence🦋'
+title: '🦋AMIbot🦋'
 description: 'Buzzing into action to swat the oversized impact of malaria, one mosquito net at a time!'
 layout: default
 image: backtree.webp

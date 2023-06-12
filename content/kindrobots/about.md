@@ -2,7 +2,7 @@
 title: 'About Page'
 description: Exactly what is this about after all?
 layout: default
-image: backtree.webp
+image: /backtree.webp
 gallery: splash
 ---
 

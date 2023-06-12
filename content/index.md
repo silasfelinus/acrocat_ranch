@@ -16,3 +16,5 @@ If you want to help, share this link to our fundraiser:
 https://www.againstmalaria.com/amibot
 
 [Kind Robots](/kindrobots)
+
+![Background](/images/backtree.webp)

@@ -8,5 +8,8 @@ export default defineNuxtConfig({
   },
   devtools: {
     enabled: true
+  },
+  app: {
+    layoutTransition: { name: 'layout', mode: 'out-in' }
   }
 })

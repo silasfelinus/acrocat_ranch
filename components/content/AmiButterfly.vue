@@ -177,6 +177,7 @@ onUnmounted(() => {
 <style scoped>
 body {
   background: #111;
+  pointer-events: none;
 }
 
 @keyframes flutter-left {
@@ -208,8 +209,8 @@ body {
   height: 100px;
   position: absolute;
   transform-style: preserve-3d;
-  z-index: -100;
   transform: rotate3d(1, 0.5, 0, 110deg);
+  pointer-events: none;
 }
 
 .left-wing,
@@ -218,6 +219,7 @@ body {
   height: 42px;
   position: absolute;
   top: 10px;
+  pointer-events: none;
 }
 
 .left-wing {
@@ -226,6 +228,7 @@ body {
   transform-origin: 24px 50%;
   transform: rotate3d(0, 1, 0, 20deg);
   animation: flutter-left 0.3s infinite;
+  pointer-events: none;
 }
 
 .right-wing {
@@ -233,21 +236,25 @@ body {
   transform: rotate3d(0, 1, 0, -20deg);
   transform-origin: 0px 50%;
   animation: flutter-right 0.3s infinite;
+  pointer-events: none;
 }
 
 .left-wing .top {
   right: 0;
+  pointer-events: none;
 }
 
 .top,
 .bottom {
   opacity: 0.7;
   position: absolute;
+  pointer-events: none;
 }
 .top {
   width: 20px;
   height: 20px;
   border-radius: 10px;
+  pointer-events: none;
 }
 
 .bottom {
@@ -255,5 +262,6 @@ body {
   width: 24px;
   height: 24px;
   border-radius: 12px;
+  pointer-events: none;
 }
 </style>

@@ -6,7 +6,4 @@ image: backtree.webp
 gallery: flower
 ---
 
-:art-gallery
-
-art
-:art-asset
+:gallery-viewer
