@@ -1,13 +1,10 @@
-import { PrismaClient } from '@prisma/client'
-
 // model User {
 // id          Int      @id @default(autoincrement())
 // email       String   @unique
 // name        String   @default("")
-// createdAt   DateTime @default(now())
-// updatedAt   DateTime @updatedAt
 // bio         String?
 // avatarImage String?
+import { PrismaClient, Prisma } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -20,7 +17,7 @@ export default defineEventHandler(async (event) => {
       .create({
         data: {
           email: body.email,
-          name: body.name || 'acrouser'
+          name: body.name || 'acroguest'
         }
       })
       .then((response) => {
