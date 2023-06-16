@@ -1,25 +1,25 @@
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-    <BotCard
+    <div
       v-for="bot in bots"
       :key="bot.name"
-      :name="bot.name"
-      :description="bot.description"
-      :avatar-image="bot.avatarImage"
-      :model="bot.model"
-      :post="bot.post"
-      :temperature="bot.temperature"
-      :max-tokens="bot.maxTokens"
-      :messages="bot.messages"
-      :class="{ 'ring-4 ring-blue-500': selectedBot === bot.name }"
+      class="card bordered"
+      :class="{ 'border-primary border-2': bot.isSelected }"
       @click="selectBot(bot)"
-    />
+    >
+      <figure>
+        <img :src="bot.avatarImage" />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">{{ bot.name }}</h2>
+        <p>{{ bot.description }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-let bots = ref([])
-let selectedBot = ref('')
+const bots = ref([])
 
 onMounted(async () => {
   try {
@@ -36,9 +36,9 @@ onMounted(async () => {
 
 const selectBot = (bot) => {
   bot.isSelected = !bot.isSelected
-  selectedBot.value = bot.name
 }
 </script>
+
 <style>
 img {
   width: 100%;

@@ -108,8 +108,6 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-
 let date = ref(new Date().toISOString().substr(0, 10))
 let clientName = ref('')
 let servicesProvided = ref('')
@@ -121,4 +119,65 @@ let clientEmail = ref('')
 let totalCost = computed(() => {
   return hours.value * rate.value + Number(productCost.value)
 })
+
+const submitForm = async (event) => {
+  event.preventDefault()
+
+  // Call the function to send the email
+  await sendBrevoEmail({
+    date: date.value,
+    clientName: clientName.value,
+    servicesProvided: servicesProvided.value,
+    hours: hours.value,
+    rate: rate.value,
+    productCost: productCost.value,
+    totalCost: totalCost.value,
+    clientEmail: clientEmail.value
+  })
+
+  // Clear the form
+  date.value = new Date().toISOString().substr(0, 10)
+  clientName.value = ''
+  servicesProvided.value = ''
+  hours.value = ''
+  rate.value = ''
+  productCost.value = ''
+  clientEmail.value = ''
+}
+
+const sendBrevoEmail = async (data) => {
+  const emailData = {
+    sender: { name: 'Your Name', email: 'your-email@example.com' },
+    to: [
+      { email: 'silasfelinus@gmail.com' },
+      { email: 'superkate@gmail.com' },
+      { email: data.clientEmail }
+    ],
+    subject: 'Hair by Superkate!',
+    htmlContent: `
+      <p>Date: ${data.date}</p>
+      <p>Client's Name: ${data.clientName}</p>
+      <p>Services Provided: ${data.servicesProvided}</p>
+      <p>Hours: ${data.hours}</p>
+      <p>Rate: ${data.rate}</p>
+      <p>Product Cost: ${data.productCost}</p>
+      <p>Total Cost: ${data.totalCost}</p>
+    `
+  }
+
+  try {
+    await $fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'api-key': process.env.BREVO_API_KEY,
+        accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(emailData)
+    })
+    console.log('Email sent')
+  } catch (error) {
+    console.error(`Error sending email: ${error}`)
+  }
+}
 </script>

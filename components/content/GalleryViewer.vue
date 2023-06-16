@@ -34,8 +34,6 @@
 </template>
 
 <script setup>
-import { ref, watchEffect, computed } from 'vue'
-
 const galleries = [
   'acrocats',
   'amibot',

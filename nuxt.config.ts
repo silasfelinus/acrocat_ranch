@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/content', 'nuxt-icon'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/content', 'nuxt-icon', '@pinia/nuxt'],
   css: ['~/assets/css/tailwind.css'],
   content: {
     documentDriven: true
@@ -10,6 +10,6 @@ export default defineNuxtConfig({
     enabled: true
   },
   app: {
-    layoutTransition: { name: 'layout', mode: 'out-in' }
+    layoutTransition: { name: 'default', mode: 'out-in' }
   }
 })

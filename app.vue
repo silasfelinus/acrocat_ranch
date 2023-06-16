@@ -1,9 +1,6 @@
 <template>
   <div class="min-h-screen bg-gradient-to-r from-primary to-secondary">
-    <div>
-      <NuxtPage />
-    </div>
-    <site-footer />
+    <NuxtPage />
   </div>
 </template>
 <style>

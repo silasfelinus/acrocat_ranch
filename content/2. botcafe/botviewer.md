@@ -1,0 +1,2 @@
+:prompt-window
+:bot-viewer

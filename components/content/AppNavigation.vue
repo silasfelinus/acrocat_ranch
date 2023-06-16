@@ -3,7 +3,7 @@
     <ul class="space-y-4">
       <li v-for="(item, index) in filteredNavigationTree" :key="index">
         <div
-          class="transform transition-all duration-200 hover:scale-105 bg-primary rounded-lg shadow-lg overflow-hidden grid grid-cols-4 gap-4"
+          class="transform transition-all duration-200 hover:scale-105 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-lg shadow-lg overflow-hidden grid grid-cols-4 gap-4"
         >
           <div v-if="level === 0" class="col-span-1">
             <img
@@ -12,10 +12,10 @@
               class="w-full h-full object-cover"
             />
           </div>
-          <div class="col-span-3 p-4 bg-secondary text-black rounded">
+          <div class="col-span-3 p-4 text-white rounded">
             <NuxtLink
               :to="item._path"
-              class="block text-center text-2xl font-semibold leading-tight text-black overflow-hidden overflow-ellipsis mb-4"
+              class="block text-center text-2xl font-bold leading-tight text-white overflow-hidden overflow-ellipsis mb-4"
             >
               {{ item.title }}
             </NuxtLink>
@@ -27,7 +27,7 @@
               >
                 <NuxtLink
                   :to="child._path"
-                  class="rounded-full bg-primary text-white text-sm px-4 py-2 m-1 hover:bg-accent transition-colors w-full text-center"
+                  class="rounded-full bg-primary text-white text-sm px-4 py-2 m-1 hover:bg-blue-600 transition-colors w-full text-center"
                 >
                   {{ child.title }}
                 </NuxtLink>

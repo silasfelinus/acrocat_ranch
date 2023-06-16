@@ -31,16 +31,6 @@ const stopDrag = () => {
 </script>
 
 <style scoped>
-.art-frame {
-  border: 10px solid #654321;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
 .art-frame.dragging {
   cursor: move;
 }
