@@ -66,5 +66,4 @@ watchEffect(() => {
   transform: scale(1) translate(-50%, -50%);
   opacity: 0;
 }
-
 </style>

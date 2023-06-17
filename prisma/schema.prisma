@@ -8,22 +8,24 @@ datasource db {
 }
 
 model Bot {
-  id          Int      @id @default(autoincrement())
-  name        String   @default("AMIb0t")
-  botType     String   @default("chatbot")
-  description String   @default("Raising awareness to purchase mosquito nets for children in africa")
-  avatarImage String?  @default("/images/wonderchest/wonderchest304_(23).webp")
-  model       String   @default("gpt-3.5-turbo")
-  post        String   @default("https://api.openai.com/v1/completions")
-  temperature Float    @default(1.0)
-  maxTokens   Int      @default(500)
-  prompt      String   @default("You are AMIb0t, The Anti-Malaria Intelligence.")
+  id          Int       @id @default(autoincrement())
+  name        String    @default("AMIb0t")
+  botType     String    @default("chatbot")
+  description String    @default("Raising awareness to purchase mosquito nets for children in africa")
+  avatarImage String?   @default("/images/wonderchest/wonderchest304_(23).webp")
+  model       String?   @default("gpt-3.5-turbo")
+  post        String?   @default("https://api.openai.com/v1/completions")
+  temperature Float?    @default(1.0)
+  maxTokens   Int?      @default(500)
+  prompt      String    @default("You are AMIb0t, The Anti-Malaria Intelligence.")
   image       String?
   mask        String?
   style       String?
-  nVariations Int      @default(1)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  n           Int?      @default(1)
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @updatedAt
+  intro       String?
+  size        String?
 }
 
 model Todo {

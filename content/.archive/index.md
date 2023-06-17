@@ -6,7 +6,6 @@ gallery: splash
 layout: default
 ---
 
-
 # Welcome to the Kind Robots Style Guide! 🤖
 
 ## Headers

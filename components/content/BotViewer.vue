@@ -3,16 +3,18 @@
     <div
       v-for="bot in bots"
       :key="bot.id"
-      class="card bordered"
-      :class="{ 'border-primary border-2': bot === selectedBot }"
-      @click="selectBot(bot)"
+      class="cursor-pointer"
+      @click="selectBot(bot.id)"
     >
-      <figure>
-        <img :src="bot.avatarImage" alt="Bot avatar" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">{{ bot.name }}</h2>
-        <p>{{ bot.description }}</p>
+      <div class="card bordered">
+        <figure>
+          <img :src="bot.imageUrl" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">{{ bot.title }}</h2>
+          <p v-if="selectedBot.id === bot.id">{{ bot.description }}</p>
+          <!-- Add more info here when the card is selected -->
+        </div>
       </div>
     </div>
   </div>
@@ -21,18 +23,9 @@
 <script setup>
 import { useBotStore } from '../../stores/bots'
 
-const botStore = useBotStore()
+const { bots, selectedBot, selectBot, updateBots } = useBotStore()
 
-const { bots, selectedBot, selectBot } = toRefs(botStore) // Using toRefs to make it reactive
-
-onMounted(() => {
-  botStore.fetchBots()
+onMounted(async () => {
+  await updateBots()
 })
 </script>
-
-<style>
-img {
-  width: 100%;
-  height: auto;
-}
-</style>
