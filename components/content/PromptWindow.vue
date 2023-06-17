@@ -39,5 +39,5 @@
 import { useBotStore } from '../../stores/bots'
 
 const store = useBotStore()
-const selectedBot = computed(() => store.selectedBot)
+const selectedBot = store.selectedBot
 </script>

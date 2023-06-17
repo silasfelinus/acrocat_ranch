@@ -1,0 +1,41 @@
+### Get bots
+GET https://kindrobots.org/api/bots
+Accept: application/json
+
+###
+
+### Get bot count
+GET https://kindrobots.org/api/bots/count
+Accept: application/json
+
+###
+
+### Update a bot
+PATCH https://kindrobots.org/api/bots/1
+Content-Type: application/json
+
+{
+  "name": "New Bot Name",
+  "prompt": "New Bot Prompt"
+}
+
+###
+
+### Create a bot
+POST https://kindrobots.org/api/bots
+Content-Type: application/json
+
+{
+  "name": "New Bot",
+  "botType": "chatbot",
+  "description": "A new bot for testing",
+  "avatarImage": "/images/new_bot.png",
+  "model": "gpt-3.5-turbo",
+  "post": "https://api.openai.com/v1/completions",
+  "temperature": 0.6,
+  "maxTokens": 100,
+  "prompt": "You are New Bot, a bot for testing.",
+  "n": 1
+}
+
+###

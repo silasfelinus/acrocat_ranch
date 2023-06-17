@@ -12,7 +12,9 @@
         </figure>
         <div class="card-body">
           <h2 class="card-title">{{ bot.title }}</h2>
-          <p v-if="selectedBot.id === bot.id">{{ bot.description }}</p>
+          <p v-if="selectedBot && selectedBot.id === bot.id">
+            {{ bot.description }}
+          </p>
           <!-- Add more info here when the card is selected -->
         </div>
       </div>

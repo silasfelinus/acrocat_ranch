@@ -19,8 +19,6 @@
         <p>Temperature: {{ bot.temperature }}</p>
         <p>Max Tokens: {{ bot.maxTokens }}</p>
         <p>Prompt: {{ bot.prompt }}</p>
-        <!-- Add more optional info here from the bot -->
-        <!-- Example for optional info -->
         <div v-if="bot.image">
           <p>Image: {{ bot.image }}</p>
         </div>

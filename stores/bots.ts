@@ -1,77 +1,57 @@
+// /stores/bots.ts
 import { defineStore } from 'pinia'
 import { Bot } from '../types/bot'
 import { localBots } from '../botMap'
 
-export const useBotStore = defineStore('bots', () => {
-  const bots = ref<Bot[]>([])
-  const selectedBot = ref<Bot>({} as Bot)
-
-  const loadBots = async () => {
-    try {
-      const response = await fetch('/api/bots') // Fetch bots from API
-      if (!response.ok) throw new Error('Failed to load bots from API')
-      const databaseBots = await response.json()
-      bots.value = [...localBots, ...databaseBots] // Merge local bots and database bots
-    } catch (error) {
-      console.error('Failed to load bots:', error)
-    }
-  }
-
-  const updateBots = async () => {
-    try {
-      const response = await fetch('/api/bots') // Fetch bots from API
-      if (!response.ok) throw new Error('Failed to update bots from API')
-      const databaseBots = await response.json()
-      bots.value = databaseBots // Update local bots with database bots
-    } catch (error) {
-      console.error('Failed to update bots:', error)
-    }
-  }
-
-  const selectBot = (botId: number) => {
-    const bot = bots.value.find((bot) => bot.id === botId)
-    if (bot) {
-      selectedBot.value = bot
-    }
-  }
-
-  const initializeDatabase = async () => {
-    try {
-      const response = await fetch('/api/bots/count') // Get bot count from API
-      if (!response.ok) throw new Error('Failed to fetch bot count from API')
-      const { count } = await response.json()
-      if (count === 0) {
-        // If the database is empty
-        for (const bot of localBots) {
-          // For each local bot
-          const response = await fetch('/api/bots', {
-            // Create bot through API
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(bot)
-          })
-          if (!response.ok) throw new Error('Failed to create bot in database')
+export const useBotStore = defineStore('bots', {
+  state: () => ({
+    bots: [] as Bot[],
+    selectedBot: null as Bot | null
+  }),
+  actions: {
+    async loadBots() {
+      try {
+        const response = await fetch('/api/bots', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
         }
+        const databaseBots: Bot[] = await response.json()
+        this.bots = [...localBots, ...databaseBots]
+      } catch (error) {
+        console.error('Failed to load bots:', error)
       }
-    } catch (error) {
-      console.error('Failed to initialize the database:', error)
+    },
+    async updateBots() {
+      try {
+        const response = await fetch('/api/bots', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const databaseBots: Bot[] = await response.json()
+        this.bots = databaseBots
+      } catch (error) {
+        console.error('Failed to update bots:', error)
+      }
+    },
+    selectBot(botId: Number) {
+      const bot = this.bots.find((bot) => bot.id === botId)
+      if (bot) {
+        this.selectedBot = bot
+      }
     }
-  }
-
-  // Initialize the database when the store is created
-  initializeDatabase()
-
-  // Load the bots when the store is created
-  loadBots()
-
-  return {
-    get bots() {
-      return bots.value
-    },
-    get selectedBot() {
-      return selectedBot.value
-    },
-    selectBot,
-    updateBots // Expose the updateBots function
   }
 })
+
+// Load the bots when the store is created
+const store = useBotStore()
+store.loadBots()
