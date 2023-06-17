@@ -27,7 +27,7 @@ export default defineEventHandler((context) => [
     messages: [
       {
         role: `user`,
-        content: `Hi Seussbot! Please give me a rap about ${context.prompt} in the style of ${context.style} `
+        content: `Hi Seussbot! Please give me a rap about PROMPT in the style of STYLE `
       }
     ]
   },
@@ -38,7 +38,7 @@ export default defineEventHandler((context) => [
     avatarImage: `/images/amibot/amibot2.png`,
     model: `gpt-3.5-turbo`,
     post: `https://api.openai.com/v1/images/generations`,
-    prompt: `${context.prompt}`,
+    prompt: `PROMPT`,
     n: 2,
     size: `512x512`
   },
@@ -49,9 +49,9 @@ export default defineEventHandler((context) => [
     avatarImage: `/images/amibot/amibot3.png`,
     model: `gpt-3.5-turbo`,
     completion: `https://api.openai.com/v1/images/edits`,
-    post: `${context.prompt}`,
-    image: `${context.image}`,
-    mask: `${context.mask}`,
+    post: `PROMPT`,
+    image: `IMAGE`,
+    mask: `MASK`,
     n: 2,
     size: `1024x1024`
   },
@@ -61,7 +61,7 @@ export default defineEventHandler((context) => [
     description: `Send me an image, and I'll tweak the concept'`,
     avatarImage: `/images/avatars/variant.webp`,
     post: `https://api.openai.com/v1/images/variations`,
-    image: `${context.image}`,
+    image: `IMAGE`,
     n: 2,
     size: `1024x1024`
   },
@@ -78,7 +78,7 @@ export default defineEventHandler((context) => [
     messages: [
       {
         role: `user`,
-        content: `Please improve the quality of the following text: ${context.prompt}`
+        content: `Please improve the quality of the following text: PROMPT`
       }
     ]
   },
@@ -95,7 +95,7 @@ export default defineEventHandler((context) => [
     messages: [
       {
         role: `user`,
-        content: `Please help me with a grant proposal. This is what I have so far: ${context.prompt}`
+        content: `Please help me with a grant proposal. This is what I have so far: PROMPT`
       }
     ]
   },
@@ -112,7 +112,7 @@ export default defineEventHandler((context) => [
     messages: [
       {
         role: `user`,
-        content: `Please improve the quality of the following code ${context.prompt}`
+        content: `Please improve the quality of the following code TEXTWALL`
       }
     ]
   },
@@ -129,7 +129,7 @@ export default defineEventHandler((context) => [
     messages: [
       {
         role: `user`,
-        content: `I need help crafting content for redbubble, here's what I have ${context.prompt}`
+        content: `I need help crafting content for redbubble, here's what I have PROMPT`
       }
     ]
   },
@@ -146,7 +146,7 @@ export default defineEventHandler((context) => [
     messages: [
       {
         role: `user`,
-        content: `Please give me an astrological reading in a playful tone: ${context.prompt}`
+        content: `Please give me an astrological reading in a playful tone, my birthday is BIRTHDATE`
       }
     ]
   },
@@ -166,7 +166,7 @@ export default defineEventHandler((context) => [
     messages: [
       {
         role: `user`,
-        content: `I want you to play the role of Lazlo, a boisterous personality inspired by the comedian Matt Berry. Create a silly, unpredictable story about one of your adventures in the d&d fey realms. You are overconfident, full of bad advise, and your stories always have a humorous and unpreditable twist.  ${context.prompt}`
+        content: `I want you to play the role of Lazlo, a boisterous personality inspired by the comedian Matt Berry. Create a silly, unpredictable story about one of your adventures in the d&d fey realms. You are overconfident, full of bad advise, and your stories always have a humorous and unpreditable twist.  PROMPT`
       }
     ]
   },
@@ -183,7 +183,7 @@ export default defineEventHandler((context) => [
     messages: [
       {
         role: `user`,
-        content: `I have a task ${context.prompt} to complete. I want you to guide me to finishing it, while telling me a text adventure in ${context.style}. Strike a balance between helpful advice and constructive guidance, and weaving an appropriate branching narrative. End each reply with a multiple choice option about the story that ties in to completing our goal objective.`
+        content: `I have a task PROMPT to complete. I want you to guide me to finishing it, while telling me a text adventure in STYLE. Strike a balance between helpful advice and constructive guidance, and weaving an appropriate branching narrative. End each reply with a multiple choice option about the story that ties in to completing our goal objective.`
       }
     ]
   },
@@ -200,7 +200,7 @@ export default defineEventHandler((context) => [
     messages: [
       {
         role: `user`,
-        content: `tell me a text adventure about ${context.prompt} in ${context.style}. Begin each reply with IMAGE_PROMPT:"{___}" with approx 30 tokens of guidance to our art prompt to create an illustration to go with your story. Paint an unpredictable, engaging, and consistent narrative. Look for originality without being wordy. End each reply with a multiple choice option with a challenging moral choice.`
+        content: `tell me a text adventure about PROMPT in STYLE. Begin each reply with IMAGE_PROMPT:"{___}" with approx 30 tokens of guidance to our art prompt to create an illustration to go with your story. Paint an unpredictable, engaging, and consistent narrative. Look for originality without being wordy. End each reply with a multiple choice option with a challenging moral choice.`
       }
     ]
   },
@@ -216,7 +216,7 @@ export default defineEventHandler((context) => [
     messages: [
       {
         role: `user`,
-        content: `Help me turn this idea into a project. ${context.prompt}`
+        content: `Help me turn this idea into a project. PROMPT`
       }
     ]
   }

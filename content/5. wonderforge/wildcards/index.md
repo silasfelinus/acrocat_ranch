@@ -4,4 +4,4 @@ layout: wildcard
 navigation: false
 ---
 
-:wildcard-viewer
+:dream-status

@@ -18,6 +18,7 @@
         ></circle>
       </svg>
     </transition-group>
+    <slot></slot>
   </div>
 </template>
 

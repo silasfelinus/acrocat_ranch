@@ -1,8 +1,8 @@
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
     <BotCard
-      v-for="bot in bots"
-      :key="bot.name"
+      v-for="bot in botStore.bots"
+      :key="bot.id"
       :name="bot.name"
       :description="bot.description"
       :avatar-image="bot.avatarImage"
@@ -11,34 +11,18 @@
       :temperature="bot.temperature"
       :max-tokens="bot.maxTokens"
       :messages="bot.messages"
-      :class="{ 'ring-4 ring-blue-500': selectedBot === bot.name }"
-      @click="selectBot(bot)"
+      :class="{ 'ring-4 ring-blue-500': botStore.selectedBot === bot }"
+      @click="botStore.selectBot(bot)"
     />
   </div>
 </template>
 
 <script setup>
-let bots = ref([])
-let selectedBot = ref('')
+import { useBotStore } from '../../stores/bots'
 
-onMounted(async () => {
-  try {
-    const res = await fetch('/botcafe/')
-    if (!res.ok) {
-      throw new Error('Failed to fetch bots')
-    }
-    const data = await res.json()
-    bots.value = data.map((bot) => ({ ...bot, isSelected: false }))
-  } catch (err) {
-    console.error(err)
-  }
-})
-
-const selectBot = (bot) => {
-  bot.isSelected = !bot.isSelected
-  selectedBot.value = bot.name
-}
+const botStore = useBotStore()
 </script>
+
 <style>
 img {
   width: 100%;

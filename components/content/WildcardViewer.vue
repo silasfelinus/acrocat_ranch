@@ -11,14 +11,7 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue'
-
-const wildcards = [
-  'dreams',
-  'morality',
-  'scenarios'
-  // Add more wildcards...
-]
+const wildcards = ['dreams', 'morality', 'scenarios']
 const selectedWildcard = ref(wildcards[0])
 const randomDream = ref(null)
 
@@ -27,7 +20,7 @@ const BASE_URL = process.env.BASE_URL || 'http://localhost:3000'
 watchEffect(async () => {
   try {
     const response = await fetch(
-      `${BASE_URL}/wildcards/${selectedWildcard.value}.md`
+      `${BASE_URL}/wonderforge/wildcards/${selectedWildcard.value}.md`
     )
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)

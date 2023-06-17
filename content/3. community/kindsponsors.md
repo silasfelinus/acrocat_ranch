@@ -14,11 +14,12 @@ We chose to support this cause because it's an efficient way to make a significa
 If you can donate, please do. If not, sharing the link can create an EVEN GREATER IMPACT. We are here to spread positivity and pure intentions. We are here to make the world a better place. If you know others who share these values, please introduce them to us. We want to connect with those who aspire to make a positive change in the world. That's why we started this journey, to unite artists and prompt engineers who care about the future. Thank you for being a part of our mission.
 
 Now, let's give a shout-out to our Kind Sponsors:
+// [Link](/url)
 
-Cafe Purr, where art meets love for felines: https://www.redbubble.com/people/CafePurr/shop
+Cafe Purr, North Coast's own digital Art gallery and foster kitten rescue [Cafe Purr](https://www.redbubble.com/people/CafePurr/shop)
 
-Mermaids of Venice, a magical tale penned by Silas Knight: https://www.amazon.com/Mermaids-Venice-Silas-Knight/dp/0615516742
+Mermaids of Venice, a magical tale penned by Silas Knight: [Mermaids](https://www.amazon.com/Mermaids-Venice-Silas-Knight/dp/0615516742)
 
-Hair by Superkate, where style meets individuality: https://www.hairbysuperkate.com
+Hair by Superkate, where style meets individuality: [Amazing Hair](https://www.hairbysuperkate.com)
 
-If you wish to join our list of Kind Sponsors, please flutter a message to kindsponsors@kindrobots.org. We look forward to welcoming you to our hive!
+If you wish to join our list of Kind Sponsors, please flutter a message to Mailto: kindsponsors@kindrobots.org. We look forward to welcoming you to our hive!

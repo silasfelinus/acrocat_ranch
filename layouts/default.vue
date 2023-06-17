@@ -1,15 +1,16 @@
 <template>
   <div class="h-screen flex flex-col">
-    <site-header><front-matter /></site-header>
+    <site-header></site-header>
     <ButterflySwarm class="fixed z-50" />
     <AmiSwarm class="fixed z-50" />
     <div class="flex-grow flex flex-row pt-12">
       <site-navigation style="min-width: 200px" />
-      <main class="relative">
-        <screen-fx class="absolute inset-0 z-0"></screen-fx>
-        <transition name="fade" mode="out-in">
-          <slot class="relative z-10" />
-        </transition>
+      <main class="relative flex-grow">
+        <screen-fx class="absolute inset-0 z-0">
+          <transition name="fade" mode="out-in">
+            <slot class="relative z-10" /> </transition
+        ></screen-fx>
+
         <site-footer />
       </main>
     </div>
