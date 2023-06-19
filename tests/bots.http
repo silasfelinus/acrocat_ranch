@@ -5,7 +5,7 @@ Accept: application/json
 ###
 
 ### Get bot by ID
-GET https://kindrobots.org/api/bots/1
+GET https://kindrobots.org/api/bots/6
 Accept: application/json
 
 ###
@@ -52,21 +52,34 @@ Content-Type: application/json
 
 ###
 
-### Create bots
-POST https://kindrobots.org/api/bots
+### Create multiple bots
+POST https://kindrobots.org/api/bots/createmany
 Content-Type: application/json
 
-{
-  "name": "New Bot",
-  "botType": "chatbot",
-  "description": "A new bot for testing",
-  "avatarImage": "/images/new_bot.png",
-  "model": "gpt-3.5-turbo",
-  "post": "https://api.openai.com/v1/completions",
-  "temperature": 0.6,
-  "maxTokens": 100,
-  "prompt": "You are New Bot, a bot for testing.",
-  "n": 1
-}
-
+[
+  {
+    "name": "New Bot 1",
+    "botType": "chatbot",
+    "description": "First bot for testing",
+    "avatarImage": "/images/new_bot1.png",
+    "model": "gpt-3.5-turbo",
+    "post": "https://api.openai.com/v1/completions",
+    "temperature": 0.6,
+    "maxTokens": 100,
+    "prompt": "You are New Bot 1, a bot for testing.",
+    "n": 1
+  },
+  {
+    "name": "New Bot 2",
+    "botType": "chatbot",
+    "description": "Second bot for testing",
+    "avatarImage": "/images/new_bot2.png",
+    "model": "gpt-3.5-turbo",
+    "post": "https://api.openai.com/v1/completions",
+    "temperature": 0.7,
+    "maxTokens": 150,
+    "prompt": "You are New Bot 2, a bot for testing.",
+    "n": 1
+  }
+]
 ###
