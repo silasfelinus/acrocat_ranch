@@ -3,6 +3,8 @@ import { defineStore } from 'pinia'
 import { Bot } from '../types/bot'
 import { localBots } from '../botMap'
 
+const API_BASE_URL = process.env.APP_URL || 'http://localhost:3000'
+
 export const useBotStore = defineStore('bots', {
   state: () => ({
     bots: [] as Bot[],
@@ -11,7 +13,7 @@ export const useBotStore = defineStore('bots', {
   actions: {
     async loadBots() {
       try {
-        const response = await fetch('/api/bots', {
+        const response = await fetch(`${API_BASE_URL}/api/bots`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -28,7 +30,7 @@ export const useBotStore = defineStore('bots', {
     },
     async updateBots() {
       try {
-        const response = await fetch('/api/bots', {
+        const response = await fetch(`${API_BASE_URL}/api/bots`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'

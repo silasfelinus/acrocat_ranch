@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
     <div
-      v-for="bot in bots"
+      v-for="bot in botStore.bots"
       :key="bot.id"
       class="cursor-pointer"
       @click="selectBot(bot.id)"
@@ -25,9 +25,5 @@
 <script setup>
 import { useBotStore } from '../../stores/bots'
 
-const { bots, selectedBot, selectBot, updateBots } = useBotStore()
-
-onMounted(async () => {
-  await updateBots()
-})
+const botStore = useBotStore()
 </script>
