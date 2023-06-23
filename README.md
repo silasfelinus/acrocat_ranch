@@ -135,7 +135,7 @@ Message: [id, content, conversationId]
 Conversation: [id, content]
 Prompt: [id, content, isNsfw]
 Tag: [id, name]
-User: [id, email, name]
+User: [id, email, userName, realName]
 Wildcard: [id, name, data]
 
 [TODOS]

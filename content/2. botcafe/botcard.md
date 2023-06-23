@@ -1,10 +1,9 @@
 ---
-title: 'Bot Viewer'
-description: 'Welcome to the Bot Viewer'
+title: 'Bot Card'
+description: 'Selected Bot Card'
 layout: default
 image: backtree.webp
 gallery: wonderbots
 ---
 
 :bot-card
-:bot-viewer

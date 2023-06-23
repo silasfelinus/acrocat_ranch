@@ -6,15 +6,13 @@
 // updatedAt   DateTime @updatedAt
 // bio         String?
 // avatarImage String?
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import prisma from '../prisma'
 
 export default eventHandler(async (event) => {
   const body = await readBody(event)
   const id = body.id
   const email = body.email
-  const name = body.name
+  const userName = body.name
 
   if (!(id && email))
     return createError({
@@ -30,7 +28,7 @@ export default eventHandler(async (event) => {
         id
       },
       data: {
-        name,
+        userName,
         email
       }
     })

@@ -1,29 +1,23 @@
-// model User {
-// id          Int      @id @default(autoincrement())
-// email       String   @unique
-// name        String   @default("")
-// bio         String?
-// avatarImage String?
-import { PrismaClient } from '@prisma/client'
+// server/api/auth/signup.ts
+import { hash } from 'bcrypt'
+import prisma from './../prisma'
 
-const prisma = new PrismaClient()
-
-export default defineEventHandler(async (event) => {
+export default eventHandler(async (event) => {
   const body = await readBody(event)
-  let user = null
+  const email = body.email
+  const password = body.password
+  const hashedPass = await hash(password, 10)
 
-  if (body.email)
-    await prisma.user
-      .create({
-        data: {
-          email: body.email,
-          name: body.name || 'acroguest'
-        }
-      })
-      .then((response) => {
-        user = response
-      })
-  return {
-    user
+  try {
+    const user = await prisma.user.create({
+      data: {
+        email,
+        hashedPass
+        // include other fields as necessary
+      }
+    })
+    return { status: 201, body: user }
+  } catch (err) {
+    return { status: 400, body: { error: 'Email already exists' } }
   }
 })

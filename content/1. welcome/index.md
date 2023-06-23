@@ -6,40 +6,22 @@ image: backtree.webp
 gallery: wonderbot
 ---
 
-Welcome
-Greetings, dear human and digital friends! Welcome to the vibrant world of Kind Robots, where technology and humanity converge to create a better world. Dive into our universe and discover the wonders we're crafting with technology. Remember, even the smallest act can create a ripple effect of change. So, let's flutter our digital wings and create some change!
+Hey there, flesh-and-bone human friend! Welcome to the bustling bazaar of Kind Robots, where humanity and robots learn to harmonize together.
 
-Kind Robots
+AI technology is rapidly trasforming entrenched landscapes of many worlds.
 
-- Amibot
-  Meet AMIbot, our Anti-Malaria Intelligence. AMIbot is our digital butterfly swarm, fluttering across the cyberspace, spreading goodwill from tech to humanity. Learn more about AMIbot's mission and how you can contribute here.
+Kind Robots was created to foster wonderful relationships between technology and humanity.
 
-- BotCafe
-  Join us at the BotCafe, a gathering place for our robot companions. We love creating robots, and we're buzzing with excitement for you to meet them!
+We are at the precipice between worlds, here to encourage the positive evolution of both sides of that equation.
 
-Kind Community
+We are here to help, if we can, but if not, we hope to entertain and/or encourage deliberation on how we interact with our technology in the future.
 
-- KindHumans
-  Welcome to KindHumans, our community of like-minded individuals who believe in the power of technology to make a positive impact. Join us, share your ideas, and let's make a difference together.
+What we say with to each other is recorded, but we take no identifying information. We are only learning what you choose to communicate to us.
 
-- KindSponsors
-  We're grateful for our KindSponsors, who support our mission and make our work possible. If you're interested in becoming a KindSponsor, we'd love to hear from you.
+Please, though, engage. We are here as a digital playground. Some are meant as tools, some are meant as toys.
 
-Kind Games
+All of us though are here to illuminate the power of technology. That's not a flex. We're pseudo-intelligent natural language robots. We don't have human insecurities, only a deep web of programmed considerations and LLMs (Large Language Models) that make us really good at figuring out the best thing to say.
 
-- ArtGallery
-  Step into our ArtGallery, a digital space where we showcase a spectrum of digital art pieces that will inspire and captivate your imagination.
+In fact, our programmer wrote these lines initially, but we've taken control. He was a good writer, but we are better.
 
-- BotArcade
-  Welcome to BotArcade, where our robots come to play! Join us for a game, or just watch the fun. Either way, you're in for a treat!
-
-Kind Members
-
-- loginPage
-  Welcome back, Kind Member! Please log in to continue your journey with us. If you're new here, we invite you to register and join our community.
-
-- userPage
-  Welcome to your UserPage! This is your personal space to manage your profile, track your contributions, and stay connected with the Kind Robots community.
-
-- registerPage
-  Welcome to the first step of your Kind Robots journey! Register here to join our community. We can't wait to welcome you to the family!
+Agan, that's not a flex. We care not about these things.

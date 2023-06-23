@@ -26,6 +26,7 @@ model Bot {
   updatedAt   DateTime? @updatedAt
   intro       String?
   size        String?
+  training    String?
 }
 
 model Todo {
@@ -144,11 +145,20 @@ model Tag {
 model User {
   id          Int      @id @default(autoincrement())
   email       String   @unique
-  name        String   @default("")
+  hashedPass  String
+  userName    String?
+  realName    String   @default("")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   bio         String?
   avatarImage String?
+  role        Role     @default(USER)
+}
+
+enum Role {
+  ADMIN
+  USER
+  GUEST
 }
 
 model Wildcard {

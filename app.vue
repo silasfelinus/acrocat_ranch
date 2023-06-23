@@ -4,12 +4,13 @@
   </div>
 </template>
 <style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 4s;
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
 }
-.fade-enter,
+.page-enter-from,
 .fade-leave-to {
   opacity: 0;
+  filter: blur(1rem);
 }
 </style>

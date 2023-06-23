@@ -1,19 +1,19 @@
-// server/api/bots/[id].get.ts
+// server/api/users/[id].get.ts
 import prisma from '../prisma'
 
 export default defineEventHandler(async (event) => {
   const id = Number(event.context.params?.id)
-  const bot = await prisma.bot.findUnique({
+  const user = await prisma.user.findUnique({
     where: {
       id: Number(id)
     }
   })
-  if (!bot) {
+  if (!user) {
     const notFoundError = createError({
       statusCode: 404,
-      statusMessage: 'Bot not found '
+      statusMessage: 'User not found '
     })
     sendError(event, notFoundError)
   }
-  return bot
+  return user
 })

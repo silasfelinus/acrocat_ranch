@@ -1,46 +1,50 @@
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-    <div
-      v-for="bot in bots"
-      :key="bot.id"
-      class="card bordered"
-      :class="{ 'ring-4 ring-blue-500': selectedBot === bot }"
-      @click="selectBot(bot.id)"
-    >
-      <figure>
-        <img :src="bot.avatarImage" alt="bot avatar" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">{{ bot.name }}</h2>
-        <p>{{ bot.description }}</p>
-        <p>Type: {{ bot.botType }}</p>
-        <p>Model: {{ bot.model }}</p>
-        <p>Post: {{ bot.post }}</p>
-        <p>Temperature: {{ bot.temperature }}</p>
-        <p>Max Tokens: {{ bot.maxTokens }}</p>
-        <p>Prompt: {{ bot.prompt }}</p>
-        <!-- Add more optional info here from the bot -->
-        <!-- Example for optional info -->
-        <div v-if="bot.image">
-          <p>Image: {{ bot.image }}</p>
-        </div>
-      </div>
-    </div>
+  <div v-if="botStore.selectedBot" class="p-4 bg-white rounded shadow-md">
+    <h2 class="text-2xl font-semibold">{{ botStore.selectedBot.name }}</h2>
+    <h3 class="text-xl">{{ botStore.selectedBot.description }}</h3>
+    <TemperatureSlider
+      v-if="botStore.selectedBot.temperature"
+      :initial-value="botStore.selectedBot.temperature"
+    />
+    <TextWall
+      v-if="botStore.selectedBot.intro"
+      :initial-value="botStore.selectedBot.intro"
+    />
+    <CodeWall
+      v-if="botStore.selectedBot.style"
+      :initial-value="botStore.selectedBot.style"
+    />
+    <ImageUpload
+      v-if="botStore.selectedBot.image"
+      :initial-value="botStore.selectedBot.image"
+    />
+    <UrlInput
+      v-if="botStore.selectedBot.mask"
+      :initial-value="botStore.selectedBot.mask"
+    />
+    <PromptInput
+      v-if="botStore.selectedBot.prompt"
+      :initial-value="botStore.selectedBot.prompt"
+    />
+    <SubmitButton @submit="handleSubmit" />
   </div>
 </template>
 
 <script setup>
 import { useBotStore } from '../../stores/bots'
+import TemperatureSlider from './TemperatureSlider.vue'
+import TextWall from './TextWall.vue'
+import CodeWall from './CodeWall.vue'
+import ImageUpload from './ImageUpload.vue'
+import UrlInput from './UrlInput.vue'
+import PromptInput from './PromptInput.vue'
+import SubmitButton from './SubmitButton.vue'
 
-const store = useBotStore()
-const bots = store.bots
-const selectedBot = store.selectedBot
-const selectBot = store.selectBot
-</script>
+const botStore = useBotStore()
 
-<style scoped>
-img {
-  width: 100%;
-  height: auto;
+const emit = defineEmit(['submit'])
+
+const handleSubmit = () => {
+  emit('submit')
 }
-</style>
+</script>

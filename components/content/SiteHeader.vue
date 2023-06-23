@@ -5,7 +5,7 @@
     <site-title />
     <dream-status />
     <!-- AMI Link -->
-    <AmiLink class="z-20 fixed bottom-4 right-4" />
+    <AmiLink class="z-0 fixed bottom-4 right-4" />
     <div class="flex items-center justify-end flex-grow">
       <ThemeChange />
     </div>
