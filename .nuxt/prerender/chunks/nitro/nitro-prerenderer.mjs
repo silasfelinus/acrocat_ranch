@@ -76,7 +76,7 @@ const _inlineRuntimeConfig = {
     "content": {
       "locales": [],
       "defaultLocale": "",
-      "integrity": 1687573136801,
+      "integrity": 1687642854429,
       "experimental": {
         "stripQueryParameters": false,
         "clientDB": false
@@ -3963,7 +3963,7 @@ const handlers = [
   { route: '/api/_content/query/:qid/**:params', handler: _ZjxyFR, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query/:qid', handler: _ZjxyFR, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query', handler: _ZjxyFR, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/cache.1687573136801.json', handler: _qTkfUb, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/cache.1687642854429.json', handler: _qTkfUb, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid/**:params', handler: _uXrim0, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid', handler: _uXrim0, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation', handler: _uXrim0, lazy: false, middleware: false, method: "get" },

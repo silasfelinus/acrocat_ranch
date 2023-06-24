@@ -1,1 +1,0 @@
-import{af as o,ag as n,z as i,Z as t}from"./entry.98fcb2f1.js";const a=o({model:"gpt-3.5-turbo",completion:"https://api.openai.com/v1/completions"}),e={},f=n(a,e);function c(){const p=t();return p._appConfig||(p._appConfig=i(f)),p._appConfig}export{c as u};
