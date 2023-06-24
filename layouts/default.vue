@@ -1,16 +1,9 @@
 <template>
   <div class="h-screen flex flex-col">
-    <site-header></site-header>
+    <page-list />
     <div class="flex-grow flex flex-row pt-12">
-      <site-navigation style="min-width: 200px" />
-      <main class="relative flex-grow">
-        <screen-fx class="absolute inset-0 z-0">
           <transition name="fade" mode="out-in">
-            <slot class="relative z-10" /> </transition
-        ></screen-fx>
-
-        <site-footer />
-      </main>
+            <slot class="relative z-10" /> </transition>
     </div>
   </div>
 </template>

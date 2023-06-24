@@ -1,0 +1,70 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "paths": {
+      "#imports": [
+        "/home/silasfelinus/code/kindrobots/.nuxt/types/nitro-imports"
+      ],
+      "#paths": [
+        "/home/silasfelinus/code/kindrobots/node_modules/nuxt/dist/core/runtime/nitro/paths"
+      ],
+      "~": [
+        "/home/silasfelinus/code/kindrobots"
+      ],
+      "~/*": [
+        "/home/silasfelinus/code/kindrobots/*"
+      ],
+      "@": [
+        "/home/silasfelinus/code/kindrobots"
+      ],
+      "@/*": [
+        "/home/silasfelinus/code/kindrobots/*"
+      ],
+      "~~": [
+        "/home/silasfelinus/code/kindrobots"
+      ],
+      "~~/*": [
+        "/home/silasfelinus/code/kindrobots/*"
+      ],
+      "@@": [
+        "/home/silasfelinus/code/kindrobots"
+      ],
+      "@@/*": [
+        "/home/silasfelinus/code/kindrobots/*"
+      ],
+      "assets": [
+        "/home/silasfelinus/code/kindrobots/assets"
+      ],
+      "assets/*": [
+        "/home/silasfelinus/code/kindrobots/assets/*"
+      ],
+      "public": [
+        "/home/silasfelinus/code/kindrobots/public"
+      ],
+      "public/*": [
+        "/home/silasfelinus/code/kindrobots/public/*"
+      ],
+      "pinia": [
+        "/home/silasfelinus/code/kindrobots/node_modules/pinia/dist/pinia"
+      ],
+      "#content/server": [
+        "/home/silasfelinus/code/kindrobots/node_modules/@nuxt/content/dist/runtime/server/index"
+      ]
+    }
+  },
+  "include": [
+    "/home/silasfelinus/code/kindrobots/.nuxt/types/nitro-nuxt.d.ts",
+    "./types/nitro.d.ts",
+    "../**/*",
+    "../server/**/*"
+  ]
+}

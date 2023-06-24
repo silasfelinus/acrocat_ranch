@@ -1,0 +1,1 @@
+import t from"./AmiLink.5f91df12.js";import{_ as e,o as c,c as n,b as _}from"./entry.98fcb2f1.js";import"./SiteLogo.0588dd40.js";import"./logo.b32d350d.js";const r={},s={class:"fixed bottom-4 right-4 z-20"};function m(a,i){const o=t;return c(),n("footer",s,[_(o)])}const x=e(r,[["render",m]]);export{x as default};

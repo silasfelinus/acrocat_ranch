@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as o}from"./entry.98fcb2f1.js";const c={},n={class:"site-title text-4xl font-bold text-center text-accent-600 bg-secondary p-2 rounded-lg shadow-lg"};function s(_,r){return e(),o("h1",n," Kind Robots ")}const d=t(c,[["render",s]]);export{d as default};

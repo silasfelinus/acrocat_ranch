@@ -73,8 +73,7 @@ https://github.com/prisma/prisma-examples/tree/latest/javascript/rest-nuxtjs
 https://github.com/nuxt/content/blob/main/src/runtime/pages/document-driven.vue
 
 [ORGANIZATION]
-Acrocat Ranch (About Us)- Our parent organization. Home of the Knight family and Acrocat Foster Kitten Rescue, located among the redwoods on the Pacific Northcoast. about Us
-Cafe Purr (Giftshop) - Curated digital art gallery and Non-Evil Art Museum.
+Acrocat Ranch (About Us)- Our parent organization. Home of the Knight family and Acrocat Foster Kitten Rescue, located among the redwoods on the Pacific Northcoast.
 Kind Robots (tech gallery)- Friendly tech for humans
 Welcome,
 WonderForge
@@ -114,170 +113,32 @@ README.md
 tailwind.config.js
 tsconfig.json
 
-[PAGES CONTENT]
-Catch-all pages slug displays <NuxtPage> routes for md json and yaml files in our content directory. <NuxtLayout> assigns a layout matched to our layout/ vues read from the markdown front matter. Double colons can be used to pass props in yaml syntax for better readability.
 
 [COMPONENTS]
-all components in components/content are accessible within markdown files using :butterfly-swarm syntax.
+all components in components/content are accessible within markdown files using colon-component syntax, eg :butterfly-swarm 
 
 [PROPS]
 Props can be passed by using a key=value syntax.
 :butterfly-swarm{count=100 pattern="random"}
 
 [DIRECTORY]
-acrocatranch - Acrocat Rescue About Us
-amibot - AMI interface and social network hub
-botcafe - Chatgpt prompt interfaces & Games Arcade
-cafepurr - multimedia art gallery & public content creator
-kindrobots - Welcome Page & Mission Statement
-mermaids - giftshop & redbubble
-wildcards - stable diffusion art generation with wildcard prompts
-wonderforge - github code showcase and projects in development
 
-[SCHEMA]
-Bot: [id, name, type, description, intro, training, avatarImage]
-Todo: [id, content, category, isFinished, user]
-Gallery: [id, name, content, description, isNSFW, isAuth, user]
-Checkpoint: [id, name, hash, isNSFW, user]
-Embedding: [id, name, content, description, type, isNSFW]
-Image: [id, path, isNSFW, isFavorite, creator]
-Message: [id, content, conversationId]
-Conversation: [id, content]
-Prompt: [id, content, isNsfw]
-Tag: [id, name]
-User: [id, email, name]
-Wildcard: [id, name, data]
 
 [TODOS]
 
-1. Add Prisma CRUD, starting with Tag
-2. Test CRUD on wildcard database.
-3. Create front-page navigation.
-4. Create a chatbot portal using GPT-3.
-5. create project management page
-6. Develop a live chat page.
-7. Rebuild AMI.
-8. Generate AMI art.
-9. Develop AMI choice boxes.
-10. Write an AMI story page.
-11. Develop an AMI task manager.
-12. Recreate BotCafe.
-13. Implement file upload functionality.
-14. Improve butterfly AI.
-15. Schedule API calls for automatic art creation.
-16. Connect to Prisma hosted galleries.
-17. Develop a gallery portal viewer.
-18. Create a page for sorting art.
-19. Display local content pages.
-20. Implement user login, registration, and personal dashboard.
-21. Wildcard Randomizer: Start working on the development of a wildcard randomizer feature.
-22. create chatgpt plugin so chatgpt can better assist with this development
 
-[pages notes]
-help me with my website layout. We are using daisyui components and tailwind. mobile first design. The code works, but the layout has been cobbled together from multiple projects, and it needs to be more cohesive, with transitions, consistent style and use of daisyui themes, non-overlapping interfaces (other than transitions and our butterfly mascot).
-Here are the elements and whereabouts they should be:
 
-This is a desktop design. Please make sensible choices for this and mobile:
 
 NavigationWidget: our sidebar. SHOULD NOT FLEX. Start open, partial collapse toggle to icons. Consistent width when open. daisyui. The NavigationWidget is our portal to the rest of the pages.
 
 MainNav: hasn't yet been coded. Should dynamically generate routes based on contents/pages and display them as an accordion nav with images.
 
-screenFX: (currently implemented as SoapBubbles). A portal viewer into a screen background. When clicked, should toggle between LavaLamp, RainEffect, and SoapBubbles
-
 AmiLink: a Stylized link to our fundraiser, it should always be accesible somewhere on the screen. It would be wonderful if it changed locations depending on layouts.
 
 botCafe: container advertising our botCafe (image link to a random image listed in /images/botcafe/gallery.json)
 
-ButterflySwarm: this is mostly css, it's borders should be the screen display, whatever makes sense.
-
 ThemeChange: this is a button toggle and menu. it integrates with daisyui. We have it installed and configured, we just need to make sure it's always pressable. It doesn't need to be where it is.
 
-RandomWildcard: A whimsical status notification that $fetch a random entry from our wildcard json at (/wildcards/dreams), and then display it as a status notification. it needs to be readable, and updates to a new dream every minute with a transition.
+RandomWildcard: A randomizer for entertaining loading verbiage.
 
-LoginCookie: Not added to current page, but should be included, it will motivate me to add the real auth, which is very important.
-
-SubmissionForm: is a link to our first sponsor's webform. That should be represented by a bubble button.
-
-NuxtPage: is our main screen display. We do our SSR magic on this page. I am wary of cyclical code errors because nuxt does a lot of prepackaging of elements, and I'm worried about circular calls to NuxtPage, NuxtLayout, and Nuxt routes aka ContentDoc. So far though, it seems to be working (though loading is slow)
-
-NuxtLayout: our layouts are curently very bare-bones, and are meant to style the NuxtPages specifically.
-
-ContentDoc: My hope is that this is configured properly to avoid circular errors. it should be App.vue > NuxtPage > Nuxt Layout > ContentDoc
-
-[App.vue]
-<template>
-
-  <div>
-    <div>
-      <NuxtPage />
-    </div>
-    <footer class="fixed bottom-4 right-4 z-20">
-      <AmiLink />
-    </footer>
-  </div>
-</template>
-
-[pages ...slug]
-<template>
-
-  <div class="h-screen flex flex-col">
-    <header class="site-header fixed w-full z-100 bg-transparent">
-      <div class="container mx-auto px-6 sm:px-8 lg:px-10">
-        <div class="flex items-center justify-between h-16">
-          <!-- Logo -->
-          <div class="flex items-center">
-            <div class="site-logo">
-              <SiteLogo />
-            </div>
-            <div class="ml-3 site-title text-gray-800">
-              <SiteTitle />
-            </div>
-            <div>LoginCookie</div>
-          </div>
-          <ScreenFx class="absolute w-full h-full z-10" />
-
-          <!-- Theme Change -->
-          <div class="theme-change">
-            <ThemeChange />
-          </div>
-        </div>
-      </div>
-      <!-- Butterfly Swarm -->
-      <ButterflySwarm />
-    </header>
-    <div class="flex-grow flex flex-row">
-      <nav
-        class="w-64 bg-white p-4 overflow-y-auto transition-all duration-300 shadow-lg rounded-r-lg max-h-screen"
-      >
-        <NavigationWidget :navigation-tree="navigation" />
-      </nav>
-      <div class="flex-grow p-4 overflow-auto">
-        <NuxtLayout>
-          <main class="prose mx-auto">
-            <ContentDoc />
-          </main>
-        </NuxtLayout>
-      </div>
-      <div
-        class="w-64 bg-white p-4 overflow-auto h-full transition-all duration-300 shadow-lg rounded-l-lg"
-      >
-        <div class="rounded-lg bg-gray-200 p-4">
-          <!-- Image viewport -->
-          <img
-            src="/images/background/background001.webp"
-            alt="Art"
-            class="object-cover h-64 w-full rounded-lg"
-          />
-        </div>
-      </div>
-    </div>
-
-  </div>
-</template>
-
-<script setup>
-const { data: navigation } = await useAsyncData('navigation', () => {
-  return fetchContentNavigation()
-})
-</script>
+ContentDoc: App.vue > NuxtPage > Nuxt Layout > ContentDoc. Content Doc gives a 1:1 mapping to pages and the content directory. 

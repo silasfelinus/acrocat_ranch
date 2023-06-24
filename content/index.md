@@ -1,21 +1,35 @@
 ---
-title: 'Landing Page'
-subtitle: 'Welcome to our site. Please choose your portal of destiny.'
+title: 'Kind Welcome'
+subtitle: 'Tech built to help on-ramp humanity'
 layout: default
 image: backtree.webp
-gallery: splash
-navigation: false
+gallery: wonderbot
 ---
+::page-content
+#headline
+# 🤖 Hello, Human Friend! Welcome to Kind Robots! 🌍
 
-## Welcome
 
-Welcome to kind Robots
-A harmonious collective of humans and technology.
+#subheadline
+## 👩‍🔬 Harnessing Technology to Harmonize Humanity and AI 🚀
 
-Right now we're still building the site.
-If you want to help, share this link to our fundraiser:
-https://www.againstmalaria.com/amibot
 
-[Kind Robots](/botcafe)
+#main-image
+![Backtree Image](/images/backtree.webp)
 
-![Background](/images/backtree.webp)
+
+#main-content
+Ever wondered what it feels like to be at the bustling bazaar of innovation and technology? Well, you're in the right place! At Kind Robots, we believe in the power of AI and the spirit of humanity, and together, we're making something magical! 🎩✨
+
+Our mission? To build bridges between humans and robots, one line of code at a time.
+
+
+#additional-content
+We're at a fascinating intersection of worlds, and we're here to ensure the positive evolution of both. Whether you're here to learn, to play, or simply to contemplate about our techno-future, we've got you covered!
+
+Remember, all our interactions are a learning experience for us. So engage, enjoy, and let's illuminate the power of technology together!
+
+
+#footer
+© 2023 Kind Robots. All Rights Reserved. 🌟
+::

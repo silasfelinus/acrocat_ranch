@@ -1,0 +1,1 @@
+import{_ as e}from"./logo.b32d350d.js";import{_ as t,o,c as s,a as c}from"./entry.98fcb2f1.js";const n={},_={class:"site-logo flex items-center justify-center p-2 rounded-lg bg-white shadow-lg"},r=c("img",{class:"w-16 h-16 object-contain",src:e,alt:"Site Logo"},null,-1),a=[r];function i(l,d){return o(),s("div",_,a)}const p=t(n,[["render",i]]);export{p as default};

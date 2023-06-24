@@ -33,7 +33,7 @@ const props = defineProps({
 })
 
 const cardColor = computed(() => {
-  const baseColors = ['bg-primary', 'bg-secondary', 'bg-accent', 'bg-warning']
+  const baseColors = ['bg-accent', 'bg-secondary', 'bg-accent', 'bg-warning']
   return baseColors[props.colorId - 1] || baseColors[0]
 })
 
