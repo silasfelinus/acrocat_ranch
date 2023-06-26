@@ -41,7 +41,7 @@ model Todo {
 
 model Gallery {
   id             Int      @id @default(autoincrement())
-  name           String   @default("")
+  name           String   @unique
   content        String   @default("")
   description    String   @default("")
   highlightImage String?

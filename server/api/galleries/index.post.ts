@@ -1,18 +1,4 @@
-// model Gallery {
-//   id             Int      @id @default(autoincrement())
-//  name           String   @default("")
-//   content        String   @default("")
-//   description    String   @default("")
-//   highlightImage String?
-//   isNSFW         Boolean  @default(false)
-//   isAuth         Boolean  @default(false)
-//  user           String   @default("cafepurr")
-//  createdAt      DateTime @default(now())
-//  updatedAt      DateTime @updatedAt
-
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import prisma from '../prisma'
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)

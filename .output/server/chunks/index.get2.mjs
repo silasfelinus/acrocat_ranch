@@ -1,9 +1,10 @@
-import { eventHandler } from 'h3';
-import { PrismaClient } from '@prisma/client';
+import { defineEventHandler } from 'h3';
+import prisma from './prisma.mjs';
+import '@prisma/client';
 
-const prisma = new PrismaClient();
-const index_get = eventHandler(async () => {
-  return await prisma.gallery.findMany();
+const index_get = defineEventHandler(async () => {
+  const galleries = await prisma.gallery.findMany({});
+  return await galleries;
 });
 
 export { index_get as default };

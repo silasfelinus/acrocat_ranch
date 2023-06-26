@@ -1,7 +1,7 @@
 import { defineEventHandler, readBody } from 'h3';
-import { PrismaClient } from '@prisma/client';
+import prisma from './prisma.mjs';
+import '@prisma/client';
 
-const prisma = new PrismaClient();
 const index_post = defineEventHandler(async (event) => {
   const body = await readBody(event);
   let gallery = null;

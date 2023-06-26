@@ -1,7 +1,6 @@
-import { PrismaClient } from '@prisma/client'
+import prisma from '../prisma'
 
-const prisma = new PrismaClient()
-
-export default eventHandler(async () => {
-  return await prisma.gallery.findMany()
+export default defineEventHandler(async () => {
+  const galleries = await prisma.gallery.findMany({})
+  return await galleries
 })

@@ -23,10 +23,22 @@ declare module 'nitropack' {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/bots/index.get').default>>>>
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/bots/index.post').default>>>>
     }
+    '/api/galleries/:id': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/[id].get').default>>>>
+      'patch': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/[id].patch').default>>>>
+    }
+    '/api/galleries/:name': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/[name].get').default>>>>
+    }
+    '/api/galleries/count': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/count.get').default>>>>
+    }
+    '/api/galleries/createmany': {
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/createmany.post').default>>>>
+    }
     '/api/galleries': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/index.get').default>>>>
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/index.post').default>>>>
-      'put': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/index.put').default>>>>
     }
     '/api/prisma': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/prisma').default>>>>

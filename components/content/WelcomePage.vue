@@ -2,6 +2,7 @@
     <div class="min-h-screen bg-gradient-to-r from-primary to-secondary flex flex-col">
       <div class="flex-grow p-6 md:p-12 overflow-auto">
         <site-header>
+          <slot name="default"  />
         <slot name="headline"></slot></site-header>
         <slot name="subheadline"></slot>
         <slot name="main-image"></slot>

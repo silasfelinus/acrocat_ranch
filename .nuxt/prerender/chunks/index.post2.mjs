@@ -1,7 +1,7 @@
 import { defineEventHandler, readBody } from 'file:///home/silasfelinus/code/kindrobots/node_modules/h3/dist/index.mjs';
-import { PrismaClient } from 'file:///home/silasfelinus/code/kindrobots/node_modules/@prisma/client/index.js';
+import prisma from './prisma.mjs';
+import 'file:///home/silasfelinus/code/kindrobots/node_modules/@prisma/client/index.js';
 
-const prisma = new PrismaClient();
 const index_post = defineEventHandler(async (event) => {
   const body = await readBody(event);
   let gallery = null;

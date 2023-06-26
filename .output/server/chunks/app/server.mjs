@@ -1119,14 +1119,15 @@ const revive_payload_server_eJ33V7gbc6 = /* @__PURE__ */ defineNuxtPlugin({
   }
 });
 const LazyAmiLink = defineAsyncComponent(() => import('./_nuxt/AmiLink-befcccd1.mjs').then((r) => r.default));
-const LazyBotCard = defineAsyncComponent(() => import('./_nuxt/BotCard-fdfc9d63.mjs').then(function(n) {
+const LazyBotCard = defineAsyncComponent(() => import('./_nuxt/BotCard-a3703085.mjs').then(function(n) {
   return n.B;
 }).then((r) => r.default));
-const LazyBotGallery = defineAsyncComponent(() => import('./_nuxt/BotGallery-bf1a0498.mjs').then((r) => r.default));
+const LazyBotGallery = defineAsyncComponent(() => import('./_nuxt/BotGallery-11279af6.mjs').then((r) => r.default));
 const LazyButtonCard = defineAsyncComponent(() => import('./_nuxt/ButtonCard-ce50d422.mjs').then((r) => r.default));
 const LazyCardNavigation = defineAsyncComponent(() => import('./_nuxt/CardNavigation-c242f617.mjs').then((r) => r.default));
 const LazyDreamStatus = defineAsyncComponent(() => import('./_nuxt/DreamStatus-adae0180.mjs').then((r) => r.default));
 const LazyGameScreen = defineAsyncComponent(() => import('./_nuxt/GameScreen-af314f45.mjs').then((r) => r.default));
+const LazyImageNav = defineAsyncComponent(() => import('./_nuxt/ImageNav-b4872015.mjs').then((r) => r.default));
 const LazyNuxtLoadingBar = defineAsyncComponent(() => Promise.resolve().then(function() {
   return NuxtLoadingBar;
 }).then((r) => r.default));
@@ -1139,7 +1140,7 @@ const LazySiteTitle = defineAsyncComponent(() => import('./_nuxt/SiteTitle-9888e
 const LazySubmissionForm = defineAsyncComponent(() => import('./_nuxt/SubmissionForm-642748c0.mjs').then((r) => r.default));
 const LazyTemperatureSlider = defineAsyncComponent(() => import('./_nuxt/TemperatureSlider-3c3827b9.mjs').then((r) => r.default));
 const LazyThemeChange = defineAsyncComponent(() => import('./_nuxt/ThemeChange-6617d867.mjs').then((r) => r.default));
-const LazyWelcomePage = defineAsyncComponent(() => import('./_nuxt/WelcomePage-6b457ec9.mjs').then((r) => r.default));
+const LazyWelcomePage = defineAsyncComponent(() => import('./_nuxt/WelcomePage-425ead69.mjs').then((r) => r.default));
 const LazyContentDoc = defineAsyncComponent(() => import('./_nuxt/ContentDoc-ea803905.mjs').then((r) => r.default));
 const LazyContentList = defineAsyncComponent(() => import('./_nuxt/ContentList-bc313e0c.mjs').then((r) => r.default));
 const LazyContentNavigation = defineAsyncComponent(() => import('./_nuxt/ContentNavigation-c4e48d02.mjs').then((r) => r.default));
@@ -1184,6 +1185,7 @@ const lazyGlobalComponents = [
   ["CardNavigation", LazyCardNavigation],
   ["DreamStatus", LazyDreamStatus],
   ["GameScreen", LazyGameScreen],
+  ["ImageNav", LazyImageNav],
   ["NuxtLoadingBar", LazyNuxtLoadingBar],
   ["PageContent", LazyPageContent],
   ["PageList", LazyPageList],
@@ -1696,7 +1698,7 @@ const fetchContentNavigation = async (queryBuilder) => {
   return data;
 };
 const layouts = {
-  default: /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/default-ea84c0c7.mjs').then((m) => m.default || m)),
+  default: /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/default-bb8e2d02.mjs').then((m) => m.default || m)),
   gamescreen: /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/gamescreen-6fa79261.mjs').then((m) => m.default || m)),
   welcome: /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/welcome-e36e7081.mjs').then((m) => m.default || m))
 };

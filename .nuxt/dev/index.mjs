@@ -4054,16 +4054,20 @@ const _uXrim0 = defineEventHandler(async (event) => {
 
 const _lazy_A5LP0M = () => Promise.resolve().then(function () { return amibot$1; });
 const _lazy_AzK3TP = () => Promise.resolve().then(function () { return index$1; });
-const _lazy_Wrjdls = () => Promise.resolve().then(function () { return _id__get$3; });
-const _lazy_K130eS = () => Promise.resolve().then(function () { return _id__patch$3; });
-const _lazy_5G06BX = () => Promise.resolve().then(function () { return count_get$3; });
-const _lazy_xbhivw = () => Promise.resolve().then(function () { return createmany_post$1; });
+const _lazy_Wrjdls = () => Promise.resolve().then(function () { return _id__get$5; });
+const _lazy_K130eS = () => Promise.resolve().then(function () { return _id__patch$5; });
+const _lazy_5G06BX = () => Promise.resolve().then(function () { return count_get$5; });
+const _lazy_xbhivw = () => Promise.resolve().then(function () { return createmany_post$3; });
 const _lazy_F1qVUo = () => Promise.resolve().then(function () { return index_get$7; });
 const _lazy_rshBCa = () => Promise.resolve().then(function () { return index_post$7; });
+const _lazy_bEDwHx = () => Promise.resolve().then(function () { return _id__get$3; });
+const _lazy_t14IZv = () => Promise.resolve().then(function () { return _id__patch$3; });
+const _lazy_KnUNnv = () => Promise.resolve().then(function () { return _name__get$1; });
+const _lazy_xbyTWV = () => Promise.resolve().then(function () { return count_get$3; });
+const _lazy_kHMo6W = () => Promise.resolve().then(function () { return createmany_post$1; });
 const _lazy_nYq5gI = () => Promise.resolve().then(function () { return index_get$5; });
 const _lazy_BIl7ie = () => Promise.resolve().then(function () { return index_post$5; });
-const _lazy_RiBgWI = () => Promise.resolve().then(function () { return index_put$3; });
-const _lazy_bElSpE = () => Promise.resolve().then(function () { return prisma$9; });
+const _lazy_bElSpE = () => Promise.resolve().then(function () { return prisma$7; });
 const _lazy_QGqcSb = () => Promise.resolve().then(function () { return index_get$3; });
 const _lazy_lq1Ad2 = () => Promise.resolve().then(function () { return index_post$3; });
 const _lazy_8PRWcM = () => Promise.resolve().then(function () { return index_put$1; });
@@ -4083,9 +4087,13 @@ const handlers = [
   { route: '/api/bots/createmany', handler: _lazy_xbhivw, lazy: true, middleware: false, method: "post" },
   { route: '/api/bots', handler: _lazy_F1qVUo, lazy: true, middleware: false, method: "get" },
   { route: '/api/bots', handler: _lazy_rshBCa, lazy: true, middleware: false, method: "post" },
+  { route: '/api/galleries/:id', handler: _lazy_bEDwHx, lazy: true, middleware: false, method: "get" },
+  { route: '/api/galleries/:id', handler: _lazy_t14IZv, lazy: true, middleware: false, method: "patch" },
+  { route: '/api/galleries/:name', handler: _lazy_KnUNnv, lazy: true, middleware: false, method: "get" },
+  { route: '/api/galleries/count', handler: _lazy_xbyTWV, lazy: true, middleware: false, method: "get" },
+  { route: '/api/galleries/createmany', handler: _lazy_kHMo6W, lazy: true, middleware: false, method: "post" },
   { route: '/api/galleries', handler: _lazy_nYq5gI, lazy: true, middleware: false, method: "get" },
   { route: '/api/galleries', handler: _lazy_BIl7ie, lazy: true, middleware: false, method: "post" },
-  { route: '/api/galleries', handler: _lazy_RiBgWI, lazy: true, middleware: false, method: "put" },
   { route: '/api/prisma', handler: _lazy_bElSpE, lazy: true, middleware: false, method: undefined },
   { route: '/api/tags', handler: _lazy_QGqcSb, lazy: true, middleware: false, method: "get" },
   { route: '/api/tags', handler: _lazy_lq1Ad2, lazy: true, middleware: false, method: "post" },
@@ -4476,18 +4484,18 @@ const index$1 = /*#__PURE__*/Object.freeze({
   default: index
 });
 
-const prisma$7 = new PrismaClient();
-const prisma$8 = prisma$7;
+const prisma$5 = new PrismaClient();
+const prisma$6 = prisma$5;
 
-const prisma$9 = /*#__PURE__*/Object.freeze({
+const prisma$7 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: prisma$8
+  default: prisma$6
 });
 
-const _id__get$2 = defineEventHandler(async (event) => {
+const _id__get$4 = defineEventHandler(async (event) => {
   var _a;
   const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
-  const bot = await prisma$8.bot.findUnique({
+  const bot = await prisma$6.bot.findUnique({
     where: {
       id: Number(id)
     }
@@ -4502,12 +4510,12 @@ const _id__get$2 = defineEventHandler(async (event) => {
   return bot;
 });
 
-const _id__get$3 = /*#__PURE__*/Object.freeze({
+const _id__get$5 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: _id__get$2
+  default: _id__get$4
 });
 
-const _id__patch$2 = defineEventHandler(async (event) => {
+const _id__patch$4 = defineEventHandler(async (event) => {
   var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
   try {
     const body = await readBody(event);
@@ -4515,11 +4523,11 @@ const _id__patch$2 = defineEventHandler(async (event) => {
     if (!id) {
       throw new Error("Missing ID parameter.");
     }
-    let bot = await prisma$8.bot.findUnique({ where: { id } });
+    let bot = await prisma$6.bot.findUnique({ where: { id } });
     if (!bot) {
       throw new Error("Bot not found.");
     }
-    bot = await prisma$8.bot.update({
+    bot = await prisma$6.bot.update({
       where: { id },
       data: {
         name: (_b = body.name) != null ? _b : bot.name,
@@ -4552,39 +4560,39 @@ const _id__patch$2 = defineEventHandler(async (event) => {
   }
 });
 
-const _id__patch$3 = /*#__PURE__*/Object.freeze({
+const _id__patch$5 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: _id__patch$2
+  default: _id__patch$4
 });
 
-const prisma$6 = new PrismaClient();
-const count_get$2 = defineEventHandler(async (event) => {
+const prisma$4 = new PrismaClient();
+const count_get$4 = defineEventHandler(async (event) => {
   try {
-    if (event.req.method === "GET") {
-      const count = await prisma$6.bot.count();
-      event.res.setHeader("Content-Type", "application/json");
-      event.res.statusCode = 200;
-      event.res.end(JSON.stringify({ count }));
+    if (event.node.req.method === "GET") {
+      const count = await prisma$4.bot.count();
+      event.node.res.setHeader("Content-Type", "application/json");
+      event.node.res.statusCode = 200;
+      event.node.res.end(JSON.stringify({ count }));
     } else {
-      event.res.statusCode = 405;
-      event.res.end("Method Not Allowed");
+      event.node.res.statusCode = 405;
+      event.node.res.end("Method Not Allowed");
     }
   } catch (error) {
     console.error("Failed to fetch bot count:", error);
-    event.res.setHeader("Content-Type", "application/json");
-    event.res.statusCode = 500;
-    event.res.end(JSON.stringify({ error: "Failed to fetch bot count" }));
+    event.node.res.setHeader("Content-Type", "application/json");
+    event.node.res.statusCode = 500;
+    event.node.res.end(JSON.stringify({ error: "Failed to fetch bot count" }));
   } finally {
-    await prisma$6.$disconnect();
+    await prisma$4.$disconnect();
   }
 });
 
-const count_get$3 = /*#__PURE__*/Object.freeze({
+const count_get$5 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: count_get$2
+  default: count_get$4
 });
 
-const createmany_post = defineEventHandler(async (event) => {
+const createmany_post$2 = defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
     if (!Array.isArray(body)) {
@@ -4601,7 +4609,7 @@ const createmany_post = defineEventHandler(async (event) => {
       }
       return botData;
     });
-    await prisma$8.bot.createMany({ data });
+    await prisma$6.bot.createMany({ data });
     return { message: "Bots created successfully." };
   } catch (error) {
     let errorMessage = "An error occurred while creating the bots.";
@@ -4615,13 +4623,13 @@ const createmany_post = defineEventHandler(async (event) => {
   }
 });
 
-const createmany_post$1 = /*#__PURE__*/Object.freeze({
+const createmany_post$3 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: createmany_post
+  default: createmany_post$2
 });
 
 const index_get$6 = defineEventHandler(async () => {
-  const bots = await prisma$8.bot.findMany({});
+  const bots = await prisma$6.bot.findMany({});
   return await bots;
 });
 
@@ -4662,7 +4670,7 @@ const index_post$6 = defineEventHandler(async (event) => {
         data[field] = body[field];
       }
     }
-    const bot = await prisma$8.bot.create({
+    const bot = await prisma$6.bot.create({
       data
     });
     return bot;
@@ -4683,9 +4691,160 @@ const index_post$7 = /*#__PURE__*/Object.freeze({
   default: index_post$6
 });
 
-const prisma$5 = new PrismaClient();
-const index_get$4 = eventHandler(async () => {
-  return await prisma$5.gallery.findMany();
+const _id__get$2 = defineEventHandler(async (event) => {
+  var _a;
+  const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
+  const gallery = await prisma$6.gallery.findUnique({
+    where: {
+      id: Number(id)
+    }
+  });
+  if (!gallery) {
+    const notFoundError = createError({
+      statusCode: 404,
+      statusMessage: "Gallery not found "
+    });
+    sendError(event, notFoundError);
+  }
+  return gallery;
+});
+
+const _id__get$3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: _id__get$2
+});
+
+const _id__patch$2 = defineEventHandler(async (event) => {
+  var _a, _b, _c, _d, _e, _f, _g, _h;
+  try {
+    const body = await readBody(event);
+    const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
+    if (!id) {
+      throw new Error("Missing ID parameter.");
+    }
+    let gallery = await prisma$6.gallery.findUnique({ where: { id } });
+    if (!gallery) {
+      throw new Error("Gallery not found.");
+    }
+    gallery = await prisma$6.gallery.update({
+      where: { id },
+      data: {
+        name: (_b = body.name) != null ? _b : gallery.name,
+        content: (_c = body.content) != null ? _c : gallery.content,
+        description: (_d = body.description) != null ? _d : gallery.description,
+        highlightImage: (_e = body.highlightImage) != null ? _e : gallery.highlightImage,
+        isNSFW: (_f = body.isNSFW) != null ? _f : gallery.isNSFW,
+        isAuth: (_g = body.isAuth) != null ? _g : gallery.isAuth,
+        user: (_h = body.user) != null ? _h : gallery.user
+      }
+    });
+    return gallery;
+  } catch (error) {
+    let errorMessage = "An error occurred while updating the gallery.";
+    if (error instanceof Error) {
+      errorMessage += ` Details: ${error.message}`;
+    }
+    throw createError({
+      statusCode: 500,
+      statusMessage: errorMessage
+    });
+  }
+});
+
+const _id__patch$3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: _id__patch$2
+});
+
+const _name__get = defineEventHandler(async (event) => {
+  var _a;
+  const name = String((_a = event.context.params) == null ? void 0 : _a.name);
+  const gallery = await prisma$6.gallery.findUnique({
+    where: {
+      name: String(name)
+    }
+  });
+  if (!gallery) {
+    const notFoundError = createError({
+      statusCode: 404,
+      statusMessage: "Gallery not found "
+    });
+    sendError(event, notFoundError);
+  }
+  return gallery;
+});
+
+const _name__get$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: _name__get
+});
+
+const prisma$3 = new PrismaClient();
+const count_get$2 = defineEventHandler(async (event) => {
+  try {
+    if (event.node.req.method === "GET") {
+      const count = await prisma$3.gallery.count();
+      event.node.res.setHeader("Content-Type", "application/json");
+      event.node.res.statusCode = 200;
+      event.node.res.end(JSON.stringify({ count }));
+    } else {
+      event.node.res.statusCode = 405;
+      event.node.res.end("Method Not Allowed");
+    }
+  } catch (error) {
+    console.error("Failed to fetch gallery count:", error);
+    event.node.res.setHeader("Content-Type", "application/json");
+    event.node.res.statusCode = 500;
+    event.node.res.end(JSON.stringify({ error: "Failed to fetch gallery count" }));
+  } finally {
+    await prisma$3.$disconnect();
+  }
+});
+
+const count_get$3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: count_get$2
+});
+
+const createmany_post = defineEventHandler(async (event) => {
+  try {
+    const body = await readBody(event);
+    if (!Array.isArray(body)) {
+      throw new TypeError(
+        "The request body should be an array of galleries to create."
+      );
+    }
+    const data = body.map((gallery) => {
+      const galleryData = {};
+      for (let key in gallery) {
+        if (gallery[key] !== void 0) {
+          galleryData[key] = gallery[key];
+        }
+      }
+      return galleryData;
+    });
+    await prisma$6.gallery.createMany({ data });
+    return { message: "Galleries created successfully." };
+  } catch (error) {
+    let errorMessage = "An error occurred while creating the galleries.";
+    if (error instanceof Error) {
+      errorMessage += ` Details: ${error.message}`;
+    }
+    throw createError({
+      statusCode: 500,
+      statusMessage: errorMessage
+    });
+  }
+});
+
+const createmany_post$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: createmany_post
+});
+
+const index_get$4 = defineEventHandler(async () => {
+  const galleries = await prisma$6.gallery.findMany({});
+  return await galleries;
 });
 
 const index_get$5 = /*#__PURE__*/Object.freeze({
@@ -4693,12 +4852,11 @@ const index_get$5 = /*#__PURE__*/Object.freeze({
   default: index_get$4
 });
 
-const prisma$4 = new PrismaClient();
 const index_post$4 = defineEventHandler(async (event) => {
   const body = await readBody(event);
   let gallery = null;
   if (body.name)
-    await prisma$4.gallery.create({
+    await prisma$6.gallery.create({
       data: {
         id: body.id,
         name: body.name,
@@ -4720,46 +4878,6 @@ const index_post$4 = defineEventHandler(async (event) => {
 const index_post$5 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   default: index_post$4
-});
-
-const prisma$3 = new PrismaClient();
-const index_put$2 = eventHandler(async (event) => {
-  const body = await readBody(event);
-  const id = body.id;
-  const name = body.name;
-  const content = body.content;
-  const description = body.description;
-  const highlightImage = body.highlightImage;
-  const isNSFW = body.isNSFW;
-  const isAuth = body.isAuth;
-  const user = body.user;
-  if (!(id || name))
-    return createError({
-      statusCode: 400,
-      statusMessage: "Missing ID or email"
-    });
-  let gallery = null;
-  if (id || name)
-    gallery = await prisma$3.gallery.update({
-      where: {
-        id
-      },
-      data: {
-        name,
-        content,
-        description,
-        highlightImage,
-        isNSFW,
-        isAuth,
-        user
-      }
-    });
-  return gallery;
-});
-
-const index_put$3 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: index_put$2
 });
 
 const prisma$2 = new PrismaClient();
@@ -4809,7 +4927,7 @@ const index_put$1 = /*#__PURE__*/Object.freeze({
 const _id__get = defineEventHandler(async (event) => {
   var _a;
   const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
-  const user = await prisma$8.user.findUnique({
+  const user = await prisma$6.user.findUnique({
     where: {
       id: Number(id)
     }
@@ -4841,7 +4959,7 @@ const _id__patch = eventHandler(async (event) => {
     });
   let user = null;
   if (id && email)
-    user = await prisma$8.user.update({
+    user = await prisma$6.user.update({
       where: {
         id
       },
@@ -4861,7 +4979,7 @@ const _id__patch$1 = /*#__PURE__*/Object.freeze({
 const count_get = defineEventHandler(async (event) => {
   try {
     if (event.req.method === "GET") {
-      const count = await prisma$8.user.count();
+      const count = await prisma$6.user.count();
       event.res.setHeader("Content-Type", "application/json");
       event.res.statusCode = 200;
       event.res.end(JSON.stringify({ count }));
@@ -4875,7 +4993,7 @@ const count_get = defineEventHandler(async (event) => {
     event.res.statusCode = 500;
     event.res.end(JSON.stringify({ error: "Failed to fetch user count" }));
   } finally {
-    await prisma$8.$disconnect();
+    await prisma$6.$disconnect();
   }
 });
 
@@ -4900,7 +5018,7 @@ const index_post = eventHandler(async (event) => {
   const password = body.password;
   const hashedPass = await hash$2(password, 10);
   try {
-    const user = await prisma$8.user.create({
+    const user = await prisma$6.user.create({
       data: {
         email,
         hashedPass

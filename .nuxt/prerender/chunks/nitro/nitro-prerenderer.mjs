@@ -76,7 +76,7 @@ const _inlineRuntimeConfig = {
     "content": {
       "locales": [],
       "defaultLocale": "",
-      "integrity": 1687642854429,
+      "integrity": 1687748307002,
       "experimental": {
         "stripQueryParameters": false,
         "clientDB": false
@@ -3925,16 +3925,20 @@ const _lazy_5G06BX = () => import('../count.get.mjs');
 const _lazy_xbhivw = () => import('../createmany.post.mjs');
 const _lazy_F1qVUo = () => import('../index.get.mjs');
 const _lazy_rshBCa = () => import('../index.post.mjs');
+const _lazy_bEDwHx = () => import('../_id_.get2.mjs');
+const _lazy_t14IZv = () => import('../_id_.patch2.mjs');
+const _lazy_KnUNnv = () => import('../_name_.get.mjs');
+const _lazy_xbyTWV = () => import('../count.get2.mjs');
+const _lazy_kHMo6W = () => import('../createmany.post2.mjs');
 const _lazy_nYq5gI = () => import('../index.get2.mjs');
 const _lazy_BIl7ie = () => import('../index.post2.mjs');
-const _lazy_RiBgWI = () => import('../index.put.mjs');
 const _lazy_bElSpE = () => import('../prisma.mjs');
 const _lazy_QGqcSb = () => import('../index.get3.mjs');
 const _lazy_lq1Ad2 = () => import('../index.post3.mjs');
-const _lazy_8PRWcM = () => import('../index.put2.mjs');
-const _lazy_uEFgQ7 = () => import('../_id_.get2.mjs');
-const _lazy_ZRZvVU = () => import('../_id_.patch2.mjs');
-const _lazy_11nFJX = () => import('../count.get2.mjs');
+const _lazy_8PRWcM = () => import('../index.put.mjs');
+const _lazy_uEFgQ7 = () => import('../_id_.get3.mjs');
+const _lazy_ZRZvVU = () => import('../_id_.patch3.mjs');
+const _lazy_11nFJX = () => import('../count.get3.mjs');
 const _lazy_GLKxdK = () => import('../index.get4.mjs');
 const _lazy_URtA1g = () => import('../index.post4.mjs');
 const _lazy_JwsYI6 = () => import('../renderer.mjs').then(function (n) { return n.r; });
@@ -3948,9 +3952,13 @@ const handlers = [
   { route: '/api/bots/createmany', handler: _lazy_xbhivw, lazy: true, middleware: false, method: "post" },
   { route: '/api/bots', handler: _lazy_F1qVUo, lazy: true, middleware: false, method: "get" },
   { route: '/api/bots', handler: _lazy_rshBCa, lazy: true, middleware: false, method: "post" },
+  { route: '/api/galleries/:id', handler: _lazy_bEDwHx, lazy: true, middleware: false, method: "get" },
+  { route: '/api/galleries/:id', handler: _lazy_t14IZv, lazy: true, middleware: false, method: "patch" },
+  { route: '/api/galleries/:name', handler: _lazy_KnUNnv, lazy: true, middleware: false, method: "get" },
+  { route: '/api/galleries/count', handler: _lazy_xbyTWV, lazy: true, middleware: false, method: "get" },
+  { route: '/api/galleries/createmany', handler: _lazy_kHMo6W, lazy: true, middleware: false, method: "post" },
   { route: '/api/galleries', handler: _lazy_nYq5gI, lazy: true, middleware: false, method: "get" },
   { route: '/api/galleries', handler: _lazy_BIl7ie, lazy: true, middleware: false, method: "post" },
-  { route: '/api/galleries', handler: _lazy_RiBgWI, lazy: true, middleware: false, method: "put" },
   { route: '/api/prisma', handler: _lazy_bElSpE, lazy: true, middleware: false, method: undefined },
   { route: '/api/tags', handler: _lazy_QGqcSb, lazy: true, middleware: false, method: "get" },
   { route: '/api/tags', handler: _lazy_lq1Ad2, lazy: true, middleware: false, method: "post" },
@@ -3963,7 +3971,7 @@ const handlers = [
   { route: '/api/_content/query/:qid/**:params', handler: _ZjxyFR, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query/:qid', handler: _ZjxyFR, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query', handler: _ZjxyFR, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/cache.1687642854429.json', handler: _qTkfUb, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/cache.1687748307002.json', handler: _qTkfUb, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid/**:params', handler: _uXrim0, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid', handler: _uXrim0, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation', handler: _uXrim0, lazy: false, middleware: false, method: "get" },

@@ -5,19 +5,19 @@ import '@prisma/client';
 const _id__get = defineEventHandler(async (event) => {
   var _a;
   const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
-  const user = await prisma.user.findUnique({
+  const gallery = await prisma.gallery.findUnique({
     where: {
       id: Number(id)
     }
   });
-  if (!user) {
+  if (!gallery) {
     const notFoundError = createError({
       statusCode: 404,
-      statusMessage: "User not found "
+      statusMessage: "Gallery not found "
     });
     sendError(event, notFoundError);
   }
-  return user;
+  return gallery;
 });
 
 export { _id__get as default };
