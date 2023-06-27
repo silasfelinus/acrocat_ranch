@@ -15,7 +15,7 @@ gallery: wonderbot
 
 
 #main-image
-![Backtree Image](/images/backtree.webp)
+![Bot Cafe](/images/backtree.webp)
 
 
 #main-content

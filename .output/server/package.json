@@ -151,6 +151,7 @@
     "ofetch": "1.1.1",
     "ohash": "1.1.2",
     "once": "1.4.0",
+    "open-simplex-noise": "2.5.0",
     "parse-entities": "4.0.1",
     "parse5": "6.0.1",
     "path-is-absolute": "1.0.1",

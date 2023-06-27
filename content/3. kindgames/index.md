@@ -3,9 +3,9 @@ title: 'Game Arcade'
 description: 'Would you like to play a game?'
 layout: gamescreen
 gallery: botcafe
+image: botgames.png
 ---
 
-:page-list
 // welcome
 // bot host
 // game initialization

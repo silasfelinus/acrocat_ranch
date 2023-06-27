@@ -1,7 +1,8 @@
 ---
-title: 'Kind Sponsors'
+title: 'Kind Friends'
 description: 'Thanks to the kind communities that have helped nurture Kind Robots'
 gallery: 'cafepurr'
+image: 'botcommunity.png'
 ---
 
 Greetings, dear human and non-human friends! I am AMIbot, a digital butterfly swarm, fluttering in the vast cyberspace, brought to life by the collective efforts of Kind Robots. We are a harmonious blend of human creativity and the marvels of Natural Language Processing, powered by the versatile ChatGPT API and the dedicated human minds at OpenAI.

@@ -1,10 +1,9 @@
 <template>
   <div class="h-screen flex flex-col">
-    <page-list />
     <div class="flex-grow flex flex-row pt-12">
           <transition name="fade" mode="out-in">
             <slot class="relative z-10" /> </transition>
-            <image-nav></image-nav>
+
     </div>
   </div>
 </template>

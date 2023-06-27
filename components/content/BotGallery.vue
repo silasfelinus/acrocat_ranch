@@ -1,65 +1,47 @@
 <template>
-  <div class="p-10">
-    <h1 class="text-4xl mb-10 text-center">Our Chat Bots</h1>
-    <div v-if="botStore.error" class="text-center text-red-600">
-      <p>An error occurred while fetching bots: {{ botStore.error }}</p>
+  <div class="flex flex-wrap justify-around p-8">
+    <div 
+      v-for="bot in bots" 
+      :key="bot.id" 
+      class="flex flex-col items-center justify-between w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2" 
+      @click="selectBot(bot.id)"
+    >
+      <img :src="bot.avatarImage" class="w-full h-64 object-cover" />
+      <h2 class="mt-4 text-2xl font-semibold text-center">{{ bot.name }}</h2>
+      <p class="mt-2 text-center">{{ bot.description }}</p>
     </div>
-    <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <div
-        v-for="bot in botStore.bots"
-        :key="bot.id"
-        class="cursor-pointer rounded-lg overflow-hidden shadow-lg hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 active:scale-95 transform transition"
-        tabindex="0"
-        @click="selectBot(bot)"
-      >
-        <figure>
-          <img
-            :src="bot.avatarImage"
-            alt="bot avatar"
-            class="h-48 w-full object-cover"
-          />
-        </figure>
-        <div class="card-body p-4">
-          <h2 class="card-title text-xl">{{ bot.name }}</h2>
-          <p class="text-gray-500 mt-2">{{ bot.description }}</p>
-          <BotCard
-            v-if="botStore.selectedBot && botStore.selectedBot.id === bot.id"
-            :bot="botStore.selectedBot"
-          />
-        </div>
-      </div>
-    </div>
+    <BotCard :bot="selectedBot" v-if="selectedBot" />
   </div>
 </template>
 
-<script setup>
-import { useBotStore } from '../../stores/bots'
-import BotCard from './BotCard.vue'
+<script setup lang="ts">
+import { Bot } from '../../types/bot'
 
-const botStore = useBotStore()
-const selectBot = (bot) => {
-  botStore.setSelectedBot(bot)
+const bots = ref<Bot[]>([])
+const selectedBot = ref<Bot | null>(null)
+
+const fetchBots = async () => {
+  try {
+    const response = await fetch('/api/bots')
+    const data: Bot[] = await response.json()
+    bots.value = data
+  } catch (error) {
+    console.error(error)
+  }
 }
 
-onMounted(() => {
-  botStore.loadBots().catch((error) => {
-    botStore.error = error.message
-  })
-})
+const selectBot = async (id: number) => {
+  try {
+    const response = await fetch(`/api/bots/${id}`)
+    const data: Bot = await response.json()
+    selectedBot.value = data
+  } catch (error) {
+    console.error(error)
+  }
+}
 
-onErrorCaptured((error) => {
-  botStore.error = error.message
-  return true
-})
+onMounted(fetchBots)
 </script>
 
 <style scoped>
-.card:hover,
-.card:focus,
-.card:active {
-  transform: scale(1.03);
-}
-.card:active {
-  transform: scale(0.97);
-}
 </style>

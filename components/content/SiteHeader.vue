@@ -1,14 +1,16 @@
 <template>
-  <header
-    class="site-header fixed w-full z-100 bg-transparent flex items-center justify-between px-6 sm:px-8 lg:px-10"
-  >
-    <site-title />
-    <dream-status />
-    <slot />
-    <!-- AMI Link -->
-    <AmiLink class="z-0 fixed bottom-4 right-4" />
-    <div class="flex items-center justify-end flex-grow">
-      <ThemeChange />
+  <header class="site-header w-full bg-gradient-to-r from-primary to-primary-light text-white shadow-md px-4 py-2 sm:px-6 lg:px-8">
+    <div class="container mx-auto flex items-center justify-between">
+      <site-title class="text-2xl font-bold" />
+      <dream-status class="hidden md:block" />
+      <nav class="space-x-4">
+        <slot />
+        <!-- AMI Link -->
+        <AmiLink2 class="z-0 fixed bottom-4 right-4 md:relative md:bottom-auto md:right-auto" />
+      </nav>
+      <div class="flex items-center justify-end">
+        <ThemeChange />
+      </div>
     </div>
   </header>
 </template>

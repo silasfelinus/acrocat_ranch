@@ -2,8 +2,7 @@
 title: 'Kind Robots'
 description: 'Welcome to the Bot Cafe'
 layout: default
-image: backtree.webp
+image: botcafe.png
 gallery: wonderbots
 ---
-:bot-card
 :bot-gallery

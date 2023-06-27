@@ -76,7 +76,7 @@ const _inlineRuntimeConfig = {
     "content": {
       "locales": [],
       "defaultLocale": "",
-      "integrity": 1687748307002,
+      "integrity": 1687818971968,
       "experimental": {
         "stripQueryParameters": false,
         "clientDB": false
@@ -3941,7 +3941,7 @@ const _lazy_ZRZvVU = () => import('../_id_.patch3.mjs');
 const _lazy_11nFJX = () => import('../count.get3.mjs');
 const _lazy_GLKxdK = () => import('../index.get4.mjs');
 const _lazy_URtA1g = () => import('../index.post4.mjs');
-const _lazy_JwsYI6 = () => import('../renderer.mjs').then(function (n) { return n.r; });
+const _lazy_JwsYI6 = () => import('../renderer.mjs');
 
 const handlers = [
   { route: '/api/botcafe/amibot', handler: _lazy_A5LP0M, lazy: true, middleware: false, method: undefined },
@@ -3971,7 +3971,7 @@ const handlers = [
   { route: '/api/_content/query/:qid/**:params', handler: _ZjxyFR, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query/:qid', handler: _ZjxyFR, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query', handler: _ZjxyFR, lazy: false, middleware: false, method: "get" },
-  { route: '/api/_content/cache.1687748307002.json', handler: _qTkfUb, lazy: false, middleware: false, method: "get" },
+  { route: '/api/_content/cache.1687818971968.json', handler: _qTkfUb, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid/**:params', handler: _uXrim0, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation/:qid', handler: _uXrim0, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/navigation', handler: _uXrim0, lazy: false, middleware: false, method: "get" },

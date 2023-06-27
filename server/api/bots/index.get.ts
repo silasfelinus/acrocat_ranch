@@ -1,3 +1,4 @@
+// server/api/bots/index.get.ts
 import prisma from '../prisma'
 
 export default defineEventHandler(async () => {
