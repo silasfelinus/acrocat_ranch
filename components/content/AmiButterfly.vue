@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, reactive, } from 'vue'
+import { onMounted, onUnmounted, reactive } from 'vue'
 import { makeNoise2D } from 'open-simplex-noise'
 
 // Random color generator in HSL format
@@ -83,8 +83,7 @@ let t = 0
 
 function updatePosition() {
   t += 0.01
-  const angle =
-    noise2D(butterfly.goal.x * 0.01, butterfly.goal.y * 0.01 + t) * Math.PI * 2
+  const angle = noise2D(butterfly.goal.x * 0.01, butterfly.goal.y * 0.01 + t) * Math.PI * 2
   const dx = Math.cos(angle) * butterfly.speed
   const dy = Math.sin(angle) * butterfly.speed
 
@@ -92,26 +91,17 @@ function updatePosition() {
   butterfly.goal.y += dy
 
   if (butterfly.goal.x < 0 || butterfly.goal.x > window.innerWidth - 100) {
-    butterfly.goal.x = Math.max(
-      Math.min(butterfly.goal.x, window.innerWidth - 100),
-      0
-    )
+    butterfly.goal.x = Math.max(Math.min(butterfly.goal.x, window.innerWidth - 100), 0)
   }
 
   if (butterfly.goal.y < 0 || butterfly.goal.y > window.innerHeight - 100) {
-    butterfly.goal.y = Math.max(
-      Math.min(butterfly.goal.y, window.innerHeight - 100),
-      0
-    )
+    butterfly.goal.y = Math.max(Math.min(butterfly.goal.y, window.innerHeight - 100), 0)
   }
 
   // Change scale based on screen position
   butterfly.scale =
     0.33 +
-    ((2 -
-      (butterfly.goal.x / window.innerWidth +
-        butterfly.goal.y / window.innerHeight)) /
-      2) *
+    ((2 - (butterfly.goal.x / window.innerWidth + butterfly.goal.y / window.innerHeight)) / 2) *
       0.67
 
   // Update the rotation based on the direction
@@ -149,27 +139,16 @@ onUnmounted(() => {
     :style="{
       left: butterfly.goal.x + 'px',
       top: butterfly.goal.y + 'px',
-      transform:
-        'rotate3d(1, 0.5, 0, ' +
-        butterfly.rotation +
-        'deg) scale(' +
-        butterfly.scale +
-        ')'
+      transform: 'rotate3d(1, 0.5, 0, ' + butterfly.rotation + 'deg) scale(' + butterfly.scale + ')'
     }"
   >
     <div class="left-wing">
       <div class="top" :style="{ background: butterfly.wingTopColor }"></div>
-      <div
-        class="bottom"
-        :style="{ background: butterfly.wingBottomColor }"
-      ></div>
+      <div class="bottom" :style="{ background: butterfly.wingBottomColor }"></div>
     </div>
     <div class="right-wing">
       <div class="top" :style="{ background: butterfly.wingTopColor }"></div>
-      <div
-        class="bottom"
-        :style="{ background: butterfly.wingBottomColor }"
-      ></div>
+      <div class="bottom" :style="{ background: butterfly.wingBottomColor }"></div>
     </div>
   </div>
 </template>

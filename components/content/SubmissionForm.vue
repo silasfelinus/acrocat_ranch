@@ -1,9 +1,7 @@
 <template>
   <div class="bg-gray-50 min-h-screen flex justify-center items-center">
     <div class="bg-white max-w-md mx-auto rounded-xl shadow-lg p-10 space-y-5">
-      <h1 class="text-4xl font-bold text-center text-indigo-600 mb-10">
-        Hair by Superkate!
-      </h1>
+      <h1 class="text-4xl font-bold text-center text-indigo-600 mb-10">Hair by Superkate!</h1>
       <div class="flex justify-center mb-5">
         <img src="/logo.png" alt="logo" class="h-14 w-auto" />
       </div>
@@ -73,9 +71,7 @@
               </label>
             </div>
             <hr />
-            <div class="bg-gray-100 p-2 rounded-md">
-              Total cost: ${{ totalCost }}
-            </div>
+            <div class="bg-gray-100 p-2 rounded-md">Total cost: ${{ totalCost }}</div>
             <hr />
             <div class="bg-gray-100 p-2 rounded-md">
               Calculation: (${{ rate }} Rate per hour x {{ hours }} hours) + ${{
@@ -94,9 +90,7 @@
               class="input input-bordered w-full pr-20"
               placeholder="Client's Email"
             />
-            <div
-              class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none"
-            >
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
               + superkate@gmail.com
             </div>
           </div>

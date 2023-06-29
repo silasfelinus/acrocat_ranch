@@ -19,9 +19,7 @@ const BASE_URL = process.env.BASE_URL || 'http://localhost:3000'
 
 watchEffect(async () => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/wonderforge/wildcards/${selectedWildcard.value}.md`
-    )
+    const response = await fetch(`${BASE_URL}/wonderforge/wildcards/${selectedWildcard.value}.md`)
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }

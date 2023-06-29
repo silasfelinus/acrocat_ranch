@@ -16,6 +16,5 @@ export default defineEventHandler(async (event) => {
     sendError(event, notFoundError)
   }
 
-
   return gallery
 })

@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
         highlightImage: body.highlightImage ?? gallery.highlightImage,
         isNSFW: body.isNSFW ?? gallery.isNSFW,
         isAuth: body.isAuth ?? gallery.isAuth,
-        user: body.user ?? gallery.user,
+        user: body.user ?? gallery.user
       }
     })
 

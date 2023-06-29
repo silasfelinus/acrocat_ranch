@@ -1,11 +1,7 @@
 <template>
   <div class="overflow-y-auto max-w-lg mx-auto p-4">
     <ul class="space-y-4">
-      <li
-        v-for="(item, index) in navigationTree"
-        :key="index"
-        class="space-y-4"
-      >
+      <li v-for="(item, index) in navigationTree" :key="index" class="space-y-4">
         <div :class="cardClass(item.state)">
           <NuxtLink
             :to="item.link"

@@ -1,12 +1,10 @@
 <template>
   <div>
-    <hr>
+    <hr />
     <ul>
       <li>
         <span>🏠</span>
-        <NuxtLink to="/">
-          Home
-        </NuxtLink>
+        <NuxtLink to="/"> Home </NuxtLink>
       </li>
       <li v-for="page of pages" :key="page._id">
         <span>🔗</span>
@@ -16,11 +14,13 @@
         <span v-if="page.gallery"> - {{ page.gallery }}</span>
       </li>
     </ul>
-    <hr>
+    <hr />
   </div>
 </template>
 
 <script setup lang="ts">
-const { find } = queryContent().where({ $not: { _path: '/' } }).sort({ _id: 1 })
+const { find } = queryContent()
+  .where({ $not: { _path: '/' } })
+  .sort({ _id: 1 })
 const { data: pages } = await useAsyncData('pages-list', find)
 </script>

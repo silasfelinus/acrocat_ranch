@@ -1,5 +1,7 @@
 <template>
-  <header class="site-header w-full bg-gradient-to-r from-primary to-primary-light text-white shadow-md px-4 py-2 sm:px-6 lg:px-8">
+  <header
+    class="site-header w-full bg-gradient-to-r from-primary to-primary-light text-white shadow-md px-4 py-2 sm:px-6 lg:px-8"
+  >
     <div class="container mx-auto flex items-center justify-between">
       <site-title class="text-2xl font-bold" />
       <dream-status class="hidden md:block" />

@@ -11,9 +11,9 @@
         <div class="card">
           <img
             :src="image.loaded ? `${BASE_URL}/images/${selectedGallery}/${image.name}` : ''"
-            @load="image.loaded = true"
             class="card-img-top"
             alt="Image description"
+            @load="image.loaded = true"
           />
         </div>
       </div>
@@ -35,7 +35,6 @@
 </template>
 
 <script setup>
-
 const galleries = [
   'acrocats',
   'amibot',
@@ -64,16 +63,14 @@ const BASE_URL = process.env.BASE_URL || 'http://localhost:3000'
 
 watchEffect(async () => {
   try {
-    const response = await fetch(
-      `${BASE_URL}/images/${selectedGallery.value}/gallery.json`
-    )
+    const response = await fetch(`${BASE_URL}/images/${selectedGallery.value}/gallery.json`)
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
     const data = await response.json()
     galleryData.value = {
       ...data,
-      images: data.images.sort(() => Math.random() - 0.5).map(name => ({ name, loaded: false })) // Randomize images
+      images: data.images.sort(() => Math.random() - 0.5).map((name) => ({ name, loaded: false })) // Randomize images
     }
     currentPage.value = 1 // Reset to first page when gallery changes
   } catch (e) {
@@ -81,9 +78,7 @@ watchEffect(async () => {
   }
 })
 
-const totalPages = computed(() =>
-  Math.ceil(galleryData.value?.images.length / imagesPerPage.value)
-)
+const totalPages = computed(() => Math.ceil(galleryData.value?.images.length / imagesPerPage.value))
 
 const currentImages = computed(() => {
   if (!galleryData.value) return []

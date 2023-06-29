@@ -1,16 +1,16 @@
 <template>
   <div class="flex flex-wrap justify-around p-8">
-    <div 
-      v-for="bot in bots" 
-      :key="bot.id" 
-      class="flex flex-col items-center justify-between w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2" 
+    <div
+      v-for="bot in bots"
+      :key="bot.id"
+      class="flex flex-col items-center justify-between w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2"
       @click="selectBot(bot.id)"
     >
       <img :src="bot.avatarImage" class="w-full h-64 object-cover" />
       <h2 class="mt-4 text-2xl font-semibold text-center">{{ bot.name }}</h2>
       <p class="mt-2 text-center">{{ bot.description }}</p>
     </div>
-    <BotCard :bot="selectedBot" v-if="selectedBot" />
+    <BotCard v-if="selectedBot" :bot="selectedBot" />
   </div>
 </template>
 
@@ -43,5 +43,4 @@ const selectBot = async (id: number) => {
 onMounted(fetchBots)
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

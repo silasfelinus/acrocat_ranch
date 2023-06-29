@@ -1,18 +1,18 @@
-import { defineEventHandler, readBody, createError } from 'h3';
-import prisma from './prisma.mjs';
-import '@prisma/client';
+import { defineEventHandler, readBody, createError } from 'h3'
+import prisma from './prisma.mjs'
+import '@prisma/client'
 
 const _id__patch = defineEventHandler(async (event) => {
-  var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
+  var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p
   try {
-    const body = await readBody(event);
-    const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
+    const body = await readBody(event)
+    const id = Number((_a = event.context.params) == null ? void 0 : _a.id)
     if (!id) {
-      throw new Error("Missing ID parameter.");
+      throw new Error('Missing ID parameter.')
     }
-    let bot = await prisma.bot.findUnique({ where: { id } });
+    let bot = await prisma.bot.findUnique({ where: { id } })
     if (!bot) {
-      throw new Error("Bot not found.");
+      throw new Error('Bot not found.')
     }
     bot = await prisma.bot.update({
       where: { id },
@@ -33,19 +33,19 @@ const _id__patch = defineEventHandler(async (event) => {
         intro: (_o = body.intro) != null ? _o : bot.intro,
         size: (_p = body.size) != null ? _p : bot.size
       }
-    });
-    return bot;
+    })
+    return bot
   } catch (error) {
-    let errorMessage = "An error occurred while updating the bot.";
+    let errorMessage = 'An error occurred while updating the bot.'
     if (error instanceof Error) {
-      errorMessage += ` Details: ${error.message}`;
+      errorMessage += ` Details: ${error.message}`
     }
     throw createError({
       statusCode: 500,
       statusMessage: errorMessage
-    });
+    })
   }
-});
+})
 
-export { _id__patch as default };
+export { _id__patch as default }
 //# sourceMappingURL=_id_.patch.mjs.map

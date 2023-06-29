@@ -24,21 +24,13 @@
       </select>
       <select v-model="location" class="select select-bordered w-40">
         <option disabled="disabled" selected="selected">Location</option>
-        <option
-          v-for="(option, index) in locations"
-          :key="index"
-          :value="option"
-        >
+        <option v-for="(option, index) in locations" :key="index" :value="option">
           {{ option }}
         </option>
       </select>
       <select v-model="embedding" class="select select-bordered w-40">
         <option disabled="disabled" selected="selected">Embedding</option>
-        <option
-          v-for="(option, index) in embeddings"
-          :key="index"
-          :value="option"
-        >
+        <option v-for="(option, index) in embeddings" :key="index" :value="option">
           {{ option }}
         </option>
       </select>

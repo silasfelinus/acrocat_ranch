@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="flex items-center p-4 bg-indigo-100 rounded shadow-md cursor-move"
-  >
+  <div class="flex items-center p-4 bg-indigo-100 rounded shadow-md cursor-move">
     <label for="temperature" class="mr-4">Creativity:</label>
     <input
       id="temperature"

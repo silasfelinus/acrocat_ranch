@@ -5,9 +5,7 @@ export default defineEventHandler(async (event) => {
     const body = await readBody(event)
 
     if (!Array.isArray(body)) {
-      throw new TypeError(
-        'The request body should be an array of galleries to create.'
-      )
+      throw new TypeError('The request body should be an array of galleries to create.')
     }
 
     const data = body.map((gallery) => {

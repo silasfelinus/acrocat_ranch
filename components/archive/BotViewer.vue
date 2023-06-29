@@ -1,11 +1,6 @@
 <template>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-    <div
-      v-for="bot in bots"
-      :key="bot.id"
-      class="cursor-pointer"
-      @click="selectBot(bot.id)"
-    >
+    <div v-for="bot in bots" :key="bot.id" class="cursor-pointer" @click="selectBot(bot.id)">
       <div class="card bordered">
         <figure>
           <img :src="bot.avatarImage" />

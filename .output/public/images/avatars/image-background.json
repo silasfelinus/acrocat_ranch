@@ -1,1 +1,12 @@
-{ "id": null, "name": "image-background", "content": "", "description": "", "highlightImage": null, "isNSFW": false, "isAuth": false, "user": "cafepurr", "createdAt": null, "updatedAt": null }
+{
+  "id": null,
+  "name": "image-background",
+  "content": "",
+  "description": "",
+  "highlightImage": null,
+  "isNSFW": false,
+  "isAuth": false,
+  "user": "cafepurr",
+  "createdAt": null,
+  "updatedAt": null
+}

@@ -1,10 +1,10 @@
 ---
+
 [TITLE]
 🌈 Kind Robots 🤖
 
 [CONCEPT]
 🎉 Welcome to our playground! Kind Robots is an experiential jamstack playground that harnesses Natural Language Processing (NLP) chat completion. It's a place where tech and creativity collide, and the result is pure magic! 🎩✨
-
 
 [VISION]
 Welcome to kindrobots.org, your friendly neighborhood AI ambassador! 🤖👋
@@ -21,7 +21,6 @@ Kaizen is the principle of continuous iterative improvement and meticulous care 
 
 [MASCOT]
 Say hello to AMI - The Anti-Malaria Intelligence! 🦋🌈 AMI is a digital horde of rainbow butterflies with an excited, enthusiastic personality. AMI was created to maximize the potential of NLP, by assisting humans to make art and slogans for AMI's fundraiser, and share the creative output on social media. Let's create something amazing together! 🎨
-
 
 [STACK]
 Ubuntu, traefik, mariab, prisma, nuxt, vue 3.2 composition api, nuxt content, h3/nitro, tailwind, daisyui, prettier
@@ -59,9 +58,8 @@ https://github.com/MuhammadKhizar7/nuxt-prisma/tree/master
 https://github.com/prisma/prisma-examples/tree/latest/javascript/rest-nuxtjs
 https://github.com/nuxt/content/blob/main/src/runtime/pages/document-driven.vue
 
-
 [COMPONENTS]
-all components in components/content are accessible within markdown files using colon-component syntax, eg :butterfly-swarm 
+all components in components/content are accessible within markdown files using colon-component syntax, eg :butterfly-swarm
 
 [PROPS]
 Props can be passed by using a key=value syntax.

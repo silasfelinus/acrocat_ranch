@@ -1,1 +1,12 @@
-{ "id": null, "name": "wonderchest-082", "content": "", "description": "", "highlightImage": null, "isNSFW": false, "isAuth": false, "user": "cafepurr", "createdAt": null, "updatedAt": null }
+{
+  "id": null,
+  "name": "wonderchest-082",
+  "content": "",
+  "description": "",
+  "highlightImage": null,
+  "isNSFW": false,
+  "isAuth": false,
+  "user": "cafepurr",
+  "createdAt": null,
+  "updatedAt": null
+}

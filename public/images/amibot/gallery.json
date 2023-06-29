@@ -1,1 +1,13 @@
-{ "id": null, "name": "amibot", "content": "", "description": "", "highlightImage": null, "isNSFW": false, "isAuth": false, "user": "cafepurr", "createdAt": null, "updatedAt": null, "images": [ "amibot1.png", "amibot2.png", "amibot3.png" ] }
+{
+  "id": null,
+  "name": "amibot",
+  "content": "",
+  "description": "",
+  "highlightImage": null,
+  "isNSFW": false,
+  "isAuth": false,
+  "user": "cafepurr",
+  "createdAt": null,
+  "updatedAt": null,
+  "images": ["amibot1.png", "amibot2.png", "amibot3.png"]
+}

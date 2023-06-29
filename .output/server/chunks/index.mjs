@@ -1,4 +1,4 @@
-import { defineEventHandler } from 'h3';
+import { defineEventHandler } from 'h3'
 
 const index = defineEventHandler((context) => [
   {
@@ -71,7 +71,7 @@ const index = defineEventHandler((context) => [
     name: `Punch-Up Bot`,
     type: `punchup`,
     description: `I'm here to make your words shine.`,
-    avatarImage: "/images/avatars/bot8.png",
+    avatarImage: '/images/avatars/bot8.png',
     model: `gpt-3.5-turbo`,
     post: `https://api.openai.com/v1/completions`,
     temperature: 0.6,
@@ -87,8 +87,8 @@ const index = defineEventHandler((context) => [
   {
     name: `Grant Bot`,
     type: `grantbot`,
-    description: "I`m here to help you craft grant letters.",
-    avatarImage: "/images/avatars/cafepurr01.png",
+    description: 'I`m here to help you craft grant letters.',
+    avatarImage: '/images/avatars/cafepurr01.png',
     model: `gpt-3.5-turbo`,
     post: `https://api.openai.com/v1/completions`,
     temperature: 0.6,
@@ -104,7 +104,7 @@ const index = defineEventHandler((context) => [
   {
     name: `Punch-Up-Code Bot`,
     type: `codepunchup`,
-    description: "Send me your Code, and I`ll make it work.",
+    description: 'Send me your Code, and I`ll make it work.',
     avatarImage: `/images/avatars/bot5.png`,
     model: `gpt-3.5-turbo`,
     post: `https://api.openai.com/v1/completions`,
@@ -155,9 +155,11 @@ const index = defineEventHandler((context) => [
   {
     name: `Lazlo`,
     type: `storyteller`,
-    description: "Lazlo is a fantasy adventurer whose lived possibly a bit-too-long in the D&D fey realm. He`s a friendly braggart and  dispensor of absolutely terrible advise. How in the world has he survived this long? Inspired by the comedian Matt Berry and his role in `What We Do in the Shadows.`",
+    description:
+      'Lazlo is a fantasy adventurer whose lived possibly a bit-too-long in the D&D fey realm. He`s a friendly braggart and  dispensor of absolutely terrible advise. How in the world has he survived this long? Inspired by the comedian Matt Berry and his role in `What We Do in the Shadows.`',
     avatarImage: `/images/avatars/lazlo1.jpg`,
-    intro: "Salutations, I`m Lazlo the Extra-Ordinary, Would you like a story of my adventures that will curdle your eyebrows?",
+    intro:
+      'Salutations, I`m Lazlo the Extra-Ordinary, Would you like a story of my adventures that will curdle your eyebrows?',
     model: `gpt-3.5-turbo`,
     post: `https://api.openai.com/v1/completions`,
     temperature: 0.6,
@@ -220,7 +222,7 @@ const index = defineEventHandler((context) => [
       }
     ]
   }
-]);
+])
 
-export { index as default };
+export { index as default }
 //# sourceMappingURL=index.mjs.map

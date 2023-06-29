@@ -25,8 +25,7 @@ export const localBots: Bot[] = [
     id: 0,
     name: 'AMIb0t',
     botType: 'chatbot',
-    description:
-      'Raising awareness to purchase mosquito nets for children in africa',
+    description: 'Raising awareness to purchase mosquito nets for children in africa',
     avatarImage: '/images/wonderchest/wonderchest304_(23).webp',
     model: 'gpt-3.5-turbo',
     post: 'https://api.openai.com/v1/completions',
@@ -65,8 +64,7 @@ export const localBots: Bot[] = [
     id: 3,
     name: 'Artb0t',
     botType: 'artbot',
-    description:
-      "Send me your inspiration image, and tell me what you want to do with it'",
+    description: "Send me your inspiration image, and tell me what you want to do with it'",
     avatarImage: '/images/amibot/amibot3.png',
     model: 'gpt-3.5-turbo',
     post: 'https://api.openai.com/v1/images/edits',
@@ -112,8 +110,7 @@ export const localBots: Bot[] = [
     temperature: 0.6,
     maxTokens: 4096,
     n: 2,
-    prompt:
-      'Please help me with a grant proposal. This is what I have so far: PROMPT'
+    prompt: 'Please help me with a grant proposal. This is what I have so far: PROMPT'
   },
   {
     id: 7,
@@ -132,16 +129,14 @@ export const localBots: Bot[] = [
     id: 8,
     name: 'Redbubble Bot',
     botType: 'redbubble',
-    description:
-      'Redbubble But is here to help you create captivating product descriptions.',
+    description: 'Redbubble But is here to help you create captivating product descriptions.',
     avatarImage: '/images/avatars/bot9.png',
     model: 'gpt-3.5-turbo',
     post: 'https://api.openai.com/v1/completions',
     temperature: 0.6,
     maxTokens: 4096,
     n: 1,
-    prompt:
-      "I need help crafting content for redbubble, here's what I have PROMPT"
+    prompt: "I need help crafting content for redbubble, here's what I have PROMPT"
   },
   {
     id: 9,
@@ -155,8 +150,7 @@ export const localBots: Bot[] = [
     temperature: 0.6,
     maxTokens: 4096,
     n: 2,
-    prompt:
-      'Please give me an astrological reading in a playful tone, my birthday is BIRTHDATE'
+    prompt: 'Please give me an astrological reading in a playful tone, my birthday is BIRTHDATE'
   },
   {
     id: 10,
@@ -178,8 +172,7 @@ export const localBots: Bot[] = [
     id: 11,
     name: 'Serendipity',
     botType: 'taskmaster',
-    description:
-      "Serendipity - The World's Best Task-Manager-Slash-Adventure-Game",
+    description: "Serendipity - The World's Best Task-Manager-Slash-Adventure-Game",
     avatarImage: '/images/avatars/cassandra5.png',
     model: 'gpt-3.5-turbo',
     post: 'https://api.openai.com/v1/completions',

@@ -23,11 +23,7 @@
           <td>{{ gallery.content }}</td>
           <td>{{ gallery.description }}</td>
           <td>
-            <img
-              v-if="gallery.highlightImage"
-              :src="gallery.highlightImage"
-              alt="Highlight"
-            />
+            <img v-if="gallery.highlightImage" :src="gallery.highlightImage" alt="Highlight" />
           </td>
           <td>{{ gallery.isNSFW ? 'Yes' : 'No' }}</td>
           <td>{{ gallery.isAuth ? 'Yes' : 'No' }}</td>

@@ -6,7 +6,6 @@ import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
 import { defineEventHandler, handleCacheHeaders, createEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, getRequestHeader, setResponseHeader, getRequestHeaders, getQuery as getQuery$1, getCookie, createError, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, lazyEventHandler, sendError, readBody } from 'file:///home/silasfelinus/code/kindrobots/node_modules/h3/dist/index.mjs';
 import { PrismaClient } from 'file:///home/silasfelinus/code/kindrobots/node_modules/@prisma/client/index.js';
-import { hash as hash$2 } from 'file:///home/silasfelinus/code/kindrobots/node_modules/bcrypt/bcrypt.js';
 import { createRenderer } from 'file:///home/silasfelinus/code/kindrobots/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file:///home/silasfelinus/code/kindrobots/node_modules/devalue/index.js';
 import { renderToString } from 'file:///home/silasfelinus/code/kindrobots/node_modules/vue/server-renderer/index.mjs';
@@ -4059,23 +4058,22 @@ const _lazy_K130eS = () => Promise.resolve().then(function () { return _id__patc
 const _lazy_5G06BX = () => Promise.resolve().then(function () { return count_get$5; });
 const _lazy_xbhivw = () => Promise.resolve().then(function () { return createmany_post$3; });
 const _lazy_F1qVUo = () => Promise.resolve().then(function () { return index_get$7; });
-const _lazy_rshBCa = () => Promise.resolve().then(function () { return index_post$7; });
+const _lazy_rshBCa = () => Promise.resolve().then(function () { return index_post$5; });
 const _lazy_bEDwHx = () => Promise.resolve().then(function () { return _id__get$3; });
 const _lazy_t14IZv = () => Promise.resolve().then(function () { return _id__patch$3; });
 const _lazy_KnUNnv = () => Promise.resolve().then(function () { return _name__get$1; });
 const _lazy_xbyTWV = () => Promise.resolve().then(function () { return count_get$3; });
 const _lazy_kHMo6W = () => Promise.resolve().then(function () { return createmany_post$1; });
 const _lazy_nYq5gI = () => Promise.resolve().then(function () { return index_get$5; });
-const _lazy_BIl7ie = () => Promise.resolve().then(function () { return index_post$5; });
+const _lazy_BIl7ie = () => Promise.resolve().then(function () { return index_post$3; });
 const _lazy_bElSpE = () => Promise.resolve().then(function () { return prisma$7; });
 const _lazy_QGqcSb = () => Promise.resolve().then(function () { return index_get$3; });
-const _lazy_lq1Ad2 = () => Promise.resolve().then(function () { return index_post$3; });
+const _lazy_lq1Ad2 = () => Promise.resolve().then(function () { return index_post$1; });
 const _lazy_8PRWcM = () => Promise.resolve().then(function () { return index_put$1; });
 const _lazy_uEFgQ7 = () => Promise.resolve().then(function () { return _id__get$1; });
 const _lazy_ZRZvVU = () => Promise.resolve().then(function () { return _id__patch$1; });
 const _lazy_11nFJX = () => Promise.resolve().then(function () { return count_get$1; });
 const _lazy_GLKxdK = () => Promise.resolve().then(function () { return index_get$1; });
-const _lazy_URtA1g = () => Promise.resolve().then(function () { return index_post$1; });
 const _lazy_JwsYI6 = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
@@ -4102,7 +4100,6 @@ const handlers = [
   { route: '/api/users/:id', handler: _lazy_ZRZvVU, lazy: true, middleware: false, method: "patch" },
   { route: '/api/users/count', handler: _lazy_11nFJX, lazy: true, middleware: false, method: "get" },
   { route: '/api/users', handler: _lazy_GLKxdK, lazy: true, middleware: false, method: "get" },
-  { route: '/api/users', handler: _lazy_URtA1g, lazy: true, middleware: false, method: "post" },
   { route: '/__nuxt_error', handler: _lazy_JwsYI6, lazy: true, middleware: false, method: undefined },
   { route: '/api/_content/query/:qid/**:params', handler: _ZjxyFR, lazy: false, middleware: false, method: "get" },
   { route: '/api/_content/query/:qid', handler: _ZjxyFR, lazy: false, middleware: false, method: "get" },
@@ -4139,7 +4136,9 @@ function createNitroApp() {
         Object.assign(event.context, envContext);
       }
       event.fetch = (req, init) => fetchWithEvent(event, req, init, { fetch: localFetch });
-      event.$fetch = (req, init) => fetchWithEvent(event, req, init, { fetch: $fetch });
+      event.$fetch = (req, init) => fetchWithEvent(event, req, init, {
+        fetch: $fetch
+      });
     })
   );
   for (const h of handlers) {
@@ -4596,9 +4595,7 @@ const createmany_post$2 = defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
     if (!Array.isArray(body)) {
-      throw new TypeError(
-        "The request body should be an array of bots to create."
-      );
+      throw new TypeError("The request body should be an array of bots to create.");
     }
     const data = body.map((bot) => {
       const botData = {};
@@ -4638,7 +4635,7 @@ const index_get$7 = /*#__PURE__*/Object.freeze({
   default: index_get$6
 });
 
-const index_post$6 = defineEventHandler(async (event) => {
+const index_post$4 = defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
     const requiredFields = ["name", "description", "avatarImage", "prompt"];
@@ -4686,9 +4683,9 @@ const index_post$6 = defineEventHandler(async (event) => {
   }
 });
 
-const index_post$7 = /*#__PURE__*/Object.freeze({
+const index_post$5 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: index_post$6
+  default: index_post$4
 });
 
 const _id__get$2 = defineEventHandler(async (event) => {
@@ -4810,9 +4807,7 @@ const createmany_post = defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
     if (!Array.isArray(body)) {
-      throw new TypeError(
-        "The request body should be an array of galleries to create."
-      );
+      throw new TypeError("The request body should be an array of galleries to create.");
     }
     const data = body.map((gallery) => {
       const galleryData = {};
@@ -4852,7 +4847,7 @@ const index_get$5 = /*#__PURE__*/Object.freeze({
   default: index_get$4
 });
 
-const index_post$4 = defineEventHandler(async (event) => {
+const index_post$2 = defineEventHandler(async (event) => {
   const body = await readBody(event);
   let gallery = null;
   if (body.name)
@@ -4875,9 +4870,9 @@ const index_post$4 = defineEventHandler(async (event) => {
   };
 });
 
-const index_post$5 = /*#__PURE__*/Object.freeze({
+const index_post$3 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: index_post$4
+  default: index_post$2
 });
 
 const prisma$2 = new PrismaClient();
@@ -4894,7 +4889,7 @@ const index_get$3 = /*#__PURE__*/Object.freeze({
 });
 
 const prisma$1 = new PrismaClient();
-const index_post$2 = defineEventHandler(async (event) => {
+const index_post = defineEventHandler(async (event) => {
   const body = await readBody(event);
   let tag = null;
   if (body.name)
@@ -4908,9 +4903,9 @@ const index_post$2 = defineEventHandler(async (event) => {
   };
 });
 
-const index_post$3 = /*#__PURE__*/Object.freeze({
+const index_post$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: index_post$2
+  default: index_post
 });
 
 const index_put = defineEventHandler((event) => {
@@ -5012,30 +5007,6 @@ const index_get$1 = /*#__PURE__*/Object.freeze({
   default: index_get
 });
 
-const index_post = eventHandler(async (event) => {
-  const body = await readBody(event);
-  const email = body.email;
-  const password = body.password;
-  const hashedPass = await hash$2(password, 10);
-  try {
-    const user = await prisma$6.user.create({
-      data: {
-        email,
-        hashedPass
-        // include other fields as necessary
-      }
-    });
-    return { status: 201, body: user };
-  } catch (err) {
-    return { status: 400, body: { error: "Email already exists" } };
-  }
-});
-
-const index_post$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: index_post
-});
-
 const appRootId = "__nuxt";
 
 const appRootTag = "div";
@@ -5083,8 +5054,8 @@ const getSPARenderer = lazyCachedFunction(async () => {
   const result = await renderer.renderToString({});
   const renderToString = (ssrContext) => {
     const config = useRuntimeConfig();
+    ssrContext.modules = ssrContext.modules || /* @__PURE__ */ new Set();
     ssrContext.payload = {
-      path: ssrContext.url,
       _errors: {},
       serverRendered: false,
       data: {},

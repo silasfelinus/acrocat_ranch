@@ -20,11 +20,7 @@
               {{ item.title }}
             </NuxtLink>
             <div v-if="item.children" class="mt-2 grid grid-flow-row gap-2">
-              <div
-                v-for="child in item.children"
-                :key="child._id"
-                class="flex flex-wrap"
-              >
+              <div v-for="child in item.children" :key="child._id" class="flex flex-wrap">
                 <NuxtLink
                   :to="child._path"
                   class="rounded-full bg-primary text-white text-sm px-4 py-2 m-1 hover:bg-blue-600 transition-colors w-full text-center"
@@ -59,7 +55,5 @@ const filterChildRoutes = (item) => {
   return item
 }
 
-const filteredNavigationTree = computed(() =>
-  props.navigationTree.map(filterChildRoutes)
-)
+const filteredNavigationTree = computed(() => props.navigationTree.map(filterChildRoutes))
 </script>

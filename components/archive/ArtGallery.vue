@@ -1,12 +1,7 @@
 <template>
   <div id="art-container">
     <input v-model="artSize" type="range" min="5" max="40" />
-    <div
-      v-for="art in arts"
-      :key="art.id"
-      :ref="(el) => initInteract(el)"
-      class="art-asset"
-    >
+    <div v-for="art in arts" :key="art.id" :ref="(el) => initInteract(el)" class="art-asset">
       <div :style="{ transform: `scale(${artSize / 10})` }">
         <ArtAsset :src="art.src" :size="100" />
       </div>
