@@ -9,6 +9,9 @@ declare module 'nitropack' {
     '/api/botcafe': {
       'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/botcafe/index').default>>>>
     }
+    '/api/botcafe/post': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/botcafe/post').default>>>>
+    }
     '/api/bots/:id': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/bots/[id].get').default>>>>
       'patch': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/bots/[id].patch').default>>>>
@@ -22,6 +25,18 @@ declare module 'nitropack' {
     '/api/bots': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/bots/index.get').default>>>>
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/bots/index.post').default>>>>
+    }
+    '/api/conversations/:id': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/conversations/[id].get').default>>>>
+    }
+    '/api/conversations/messages/:id': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/conversations/messages/[id].get').default>>>>
+    }
+    '/api/conversations/messages/post': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/conversations/messages/post').default>>>>
+    }
+    '/api/conversations/post': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/conversations/post').default>>>>
     }
     '/api/galleries/:id': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/[id].get').default>>>>

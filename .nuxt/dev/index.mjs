@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { join as join$1 } from 'node:path';
 import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, createEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, getRequestHeader, setResponseHeader, getRequestHeaders, getQuery as getQuery$1, getCookie, createError, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, lazyEventHandler, sendError, readBody } from 'file:///home/silasfelinus/code/kindrobots/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, createEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, getRequestHeader, setResponseHeader, getRequestHeaders, getQuery as getQuery$1, getCookie, createError, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, lazyEventHandler, readBody, sendError } from 'file:///home/silasfelinus/code/kindrobots/node_modules/h3/dist/index.mjs';
 import { PrismaClient } from 'file:///home/silasfelinus/code/kindrobots/node_modules/@prisma/client/index.js';
 import { createRenderer } from 'file:///home/silasfelinus/code/kindrobots/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file:///home/silasfelinus/code/kindrobots/node_modules/devalue/index.js';
@@ -4053,12 +4053,17 @@ const _uXrim0 = defineEventHandler(async (event) => {
 
 const _lazy_A5LP0M = () => Promise.resolve().then(function () { return amibot$1; });
 const _lazy_AzK3TP = () => Promise.resolve().then(function () { return index$1; });
-const _lazy_Wrjdls = () => Promise.resolve().then(function () { return _id__get$5; });
+const _lazy_iNPNdu = () => Promise.resolve().then(function () { return post$5; });
+const _lazy_Wrjdls = () => Promise.resolve().then(function () { return _id__get$9; });
 const _lazy_K130eS = () => Promise.resolve().then(function () { return _id__patch$5; });
 const _lazy_5G06BX = () => Promise.resolve().then(function () { return count_get$5; });
 const _lazy_xbhivw = () => Promise.resolve().then(function () { return createmany_post$3; });
 const _lazy_F1qVUo = () => Promise.resolve().then(function () { return index_get$7; });
 const _lazy_rshBCa = () => Promise.resolve().then(function () { return index_post$5; });
+const _lazy_HeCidx = () => Promise.resolve().then(function () { return _id__get$7; });
+const _lazy_PHleXT = () => Promise.resolve().then(function () { return _id__get$5; });
+const _lazy_jHEAkP = () => Promise.resolve().then(function () { return post$3; });
+const _lazy_3bJ7lr = () => Promise.resolve().then(function () { return post$1; });
 const _lazy_bEDwHx = () => Promise.resolve().then(function () { return _id__get$3; });
 const _lazy_t14IZv = () => Promise.resolve().then(function () { return _id__patch$3; });
 const _lazy_KnUNnv = () => Promise.resolve().then(function () { return _name__get$1; });
@@ -4079,12 +4084,17 @@ const _lazy_JwsYI6 = () => Promise.resolve().then(function () { return renderer$
 const handlers = [
   { route: '/api/botcafe/amibot', handler: _lazy_A5LP0M, lazy: true, middleware: false, method: undefined },
   { route: '/api/botcafe', handler: _lazy_AzK3TP, lazy: true, middleware: false, method: undefined },
+  { route: '/api/botcafe/post', handler: _lazy_iNPNdu, lazy: true, middleware: false, method: undefined },
   { route: '/api/bots/:id', handler: _lazy_Wrjdls, lazy: true, middleware: false, method: "get" },
   { route: '/api/bots/:id', handler: _lazy_K130eS, lazy: true, middleware: false, method: "patch" },
   { route: '/api/bots/count', handler: _lazy_5G06BX, lazy: true, middleware: false, method: "get" },
   { route: '/api/bots/createmany', handler: _lazy_xbhivw, lazy: true, middleware: false, method: "post" },
   { route: '/api/bots', handler: _lazy_F1qVUo, lazy: true, middleware: false, method: "get" },
   { route: '/api/bots', handler: _lazy_rshBCa, lazy: true, middleware: false, method: "post" },
+  { route: '/api/conversations/:id', handler: _lazy_HeCidx, lazy: true, middleware: false, method: "get" },
+  { route: '/api/conversations/messages/:id', handler: _lazy_PHleXT, lazy: true, middleware: false, method: "get" },
+  { route: '/api/conversations/messages/post', handler: _lazy_jHEAkP, lazy: true, middleware: false, method: undefined },
+  { route: '/api/conversations/post', handler: _lazy_3bJ7lr, lazy: true, middleware: false, method: undefined },
   { route: '/api/galleries/:id', handler: _lazy_bEDwHx, lazy: true, middleware: false, method: "get" },
   { route: '/api/galleries/:id', handler: _lazy_t14IZv, lazy: true, middleware: false, method: "patch" },
   { route: '/api/galleries/:name', handler: _lazy_KnUNnv, lazy: true, middleware: false, method: "get" },
@@ -4483,6 +4493,51 @@ const index$1 = /*#__PURE__*/Object.freeze({
   default: index
 });
 
+const post$4 = defineEventHandler(async (event) => {
+  try {
+    const body = await readBody(event);
+    const requiredFields = ["messages", "post"];
+    for (const field of requiredFields) {
+      if (!body[field]) {
+        throw new Error(`Missing data. Please make sure to provide ${field}.`);
+      }
+    }
+    const response = await fetch(body.post, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: body.model || "gpt-3.5-turbo",
+        messages: body.messages,
+        temperature: body.temperature || 1,
+        n: body.n || 2,
+        max_tokens: body.max_tokens || 2e3
+      })
+    });
+    if (!response.ok) {
+      throw new Error("Failed to post to botcafe");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    let errorMessage = "An error occurred while creating the conversation.";
+    if (error instanceof Error) {
+      errorMessage += ` Details: ${error.message}`;
+    }
+    throw createError({
+      statusCode: 500,
+      statusMessage: errorMessage
+    });
+  }
+});
+
+const post$5 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: post$4
+});
+
 const prisma$5 = new PrismaClient();
 const prisma$6 = prisma$5;
 
@@ -4491,7 +4546,7 @@ const prisma$7 = /*#__PURE__*/Object.freeze({
   default: prisma$6
 });
 
-const _id__get$4 = defineEventHandler(async (event) => {
+const _id__get$8 = defineEventHandler(async (event) => {
   var _a;
   const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
   const bot = await prisma$6.bot.findUnique({
@@ -4509,9 +4564,9 @@ const _id__get$4 = defineEventHandler(async (event) => {
   return bot;
 });
 
-const _id__get$5 = /*#__PURE__*/Object.freeze({
+const _id__get$9 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: _id__get$4
+  default: _id__get$8
 });
 
 const _id__patch$4 = defineEventHandler(async (event) => {
@@ -4686,6 +4741,125 @@ const index_post$4 = defineEventHandler(async (event) => {
 const index_post$5 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   default: index_post$4
+});
+
+const _id__get$6 = defineEventHandler(async (event) => {
+  var _a;
+  const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
+  const conversation = await prisma$6.conversation.findUnique({
+    where: {
+      id: Number(id)
+    }
+  });
+  if (!conversation) {
+    const notFoundError = createError({
+      statusCode: 404,
+      statusMessage: "conversation not found "
+    });
+    sendError(event, notFoundError);
+  }
+  return conversation;
+});
+
+const _id__get$7 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: _id__get$6
+});
+
+const _id__get$4 = defineEventHandler(async (event) => {
+  var _a;
+  const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
+  const message = await prisma$6.message.findUnique({
+    where: {
+      id: Number(id)
+    }
+  });
+  if (!message) {
+    const notFoundError = createError({
+      statusCode: 404,
+      statusMessage: "message not found "
+    });
+    sendError(event, notFoundError);
+  }
+  return message;
+});
+
+const _id__get$5 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: _id__get$4
+});
+
+const post$2 = defineEventHandler(async (event) => {
+  try {
+    const body = await readBody(event);
+    const requiredFields = ["content", "sender", "type", "conversationId"];
+    for (const field of requiredFields) {
+      if (!body[field]) {
+        throw new Error(`Missing data. Please make sure to provide ${field}.`);
+      }
+    }
+    const message = await prisma$6.message.create({
+      data: {
+        content: body.content,
+        sender: body.sender,
+        type: body.type,
+        tokenCount: body.tokenCount,
+        conversationId: body.conversationId
+      }
+    });
+    return message;
+  } catch (error) {
+    let errorMessage = "An error occurred while creating the message.";
+    if (error instanceof Error) {
+      errorMessage += ` Details: ${error.message}`;
+    }
+    throw createError({
+      statusCode: 500,
+      statusMessage: errorMessage
+    });
+  }
+});
+
+const post$3 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: post$2
+});
+
+const post = defineEventHandler(async (event) => {
+  try {
+    const body = await readBody(event);
+    const requiredFields = ["messages"];
+    for (const field of requiredFields) {
+      if (!body[field]) {
+        throw new Error(`Missing data. Please make sure to provide ${field}.`);
+      }
+    }
+    const conversation = await prisma$6.conversation.create({
+      data: {
+        messages: {
+          create: body.messages
+        }
+      },
+      include: {
+        messages: true
+      }
+    });
+    return conversation;
+  } catch (error) {
+    let errorMessage = "An error occurred while creating the conversation.";
+    if (error instanceof Error) {
+      errorMessage += ` Details: ${error.message}`;
+    }
+    throw createError({
+      statusCode: 500,
+      statusMessage: errorMessage
+    });
+  }
+});
+
+const post$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: post
 });
 
 const _id__get$2 = defineEventHandler(async (event) => {

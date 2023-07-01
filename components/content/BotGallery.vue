@@ -3,10 +3,10 @@
     <div
       v-for="bot in bots"
       :key="bot.id"
-      class="flex flex-col items-center justify-between w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2"
+      class="flex flex-col items-center justify-between w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2 cursor-pointer"
       @click="selectBot(bot.id)"
     >
-      <img :src="bot.avatarImage" class="w-full h-64 object-cover" />
+      <img :src="bot.avatarImage" class="w-full h-96 object-cover rounded-lg" />
       <h2 class="mt-4 text-2xl font-semibold text-center">{{ bot.name }}</h2>
       <p class="mt-2 text-center">{{ bot.description }}</p>
     </div>
@@ -16,6 +16,7 @@
 
 <script setup lang="ts">
 import { Bot } from '../../types/bot'
+import BotCard from './BotCard.vue'
 
 const bots = ref<Bot[]>([])
 const selectedBot = ref<Bot | null>(null)
@@ -42,5 +43,3 @@ const selectBot = async (id: number) => {
 
 onMounted(fetchBots)
 </script>
-
-<style scoped></style>

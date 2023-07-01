@@ -1,5 +1,5 @@
 ---
-title: 'Game Arcade'
+title: 'Kind Arcade - Coming Soon'
 description: 'Would you like to play a game?'
 layout: gamescreen
 gallery: botcafe

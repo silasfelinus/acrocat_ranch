@@ -36,13 +36,17 @@ export const useBotStore = defineStore('bots', {
       const bot = this.bots.find((bot) => bot.id === botId)
       if (bot) {
         this.selectedBot = bot
+      } else {
+        this.selectedBot = null
+        console.error(`No bot found with ID: ${botId}`)
       }
+    },
+    async init() {
+      this.loadLocalBots()
+      await this.loadBots()
     }
   }
 })
 
-// Load the localBots when the store is created
 const store = useBotStore()
-store.loadLocalBots()
-// Then load the fetched bots
-store.loadBots()
+store.init()

@@ -111,29 +111,31 @@ model Image {
 }
 
 model Message {
-  id             Int      @id @default(autoincrement())
-  content        String   @default("")
-  conversationId Int
-  dateCreated    DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  id              Int      @id @default(autoincrement())
+  content         String   @default("")
+  sender          String
+  type            MessageType
+  tokenCount      Int?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  conversationId  Int
+  conversation    Conversation @relation(fields: [conversationId], references: [id])
+}
+
+enum MessageType {
+  PROMPT
+  RESPONSE
+  IMAGE
+  MASK
 }
 
 model Conversation {
   id          Int      @id @default(autoincrement())
-  content     String   @default("")
+  messages    Message[]
   dateCreated DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
-model Prompt {
-  id         Int      @id @default(autoincrement())
-  content    String   @default("")
-  isNsfw     Boolean  @default(false)
-  sfwContent String?
-  tokenCount Int?
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-}
 
 model Tag {
   id        Int      @id @default(autoincrement())

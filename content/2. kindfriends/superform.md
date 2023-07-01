@@ -6,6 +6,5 @@ image: backtree.webp
 gallery: flower
 navigation: false
 ---
-
-[www.hairbysuperkate.com](Hair by superkate)
+Created with kind appreciation for [Hair by Superkate](https://www.hairbysuperkate.com)
 :submission-form
