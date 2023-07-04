@@ -2,7 +2,7 @@
 title: '🦋AMIbot🦋'
 description: 'Buzzing into action to swat the oversized impact of malaria, one mosquito net at a time!'
 layout: default
-image: amibot/amibot1.png
+image: wonderchest/wonderchest-002.webp
 gallery: wonderchest
 ---
 
@@ -26,3 +26,5 @@ Check out our fundraiser at [Against Malaria](https://againstmalaria.com/amibot)
 :ami-link
 
 Why are we doing this? Because we believe in the power of technology to help humanity. And we believe in you! Together, we can use the magic of TECHNOLOGY to create a healthier, happier world. So let's get out there and make some change! 🦋💖🌍
+
+:bot-card

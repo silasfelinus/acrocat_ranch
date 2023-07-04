@@ -26,21 +26,22 @@ declare module 'nitropack' {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/bots/index.get').default>>>>
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/bots/index.post').default>>>>
     }
-    '/api/conversations/:id': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/conversations/[id].get').default>>>>
+    '/api/conversations/:id/messages/:id': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/conversations/[id]/messages/[id].get').default>>>>
     }
-    '/api/conversations/messages/:id': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/conversations/messages/[id].get').default>>>>
+    '/api/conversations/:id/messages': {
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/conversations/[id]/messages/index.post').default>>>>
     }
-    '/api/conversations/messages/post': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/conversations/messages/post').default>>>>
-    }
-    '/api/conversations/post': {
-      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/conversations/post').default>>>>
+    '/api/conversations': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/conversations/index.get').default>>>>
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/conversations/index.post').default>>>>
     }
     '/api/galleries/:id': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/[id].get').default>>>>
       'patch': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/[id].patch').default>>>>
+    }
+    '/api/galleries/:id.random': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/[id].random').default>>>>
     }
     '/api/galleries/:name': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/galleries/[name].get').default>>>>

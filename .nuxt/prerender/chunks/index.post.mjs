@@ -1,58 +1,54 @@
-import {
-  defineEventHandler,
-  readBody,
-  createError
-} from 'file:///home/silasfelinus/code/kindrobots/node_modules/h3/dist/index.mjs'
-import prisma from './prisma.mjs'
-import 'file:///home/silasfelinus/code/kindrobots/node_modules/@prisma/client/index.js'
+import { defineEventHandler, readBody, createError } from 'file:///home/silasfelinus/code/kindrobots/node_modules/h3/dist/index.mjs';
+import prisma from './prisma.mjs';
+import 'file:///home/silasfelinus/code/kindrobots/node_modules/@prisma/client/index.js';
 
 const index_post = defineEventHandler(async (event) => {
   try {
-    const body = await readBody(event)
-    const requiredFields = ['name', 'description', 'avatarImage', 'prompt']
+    const body = await readBody(event);
+    const requiredFields = ["name", "description", "avatarImage", "prompt"];
     for (const field of requiredFields) {
       if (!body[field]) {
-        throw new Error(`Missing data. Please make sure to provide ${field}.`)
+        throw new Error(`Missing data. Please make sure to provide ${field}.`);
       }
     }
     const allowedFields = [
-      'name',
-      'botType',
-      'description',
-      'avatarImage',
-      'model',
-      'post',
-      'temperature',
-      'maxTokens',
-      'prompt',
-      'image',
-      'mask',
-      'style',
-      'n',
-      'intro',
-      'size'
-    ]
-    const data = {}
+      "name",
+      "botType",
+      "description",
+      "avatarImage",
+      "model",
+      "post",
+      "temperature",
+      "maxTokens",
+      "prompt",
+      "image",
+      "mask",
+      "style",
+      "n",
+      "intro",
+      "size"
+    ];
+    const data = {};
     for (const field of allowedFields) {
       if (body[field] !== void 0) {
-        data[field] = body[field]
+        data[field] = body[field];
       }
     }
     const bot = await prisma.bot.create({
       data
-    })
-    return bot
+    });
+    return bot;
   } catch (error) {
-    let errorMessage = 'An error occurred while creating the bot.'
+    let errorMessage = "An error occurred while creating the bot.";
     if (error instanceof Error) {
-      errorMessage += ` Details: ${error.message}`
+      errorMessage += ` Details: ${error.message}`;
     }
     throw createError({
       statusCode: 500,
       statusMessage: errorMessage
-    })
+    });
   }
-})
+});
 
-export { index_post as default }
+export { index_post as default };
 //# sourceMappingURL=index.post.mjs.map

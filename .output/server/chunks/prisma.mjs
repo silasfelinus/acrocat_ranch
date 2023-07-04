@@ -1,7 +1,7 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient()
-const prisma$1 = prisma
+const prisma = new PrismaClient();
+const prisma$1 = prisma;
 
-export { prisma$1 as default }
+export { prisma$1 as default };
 //# sourceMappingURL=prisma.mjs.map

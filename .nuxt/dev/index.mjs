@@ -6,6 +6,7 @@ import { mkdirSync } from 'node:fs';
 import { parentPort, threadId } from 'node:worker_threads';
 import { defineEventHandler, handleCacheHeaders, createEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseStatus, getRequestHeader, setResponseHeader, getRequestHeaders, getQuery as getQuery$1, getCookie, createError, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, lazyEventHandler, readBody, sendError } from 'file:///home/silasfelinus/code/kindrobots/node_modules/h3/dist/index.mjs';
 import { PrismaClient } from 'file:///home/silasfelinus/code/kindrobots/node_modules/@prisma/client/index.js';
+import path from 'path';
 import { createRenderer } from 'file:///home/silasfelinus/code/kindrobots/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file:///home/silasfelinus/code/kindrobots/node_modules/devalue/index.js';
 import { renderToString } from 'file:///home/silasfelinus/code/kindrobots/node_modules/vue/server-renderer/index.mjs';
@@ -4053,19 +4054,20 @@ const _uXrim0 = defineEventHandler(async (event) => {
 
 const _lazy_A5LP0M = () => Promise.resolve().then(function () { return amibot$1; });
 const _lazy_AzK3TP = () => Promise.resolve().then(function () { return index$1; });
-const _lazy_iNPNdu = () => Promise.resolve().then(function () { return post$5; });
-const _lazy_Wrjdls = () => Promise.resolve().then(function () { return _id__get$9; });
+const _lazy_iNPNdu = () => Promise.resolve().then(function () { return post$1; });
+const _lazy_Wrjdls = () => Promise.resolve().then(function () { return _id__get$7; });
 const _lazy_K130eS = () => Promise.resolve().then(function () { return _id__patch$5; });
 const _lazy_5G06BX = () => Promise.resolve().then(function () { return count_get$5; });
 const _lazy_xbhivw = () => Promise.resolve().then(function () { return createmany_post$3; });
-const _lazy_F1qVUo = () => Promise.resolve().then(function () { return index_get$7; });
-const _lazy_rshBCa = () => Promise.resolve().then(function () { return index_post$5; });
-const _lazy_HeCidx = () => Promise.resolve().then(function () { return _id__get$7; });
-const _lazy_PHleXT = () => Promise.resolve().then(function () { return _id__get$5; });
-const _lazy_jHEAkP = () => Promise.resolve().then(function () { return post$3; });
-const _lazy_3bJ7lr = () => Promise.resolve().then(function () { return post$1; });
+const _lazy_F1qVUo = () => Promise.resolve().then(function () { return index_get$9; });
+const _lazy_rshBCa = () => Promise.resolve().then(function () { return index_post$9; });
+const _lazy_DPadiC = () => Promise.resolve().then(function () { return _id__get$5; });
+const _lazy_UDA3tY = () => Promise.resolve().then(function () { return index_post$7; });
+const _lazy_ocXlOY = () => Promise.resolve().then(function () { return index_get$7; });
+const _lazy_SllWBI = () => Promise.resolve().then(function () { return index_post$5; });
 const _lazy_bEDwHx = () => Promise.resolve().then(function () { return _id__get$3; });
 const _lazy_t14IZv = () => Promise.resolve().then(function () { return _id__patch$3; });
+const _lazy_OWSV8D = () => Promise.resolve().then(function () { return _id__random$1; });
 const _lazy_KnUNnv = () => Promise.resolve().then(function () { return _name__get$1; });
 const _lazy_xbyTWV = () => Promise.resolve().then(function () { return count_get$3; });
 const _lazy_kHMo6W = () => Promise.resolve().then(function () { return createmany_post$1; });
@@ -4091,12 +4093,13 @@ const handlers = [
   { route: '/api/bots/createmany', handler: _lazy_xbhivw, lazy: true, middleware: false, method: "post" },
   { route: '/api/bots', handler: _lazy_F1qVUo, lazy: true, middleware: false, method: "get" },
   { route: '/api/bots', handler: _lazy_rshBCa, lazy: true, middleware: false, method: "post" },
-  { route: '/api/conversations/:id', handler: _lazy_HeCidx, lazy: true, middleware: false, method: "get" },
-  { route: '/api/conversations/messages/:id', handler: _lazy_PHleXT, lazy: true, middleware: false, method: "get" },
-  { route: '/api/conversations/messages/post', handler: _lazy_jHEAkP, lazy: true, middleware: false, method: undefined },
-  { route: '/api/conversations/post', handler: _lazy_3bJ7lr, lazy: true, middleware: false, method: undefined },
+  { route: '/api/conversations/:id/messages/:id', handler: _lazy_DPadiC, lazy: true, middleware: false, method: "get" },
+  { route: '/api/conversations/:id/messages', handler: _lazy_UDA3tY, lazy: true, middleware: false, method: "post" },
+  { route: '/api/conversations', handler: _lazy_ocXlOY, lazy: true, middleware: false, method: "get" },
+  { route: '/api/conversations', handler: _lazy_SllWBI, lazy: true, middleware: false, method: "post" },
   { route: '/api/galleries/:id', handler: _lazy_bEDwHx, lazy: true, middleware: false, method: "get" },
   { route: '/api/galleries/:id', handler: _lazy_t14IZv, lazy: true, middleware: false, method: "patch" },
+  { route: '/api/galleries/:id.random', handler: _lazy_OWSV8D, lazy: true, middleware: false, method: undefined },
   { route: '/api/galleries/:name', handler: _lazy_KnUNnv, lazy: true, middleware: false, method: "get" },
   { route: '/api/galleries/count', handler: _lazy_xbyTWV, lazy: true, middleware: false, method: "get" },
   { route: '/api/galleries/createmany', handler: _lazy_kHMo6W, lazy: true, middleware: false, method: "post" },
@@ -4493,10 +4496,11 @@ const index$1 = /*#__PURE__*/Object.freeze({
   default: index
 });
 
-const post$4 = defineEventHandler(async (event) => {
+const post = defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
-    const requiredFields = ["messages", "post"];
+    const requiredFields = ["messages"];
+    const { OPENAI_API_KEY } = useRuntimeConfig();
     for (const field of requiredFields) {
       if (!body[field]) {
         throw new Error(`Missing data. Please make sure to provide ${field}.`);
@@ -4506,7 +4510,7 @@ const post$4 = defineEventHandler(async (event) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
+        Authorization: `Bearer ${OPENAI_API_KEY}`
       },
       body: JSON.stringify({
         model: body.model || "gpt-3.5-turbo",
@@ -4533,9 +4537,9 @@ const post$4 = defineEventHandler(async (event) => {
   }
 });
 
-const post$5 = /*#__PURE__*/Object.freeze({
+const post$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: post$4
+  default: post
 });
 
 const prisma$5 = new PrismaClient();
@@ -4546,7 +4550,7 @@ const prisma$7 = /*#__PURE__*/Object.freeze({
   default: prisma$6
 });
 
-const _id__get$8 = defineEventHandler(async (event) => {
+const _id__get$6 = defineEventHandler(async (event) => {
   var _a;
   const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
   const bot = await prisma$6.bot.findUnique({
@@ -4564,9 +4568,9 @@ const _id__get$8 = defineEventHandler(async (event) => {
   return bot;
 });
 
-const _id__get$9 = /*#__PURE__*/Object.freeze({
+const _id__get$7 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: _id__get$8
+  default: _id__get$6
 });
 
 const _id__patch$4 = defineEventHandler(async (event) => {
@@ -4680,17 +4684,17 @@ const createmany_post$3 = /*#__PURE__*/Object.freeze({
   default: createmany_post$2
 });
 
-const index_get$6 = defineEventHandler(async () => {
+const index_get$8 = defineEventHandler(async () => {
   const bots = await prisma$6.bot.findMany({});
   return await bots;
 });
 
-const index_get$7 = /*#__PURE__*/Object.freeze({
+const index_get$9 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: index_get$6
+  default: index_get$8
 });
 
-const index_post$4 = defineEventHandler(async (event) => {
+const index_post$8 = defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
     const requiredFields = ["name", "description", "avatarImage", "prompt"];
@@ -4738,32 +4742,9 @@ const index_post$4 = defineEventHandler(async (event) => {
   }
 });
 
-const index_post$5 = /*#__PURE__*/Object.freeze({
+const index_post$9 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: index_post$4
-});
-
-const _id__get$6 = defineEventHandler(async (event) => {
-  var _a;
-  const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
-  const conversation = await prisma$6.conversation.findUnique({
-    where: {
-      id: Number(id)
-    }
-  });
-  if (!conversation) {
-    const notFoundError = createError({
-      statusCode: 404,
-      statusMessage: "conversation not found "
-    });
-    sendError(event, notFoundError);
-  }
-  return conversation;
-});
-
-const _id__get$7 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: _id__get$6
+  default: index_post$8
 });
 
 const _id__get$4 = defineEventHandler(async (event) => {
@@ -4789,10 +4770,10 @@ const _id__get$5 = /*#__PURE__*/Object.freeze({
   default: _id__get$4
 });
 
-const post$2 = defineEventHandler(async (event) => {
+const index_post$6 = defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
-    const requiredFields = ["content", "sender", "type", "conversationId"];
+    const requiredFields = ["content", "role", "type", "conversationId"];
     for (const field of requiredFields) {
       if (!body[field]) {
         throw new Error(`Missing data. Please make sure to provide ${field}.`);
@@ -4801,7 +4782,7 @@ const post$2 = defineEventHandler(async (event) => {
     const message = await prisma$6.message.create({
       data: {
         content: body.content,
-        sender: body.sender,
+        role: body.sender,
         type: body.type,
         tokenCount: body.tokenCount,
         conversationId: body.conversationId
@@ -4820,12 +4801,35 @@ const post$2 = defineEventHandler(async (event) => {
   }
 });
 
-const post$3 = /*#__PURE__*/Object.freeze({
+const index_post$7 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: post$2
+  default: index_post$6
 });
 
-const post = defineEventHandler(async (event) => {
+const index_get$6 = defineEventHandler(async (event) => {
+  var _a;
+  const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
+  const conversation = await prisma$6.conversation.findUnique({
+    where: {
+      id: Number(id)
+    }
+  });
+  if (!conversation) {
+    const notFoundError = createError({
+      statusCode: 404,
+      statusMessage: "conversation not found "
+    });
+    sendError(event, notFoundError);
+  }
+  return conversation;
+});
+
+const index_get$7 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: index_get$6
+});
+
+const index_post$4 = defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
     const requiredFields = ["messages"];
@@ -4857,9 +4861,9 @@ const post = defineEventHandler(async (event) => {
   }
 });
 
-const post$1 = /*#__PURE__*/Object.freeze({
+const index_post$5 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: post
+  default: index_post$4
 });
 
 const _id__get$2 = defineEventHandler(async (event) => {
@@ -4925,6 +4929,51 @@ const _id__patch$2 = defineEventHandler(async (event) => {
 const _id__patch$3 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   default: _id__patch$2
+});
+
+const _id__random = defineEventHandler(async (event) => {
+  const { id, name } = event.context.params || {};
+  let gallery = null;
+  if (id) {
+    gallery = await prisma$6.gallery.findUnique({
+      where: { id: Number(id) }
+    });
+  } else if (name) {
+    gallery = await prisma$6.gallery.findFirst({
+      where: { name }
+    });
+  }
+  if (!gallery) {
+    const notFoundError = createError({
+      statusCode: 404,
+      statusMessage: "Gallery not found"
+    });
+    sendError(event, notFoundError);
+  } else {
+    const response = await fetch(`/images/${gallery.name}/images.json`);
+    const images = await response.json();
+    if (images && images.length > 0) {
+      const randomImage = images[Math.floor(Math.random() * images.length)];
+      const imagePath = path.join("/", "images", gallery.name, randomImage);
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          imagePath
+        })
+      };
+    } else {
+      const notFoundError = createError({
+        statusCode: 404,
+        statusMessage: "No images found for the gallery"
+      });
+      sendError(event, notFoundError);
+    }
+  }
+});
+
+const _id__random$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: _id__random
 });
 
 const _name__get = defineEventHandler(async (event) => {

@@ -6,4 +6,4 @@ image: botcat.webp
 gallery: wonderbot
 ---
 
-:gallery-viewer
+:gallery-select

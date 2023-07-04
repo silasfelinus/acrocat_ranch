@@ -39,19 +39,6 @@ model Todo {
   updatedAt  DateTime @updatedAt
 }
 
-model Gallery {
-  id             Int      @id @default(autoincrement())
-  name           String   @unique
-  content        String   @default("")
-  description    String   @default("")
-  highlightImage String?
-  isNSFW         Boolean  @default(false)
-  isAuth         Boolean  @default(false)
-  user           String   @default("cafepurr")
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-}
-
 model Checkpoint {
   id         Int      @id @default(autoincrement())
   name       String   @default("")
@@ -108,18 +95,33 @@ model Image {
   creatorID   Int?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  Gallery     Gallery? @relation(fields: [galleryId], references: [id])
+}
+
+model Gallery {
+  id             Int      @id @default(autoincrement())
+  name           String   @unique
+  content        String   @default("")
+  description    String   @default("")
+  highlightImage String?
+  isNSFW         Boolean  @default(false)
+  isAuth         Boolean  @default(false)
+  user           String   @default("cafepurr")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  Images         Image[]
 }
 
 model Message {
-  id              Int      @id @default(autoincrement())
-  content         String   @default("")
-  sender          String
-  type            MessageType
-  tokenCount      Int?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  conversationId  Int
-  conversation    Conversation @relation(fields: [conversationId], references: [id])
+  id             Int          @id @default(autoincrement())
+  content        String       @default("")
+  role           String
+  type           MessageType
+  tokenCount     Int?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  conversationId Int
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
 }
 
 enum MessageType {
@@ -130,12 +132,11 @@ enum MessageType {
 }
 
 model Conversation {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   messages    Message[]
-  dateCreated DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  dateCreated DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
-
 
 model Tag {
   id        Int      @id @default(autoincrement())

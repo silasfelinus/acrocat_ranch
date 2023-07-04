@@ -1,22 +1,18 @@
-import {
-  defineEventHandler,
-  readBody,
-  createError
-} from 'file:///home/silasfelinus/code/kindrobots/node_modules/h3/dist/index.mjs'
-import prisma from './prisma.mjs'
-import 'file:///home/silasfelinus/code/kindrobots/node_modules/@prisma/client/index.js'
+import { defineEventHandler, readBody, createError } from 'file:///home/silasfelinus/code/kindrobots/node_modules/h3/dist/index.mjs';
+import prisma from './prisma.mjs';
+import 'file:///home/silasfelinus/code/kindrobots/node_modules/@prisma/client/index.js';
 
 const _id__patch = defineEventHandler(async (event) => {
-  var _a, _b, _c, _d, _e, _f, _g, _h
+  var _a, _b, _c, _d, _e, _f, _g, _h;
   try {
-    const body = await readBody(event)
-    const id = Number((_a = event.context.params) == null ? void 0 : _a.id)
+    const body = await readBody(event);
+    const id = Number((_a = event.context.params) == null ? void 0 : _a.id);
     if (!id) {
-      throw new Error('Missing ID parameter.')
+      throw new Error("Missing ID parameter.");
     }
-    let gallery = await prisma.gallery.findUnique({ where: { id } })
+    let gallery = await prisma.gallery.findUnique({ where: { id } });
     if (!gallery) {
-      throw new Error('Gallery not found.')
+      throw new Error("Gallery not found.");
     }
     gallery = await prisma.gallery.update({
       where: { id },
@@ -29,19 +25,19 @@ const _id__patch = defineEventHandler(async (event) => {
         isAuth: (_g = body.isAuth) != null ? _g : gallery.isAuth,
         user: (_h = body.user) != null ? _h : gallery.user
       }
-    })
-    return gallery
+    });
+    return gallery;
   } catch (error) {
-    let errorMessage = 'An error occurred while updating the gallery.'
+    let errorMessage = "An error occurred while updating the gallery.";
     if (error instanceof Error) {
-      errorMessage += ` Details: ${error.message}`
+      errorMessage += ` Details: ${error.message}`;
     }
     throw createError({
       statusCode: 500,
       statusMessage: errorMessage
-    })
+    });
   }
-})
+});
 
-export { _id__patch as default }
+export { _id__patch as default };
 //# sourceMappingURL=_id_.patch2.mjs.map

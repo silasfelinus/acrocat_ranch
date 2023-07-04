@@ -4,7 +4,9 @@ export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event)
 
-    const requiredFields = ['messages', 'post']
+    const requiredFields = ['messages']
+
+    const { OPENAI_API_KEY } = useRuntimeConfig()
 
     for (const field of requiredFields) {
       if (!body[field]) {
@@ -16,7 +18,7 @@ export default defineEventHandler(async (event) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
+        Authorization: `Bearer ${OPENAI_API_KEY}`
       },
       body: JSON.stringify({
         model: body.model || 'gpt-3.5-turbo',

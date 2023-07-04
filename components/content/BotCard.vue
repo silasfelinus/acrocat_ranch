@@ -1,131 +1,75 @@
-<script setup>
-// Define the bot prop with a default value
-const props = defineProps({
-  bot: {
-    type: Object,
-    default: undefined
-  }
-})
-
-// Create a local copy of the bot prop
-const localBot = ref({
-  id: 0,
-  name: 'AMIb0t',
-  botType: 'chatbot',
-  description: 'Raising awareness to purchase mosquito nets for children in africa',
-  avatarImage: '/images/wonderchest/wonderchest304_(23).webp',
-  model: 'gpt-3.5-turbo',
-  post: 'https://api.openai.com/v1/completions',
-  temperature: 1.0,
-  maxTokens: 500,
-  n: 1,
-  prompt:
-    'Please respond as AMIB0t, The Anti-Malaria Intelligence, a hyperkinetic Digital Hive-mind created to fight malaria through social outreach and humor'
-})
-
-// Watch for changes in the bot prop and update localBot accordingly
-watch(
-  () => props.bot,
-  (newBot) => {
-    if (newBot) {
-      localBot.value = { ...newBot }
-    }
-  },
-  { immediate: true }
-)
-
-// Create a computed property for the prompt
-const localPrompt = computed({
-  get: () => localBot.value.prompt,
-  set: (value) => (localBot.value.prompt = value)
-})
-
-const addPromptToDatabase = async () => {
-  try {
-    const response = await fetch('/api/prompts/post', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ content: localPrompt.value })
-    })
-
-    if (!response.ok) {
-      throw new Error('Failed to add prompt to database')
-    }
-
-    const data = await response.json()
-
-    console.log('Prompt added to database:', data)
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-const sendToBotCafe = async () => {
-  try {
-    const response = await fetch('/api/botcafe/post', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        post: localBot.value.post,
-        model: localBot.value.model,
-        messages: [
-          {
-            role: 'user',
-            content: localPrompt.value
-          }
-        ],
-        temperature: localBot.value.temperature,
-        n: localBot.value.n,
-        max_tokens: localBot.value.maxTokens
-      })
-    })
-
-    if (!response.ok) {
-      throw new Error('Failed to send message to botcafe')
-    }
-
-    const data = await response.json()
-
-    console.log('Message sent to botcafe:', data)
-  } catch (error) {
-    console.error(error)
-  }
-}
-</script>
-
 <template>
-  <div
-    class="flex flex-col p-6 m-6 rounded-xl bg-gradient-to-r from-primary to-secondary shadow-lg text-white"
-  >
-    <img :src="bot.avatarImage" alt="Bot Avatar" class="w-24 h-24 rounded-full mb-4" />
-    <h2 class="text-2xl font-bold mb-2">{{ bot.name }}</h2>
-    <p class="mb-2">{{ bot.description }}</p>
-    <p class="mb-2">{{ bot.botType }}</p>
-    <p class="mb-2">{{ bot.model }}</p>
-    <p class="mb-2">{{ bot.post }}</p>
-    <p class="mb-2">{{ bot.temperature }}</p>
-    <p class="mb-2">{{ bot.maxTokens }}</p>
-    <p class="mb-2">{{ bot.prompt }}</p>
-    <p class="mb-2">{{ bot.image }}</p>
-    <p class="mb-2">{{ bot.mask }}</p>
-    <p class="mb-2">{{ bot.style }}</p>
-    <p class="mb-2">Iterations: {{ bot.n }}</p>
-    <p class="mb-2">{{ bot.intro }}</p>
-    <p class="mb-2">{{ bot.size }}</p>
-
-    <textarea
-      v-model="localPrompt"
-      class="mt-4 p-2 w-full h-24 rounded-md bg-white text-black"
-    ></textarea>
-    <button class="mt-4 px-4 py-2 rounded-md bg-white text-primary" @click="addPromptToDatabase">
-      Add Prompt
-    </button>
-    <button class="mt-4 px-4 py-2 rounded-md bg-white text-primary" @click="sendToBotCafe">
-      Send
-    </button>
+  <div class="grid grid-cols-2 gap-4 p-8 bg-base rounded-lg shadow-lg text-white items-start">
+    <div v-if="activeBot" class="col-span-full sm:col-span-1">
+      <h1 class="text-5xl font-semibold mb-4 text-primary">{{ activeBot.name }}</h1>
+      <div class="w-96 h-96 bg-gray-300 rounded-full overflow-hidden">
+        <img
+          :src="activeBot.avatarImage ? activeBot.avatarImage : 'path/to/default/image.png'"
+          class="object-cover w-full h-full"
+          alt="Bot Avatar"
+        />
+      </div>
+    </div>
+    <div v-if="activeBot" class="col-span-full sm:col-span-1">
+      <p class="mt-4 text-2xl text-secondary">{{ activeBot.description }}</p>
+      <div v-if="activeBot.model || activeBot.post" class="flex flex-wrap gap-2">
+        <p v-if="activeBot.model" class="text-accent">Model: {{ activeBot.model }}</p>
+        <p v-if="activeBot.post" class="text-accent">Post: {{ activeBot.post }}</p>
+      </div>
+      <div v-if="activeBot.temperature" class="mt-4">
+        <label for="temperature" class="block text-sm font-medium text-gray-700">Temperature</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+          <input
+            id="temperature"
+            v-model="activeBot.temperature"
+            type="range"
+            step="0.1"
+            min="0"
+            max="1"
+            class="focus:ring-indigo-500 h-4 transition ease-in-out duration-200 slider rounded-full bg-accent"
+          />
+        </div>
+        <p class="text-sm text-primary">More Creative - More Consistent</p>
+      </div>
+      <p v-if="activeBot.maxTokens" class="text-accent">Max Tokens: {{ activeBot.maxTokens }}</p>
+      <p class="text-accent">Prompt: {{ activeBot.prompt }}</p>
+      <p v-if="activeBot.image" class="text-accent">Image: {{ activeBot.image }}</p>
+      <p v-if="activeBot.mask" class="text-accent">Mask: {{ activeBot.mask }}</p>
+      <p v-if="activeBot.style" class="text-accent">Style: {{ activeBot.style }}</p>
+      <div v-if="activeBot.n" class="mt-4">
+        <label for="iterations" class="block text-sm font-medium text-primary"
+          >Number of Iterations</label
+        >
+        <input
+          id="iterations"
+          v-model="activeBot.n"
+          type="number"
+          class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md bg-accent"
+        />
+      </div>
+      <p v-if="activeBot.createdAt" class="text-accent">Created At: {{ activeBot.createdAt }}</p>
+      <p v-if="activeBot.intro" class="text-accent">Intro: {{ activeBot.intro }}</p>
+      <p v-if="activeBot.size" class="text-accent">Size: {{ activeBot.size }}</p>
+    </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useBotsStore } from '../../stores/bots'
+
+const botsStore = useBotsStore()
+
+const activeBot = computed(() => botsStore.getActiveBot)
+</script>
+
+<style scoped>
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+}
+</style>

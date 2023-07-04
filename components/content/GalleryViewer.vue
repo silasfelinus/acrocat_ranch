@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pt-16">
     <select v-model="selectedGallery" class="form-select">
       <option v-for="gallery in galleries" :key="gallery" :value="gallery">
         {{ gallery }}

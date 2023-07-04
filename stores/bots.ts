@@ -1,52 +1,45 @@
-// /stores/bots.ts
+// store/bots.ts
 import { defineStore } from 'pinia'
 import { Bot } from '../types/bot'
 import { localBots } from '../botMap'
 
-const API_BASE_URL = process.env.APP_URL || 'http://localhost:3000'
-
-export const useBotStore = defineStore('bots', {
+export const useBotsStore = defineStore('bots', {
   state: () => ({
-    bots: [] as Bot[],
-    selectedBot: null as Bot | null
+    bots: localBots as Bot[],
+    // Assume that AmiBot is the first bot in your localBots array
+    activeBot: localBots[0] as Bot,
+    activeBotId: localBots[0] ? localBots[0].id : 0 // added activeBotId
   }),
+  getters: {
+    getBots(): Bot[] {
+      return this.bots
+    },
+    getActiveBot(): Bot {
+      return this.activeBot
+    },
+    getActiveBotId(): number {
+      return this.activeBotId
+    },
+    getDefaultBot(): Bot {
+      return this.bots[0]
+    }
+  },
   actions: {
-    loadLocalBots() {
-      this.bots = localBots
+    setActiveBot(bot: Bot) {
+      this.activeBot = bot
+      this.activeBotId = bot.id // update activeBotId whenever activeBot is set
     },
-    async loadBots() {
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/bots`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const databaseBots: Bot[] = await response.json()
-        // Overwrite the localBots with fetched bots
-        this.bots = databaseBots
-      } catch (error) {
-        console.error('Failed to load bots:', error)
-      }
+    setActiveBotId(id: number) {
+      this.activeBotId = id
+      const bot = this.bots.find((bot) => bot.id === id)
+      if (bot) this.setActiveBot(bot)
     },
-    selectBot(botId: Number) {
-      const bot = this.bots.find((bot) => bot.id === botId)
-      if (bot) {
-        this.selectedBot = bot
-      } else {
-        this.selectedBot = null
-        console.error(`No bot found with ID: ${botId}`)
-      }
+    setBots(bots: Bot[]) {
+      this.bots = bots
     },
-    async init() {
-      this.loadLocalBots()
-      await this.loadBots()
+    resetActiveBot() {
+      this.activeBot = this.bots[0]
+      this.activeBotId = this.bots[0] ? this.bots[0].id : 0 // reset activeBotId too
     }
   }
 })
-
-const store = useBotStore()
-store.init()

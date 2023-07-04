@@ -1,11 +1,11 @@
 // server/api/messages/post.ts
-import prisma from '../../prisma'
+import prisma from '../../../prisma'
 
 export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event)
 
-    const requiredFields = ['content', 'sender', 'type', 'conversationId']
+    const requiredFields = ['content', 'role', 'type', 'conversationId']
 
     for (const field of requiredFields) {
       if (!body[field]) {
@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
     const message = await prisma.message.create({
       data: {
         content: body.content,
-        sender: body.sender,
+        role: body.sender,
         type: body.type,
         tokenCount: body.tokenCount,
         conversationId: body.conversationId

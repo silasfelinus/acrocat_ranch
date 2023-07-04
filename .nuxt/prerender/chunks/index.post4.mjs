@@ -1,29 +1,29 @@
-import {
-  eventHandler,
-  readBody
-} from 'file:///home/silasfelinus/code/kindrobots/node_modules/h3/dist/index.mjs'
-import { hash } from 'bcrypt'
-import prisma from './prisma.mjs'
-import 'file:///home/silasfelinus/code/kindrobots/node_modules/@prisma/client/index.js'
+import { defineEventHandler, readBody } from 'file:///home/silasfelinus/code/kindrobots/node_modules/h3/dist/index.mjs';
+import prisma from './prisma.mjs';
+import 'file:///home/silasfelinus/code/kindrobots/node_modules/@prisma/client/index.js';
 
-const index_post = eventHandler(async (event) => {
-  const body = await readBody(event)
-  const email = body.email
-  const password = body.password
-  const hashedPass = await hash(password, 10)
-  try {
-    const user = await prisma.user.create({
+const index_post = defineEventHandler(async (event) => {
+  const body = await readBody(event);
+  let gallery = null;
+  if (body.name)
+    await prisma.gallery.create({
       data: {
-        email,
-        hashedPass
-        // include other fields as necessary
+        id: body.id,
+        name: body.name,
+        content: body.content,
+        description: body.description,
+        highlightImage: body.highlightImage,
+        isNSFW: body.isNSFW,
+        isAuth: body.isAuth,
+        user: body.user
       }
-    })
-    return { status: 201, body: user }
-  } catch (err) {
-    return { status: 400, body: { error: 'Email already exists' } }
-  }
-})
+    }).then((response) => {
+      gallery = response;
+    });
+  return {
+    gallery
+  };
+});
 
-export { index_post as default }
+export { index_post as default };
 //# sourceMappingURL=index.post4.mjs.map
